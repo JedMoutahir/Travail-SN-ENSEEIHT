@@ -1,0 +1,459 @@
+Algorithme de Gauss-Newton
+Vraie Jacobienne = 1
+Methode diff finies = complexes
+------------------------------------------------------------------
+         k     ||f'(beta)||   f(beta)      ||s||       exitflag 
+------------------------------------------------------------------
+            0   4.6322e+05   4.8070e+01
+
+   1.0000e+00   1.5913e+04   1.0507e-01   5.0219e+00   4.0000e+00
+
+   2.0000e+00   5.9024e+00   8.8621e-02   3.2964e-03   4.0000e+00
+
+   3.0000e+00   3.9911e-01   8.8621e-02   6.8766e-04   4.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+------------------------------------------------------------------
+betak
+  Columns 1 through 10
+
+   1.0000e+01   1.5022e+01   1.5025e+01   1.5025e+01   1.5024e+01   1.5024e+01   1.5024e+01   1.5024e+01   1.5024e+01   1.5024e+01
+   1.0000e-04   1.0633e-04   1.0433e-04   1.0432e-04   1.0432e-04   1.0432e-04   1.0432e-04   1.0432e-04   1.0432e-04   1.0432e-04
+
+  Column 11
+
+   1.5024e+01
+   1.0432e-04
+
+Algorithme de Gauss-Newton
+Vraie Jacobienne = 1
+Methode diff finies = complexes
+------------------------------------------------------------------
+         k     ||f'(beta)||   f(beta)      ||s||       exitflag 
+------------------------------------------------------------------
+            0   4.6322e+05   4.8070e+01
+
+   1.0000e+00   1.5913e+04   1.0507e-01   5.0219e+00   4.0000e+00
+
+   2.0000e+00   5.9024e+00   8.8621e-02   3.2964e-03   4.0000e+00
+
+   3.0000e+00   3.9911e-01   8.8621e-02   6.8766e-04   4.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+------------------------------------------------------------------
+betak
+  Columns 1 through 10
+
+   1.0000e+01   1.5022e+01   1.5025e+01   1.5025e+01   1.5024e+01   1.5024e+01   1.5024e+01   1.5024e+01   1.5024e+01   1.5024e+01
+   1.0000e-04   1.0633e-04   1.0433e-04   1.0432e-04   1.0432e-04   1.0432e-04   1.0432e-04   1.0432e-04   1.0432e-04   1.0432e-04
+
+  Column 11
+
+   1.5024e+01
+   1.0432e-04
+
+Algorithme de Gauss-Newton
+ndigits 8 
+Vraie Jacobienne = 0
+Methode diff finies = complexes
+------------------------------------------------------------------
+         k     ||f'(beta)||   f(beta)      ||s||       exitflag 
+------------------------------------------------------------------
+            0            0   4.8070e+01
+
+{Output argument "norm_gradf_beta" (and possibly others) not assigned a value in the execution with "GN_ref" function.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('C14_diff_finies', '/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/C14_diff_finies.m', 142)" style="font-weight:bold">C14_diff_finies</a> (<a href="matlab: opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/C14_diff_finies.m',142,0)">line 142</a>)
+  [beta, norm_gradf_beta, f_beta, res, norms, k, exitflag] = GN_ref(@(beta) res_C14_ref(beta,Ti,Ai), ...
+} 
+opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/C14_diff_finies.m',142,0)
+C14_diff_finies
+Algorithme de Gauss-Newton
+Vraie Jacobienne = 1
+Methode diff finies = complexes
+------------------------------------------------------------------
+         k     ||f'(beta)||   f(beta)      ||s||       exitflag 
+------------------------------------------------------------------
+            0   4.6322e+05   4.8070e+01
+
+   1.0000e+00   1.5913e+04   1.0507e-01   5.0219e+00   4.0000e+00
+
+   2.0000e+00   5.9024e+00   8.8621e-02   3.2964e-03   4.0000e+00
+
+   3.0000e+00   3.9911e-01   8.8621e-02   6.8766e-04   4.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+------------------------------------------------------------------
+betak
+  Columns 1 through 10
+
+   1.0000e+01   1.5022e+01   1.5025e+01   1.5025e+01   1.5024e+01   1.5024e+01   1.5024e+01   1.5024e+01   1.5024e+01   1.5024e+01
+   1.0000e-04   1.0633e-04   1.0433e-04   1.0432e-04   1.0432e-04   1.0432e-04   1.0432e-04   1.0432e-04   1.0432e-04   1.0432e-04
+
+  Column 11
+
+   1.5024e+01
+   1.0432e-04
+
+Algorithme de Gauss-Newton
+Vraie Jacobienne = 1
+Methode diff finies = avants
+------------------------------------------------------------------
+         k     ||f'(beta)||   f(beta)      ||s||       exitflag 
+------------------------------------------------------------------
+            0   4.6322e+05   4.8070e+01
+
+   1.0000e+00   1.5913e+04   1.0507e-01   5.0219e+00   4.0000e+00
+
+   2.0000e+00   5.9024e+00   8.8621e-02   3.2964e-03   4.0000e+00
+
+   3.0000e+00   3.9911e-01   8.8621e-02   6.8766e-04   4.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+   4.0000e+00   4.7690e-03   8.8621e-02   4.9165e-06   2.0000e+00
+
+------------------------------------------------------------------
+betak
+  Columns 1 through 10
+
+   1.0000e+01   1.5022e+01   1.5025e+01   1.5025e+01   1.5024e+01   1.5024e+01   1.5024e+01   1.5024e+01   1.5024e+01   1.5024e+01
+   1.0000e-04   1.0633e-04   1.0433e-04   1.0432e-04   1.0432e-04   1.0432e-04   1.0432e-04   1.0432e-04   1.0432e-04   1.0432e-04
+
+  Column 11
+
+   1.5024e+01
+   1.0432e-04
+
+Algorithme de Gauss-Newton
+ndigits 8 
+Vraie Jacobienne = 0
+Methode diff finies = avants
+------------------------------------------------------------------
+         k     ||f'(beta)||   f(beta)      ||s||       exitflag 
+------------------------------------------------------------------
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('mtimes')" style="font-weight:bold"> * </a>
+Incorrect dimensions for matrix multiplication. Check that the number of columns in the first matrix matches the number of rows in the
+second matrix. To perform elementwise multiplication, use '.*'.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('diff_finies_avant', '/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m', 22)" style="font-weight:bold">diff_finies_avant</a> (<a href="matlab: opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m',22,0)">line 22</a>)
+h = w^0.5 * sgn(x) *max(abs(x), 1);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('C14_diff_finies', '/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/C14_diff_finies.m', 110)" style="font-weight:bold">C14_diff_finies</a> (<a href="matlab: opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/C14_diff_finies.m',110,0)">line 110</a>)
+	    Jres = diff_finies_avant( @(beta) res_C14_ref(beta,Ti,Ai), beta0, ndigits);
+
+<a href="matlab:helpview('matlab','error_innerdim')" style="font-weight:bold">Related documentation</a>
+} 
+opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m',22,0)
+diff_finies_avant
+{Not enough input arguments.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('diff_finies_avant', '/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m', 21)" style="font-weight:bold">diff_finies_avant</a> (<a href="matlab: opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m',21,0)">line 21</a>)
+w = max(eps, 10^(-option));
+} 
+C14_diff_finies
+Algorithme de Gauss-Newton
+ndigits 8 
+Vraie Jacobienne = 0
+Methode diff finies = avants
+------------------------------------------------------------------
+         k     ||f'(beta)||   f(beta)      ||s||       exitflag 
+------------------------------------------------------------------
+{Index in position 2 exceeds array bounds. Index must not exceed 1.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('diff_finies_avant', '/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m', 26)" style="font-weight:bold">diff_finies_avant</a> (<a href="matlab: opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m',26,0)">line 26</a>)
+    Jac(:,i) = (fun(x + h*In(:,i)) - fun(x - h*In(:,i))) / (2*h);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('C14_diff_finies', '/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/C14_diff_finies.m', 110)" style="font-weight:bold">C14_diff_finies</a> (<a href="matlab: opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/C14_diff_finies.m',110,0)">line 110</a>)
+	    Jres = diff_finies_avant( @(beta) res_C14_ref(beta,Ti,Ai), beta0, ndigits);
+} 
+opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m',26,0)
+eye(4)
+
+ans =
+
+     1     0     0     0
+     0     1     0     0
+     0     0     1     0
+     0     0     0     1
+
+diff_finies_avant
+{Not enough input arguments.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('diff_finies_avant', '/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m', 21)" style="font-weight:bold">diff_finies_avant</a> (<a href="matlab: opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m',21,0)">line 21</a>)
+w = max(eps, 10^(-option));
+} 
+C14_diff_finies
+Algorithme de Gauss-Newton
+ndigits 8 
+Vraie Jacobienne = 0
+Methode diff finies = avants
+------------------------------------------------------------------
+         k     ||f'(beta)||   f(beta)      ||s||       exitflag 
+------------------------------------------------------------------
+{Index in position 2 exceeds array bounds. Index must not exceed 1.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('diff_finies_avant', '/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m', 27)" style="font-weight:bold">diff_finies_avant</a> (<a href="matlab: opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m',27,0)">line 27</a>)
+    Jac(:,i) = (fun(x + h*In(:,i)) - g0) / h;
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('C14_diff_finies', '/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/C14_diff_finies.m', 110)" style="font-weight:bold">C14_diff_finies</a> (<a href="matlab: opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/C14_diff_finies.m',110,0)">line 110</a>)
+	    Jres = diff_finies_avant( @(beta) res_C14_ref(beta,Ti,Ai), beta0, ndigits);
+} 
+C14_diff_finies
+Algorithme de Gauss-Newton
+ndigits 8 
+Vraie Jacobienne = 0
+Methode diff finies = avants
+------------------------------------------------------------------
+         k     ||f'(beta)||   f(beta)      ||s||       exitflag 
+------------------------------------------------------------------
+<a href="matlab: opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m',27,1)">27  </a>    Jac(:,i) = (fun(x + h*In(:,i)) - g0) / h;
+size(x)
+
+ans =
+
+     2     1
+
+dbquit
+diff_finies_avant
+{Not enough input arguments.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('diff_finies_avant', '/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m', 21)" style="font-weight:bold">diff_finies_avant</a> (<a href="matlab: opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m',21,0)">line 21</a>)
+w = max(eps, 10^(-option));
+} 
+C14_diff_finies
+Algorithme de Gauss-Newton
+ndigits 8 
+Vraie Jacobienne = 0
+Methode diff finies = avants
+------------------------------------------------------------------
+         k     ||f'(beta)||   f(beta)      ||s||       exitflag 
+------------------------------------------------------------------
+{TRANSPOSE does not support N-D arrays. Use PAGETRANSPOSE/PAGECTRANSPOSE to transpose pages or PERMUTE to reorder dimensions of N-D
+arrays.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('C14_diff_finies', '/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/C14_diff_finies.m', 123)" style="font-weight:bold">C14_diff_finies</a> (<a href="matlab: opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/C14_diff_finies.m',123,0)">line 123</a>)
+gradf_beta = norm(Jres'*res);
+} 
+opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/C14_diff_finies.m',123,0)
+C14_diff_finies
+Algorithme de Gauss-Newton
+ndigits 8 
+Vraie Jacobienne = 0
+Methode diff finies = avants
+------------------------------------------------------------------
+         k     ||f'(beta)||   f(beta)      ||s||       exitflag 
+------------------------------------------------------------------
+<a href="matlab: opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m',27,1)">27  </a>    Jac(:,i) = (fun(x + h*In(:,i)) - g0) / h;
+dbquit
+C14_diff_finies
+Algorithme de Gauss-Newton
+ndigits 8 
+Vraie Jacobienne = 0
+Methode diff finies = avants
+------------------------------------------------------------------
+         k     ||f'(beta)||   f(beta)      ||s||       exitflag 
+------------------------------------------------------------------
+<a href="matlab: opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m',27,1)">27  </a>    Jac(:,i) = (fun(x + h*In(:,i)) - g0) / h;
+size(x,1)
+
+ans =
+
+     2
+
+size(fun(x))
+
+ans =
+
+     7     1
+
+dbquit
+diff_finies_avant
+{Not enough input arguments.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('diff_finies_avant', '/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m', 21)" style="font-weight:bold">diff_finies_avant</a> (<a href="matlab: opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m',21,0)">line 21</a>)
+w = max(eps, 10^(-option));
+} 
+C14_diff_finies
+Algorithme de Gauss-Newton
+ndigits 8 
+Vraie Jacobienne = 0
+Methode diff finies = avants
+------------------------------------------------------------------
+         k     ||f'(beta)||   f(beta)      ||s||       exitflag 
+------------------------------------------------------------------
+<a href="matlab: opentoline('/home/jmoutahi/Bureau/1A/Optimisation/TP03/src_eleves/diff_finies_avant.m',27,1)">27  </a>    Jac(:,i) = (fun(x + h*In(:,i)) - g0) / h;
+dbquit
+C14_diff_finies
+Algorithme de Gauss-Newton
+ndigits 8 
+Vraie Jacobienne = 0
+Methode diff finies = avants
+------------------------------------------------------------------
+         k     ||f'(beta)||   f(beta)      ||s||       exitflag 
+------------------------------------------------------------------
+            0   3.8804e+05   4.8070e+01
+
+   1.0000e+00   2.6672e+04   1.7060e-01   5.0630e+00   4.0000e+00
+
+   2.0000e+00   7.6492e+03   9.2567e-02   3.5359e-02   4.0000e+00
+
+   3.0000e+00   2.3534e+03   9.0530e-02   2.3777e-02   4.0000e+00
+
+   4.0000e+00   7.4422e+02   8.8933e-02   7.3774e-03   4.0000e+00
+
+   5.0000e+00   2.3358e+02   8.9219e-02   2.3357e-03   4.0000e+00
+
+   6.0000e+00   7.3486e+01   8.9107e-02   7.3286e-04   4.0000e+00
+
+   7.0000e+00   2.3102e+01   8.9140e-02   2.3059e-04   4.0000e+00
+
+   8.0000e+00   7.2643e+00   8.9130e-02   7.2488e-05   4.0000e+00
+
+   9.0000e+00   2.2841e+00   8.9133e-02   2.2794e-05   4.0000e+00
+
+   1.0000e+01   7.1818e-01   8.9132e-02   7.1669e-06   4.0000e+00
+
+------------------------------------------------------------------
+betak
+  Columns 1 through 10
+
+   1.0000e+01   1.5063e+01   1.5028e+01   1.5051e+01   1.5044e+01   1.5046e+01   1.5046e+01   1.5046e+01   1.5046e+01   1.5046e+01
+   1.0000e-04   1.0961e-04   1.0338e-04   1.0540e-04   1.0477e-04   1.0497e-04   1.0491e-04   1.0493e-04   1.0492e-04   1.0492e-04
+
+  Column 11
+
+   1.5046e+01
+   1.0492e-04
+
+Algorithme de Gauss-Newton
+ndigits 8 
+Vraie Jacobienne = 0
+Methode diff finies = centrees
+------------------------------------------------------------------
+         k     ||f'(beta)||   f(beta)      ||s||       exitflag 
+------------------------------------------------------------------
+            0   4.7684e+05   4.8070e+01
+
+   1.0000e+00   1.3765e+04   9.9241e-02   5.0114e+00   4.0000e+00
+
+   2.0000e+00   4.8436e+02   8.8635e-02   8.6997e-03   4.0000e+00
+
+   3.0000e+00   3.2726e+01   8.8665e-02   2.0033e-03   4.0000e+00
+
+   4.0000e+00   2.1703e+00   8.8668e-02   1.2812e-04   4.0000e+00
+
+   5.0000e+00   1.4399e-01   8.8669e-02   8.5044e-06   4.0000e+00
+
+   6.0000e+00   9.5538e-03   8.8669e-02   5.6427e-07   2.0000e+00
+
+   6.0000e+00   9.5538e-03   8.8669e-02   5.6427e-07   2.0000e+00
+
+   6.0000e+00   9.5538e-03   8.8669e-02   5.6427e-07   2.0000e+00
+
+   6.0000e+00   9.5538e-03   8.8669e-02   5.6427e-07   2.0000e+00
+
+   6.0000e+00   9.5538e-03   8.8669e-02   5.6427e-07   2.0000e+00
+
+------------------------------------------------------------------
+betak
+  Columns 1 through 10
+
+   1.0000e+01   1.5011e+01   1.5020e+01   1.5018e+01   1.5018e+01   1.5018e+01   1.5018e+01   1.5018e+01   1.5018e+01   1.5018e+01
+   1.0000e-04   1.0573e-04   1.0424e-04   1.0415e-04   1.0414e-04   1.0414e-04   1.0414e-04   1.0414e-04   1.0414e-04   1.0414e-04
+
+  Column 11
+
+   1.5018e+01
+   1.0414e-04
+
+Algorithme de Gauss-Newton
+ndigits 8 
+Vraie Jacobienne = 0
+Methode diff finies = centrees
+------------------------------------------------------------------
+         k     ||f'(beta)||   f(beta)      ||s||       exitflag 
+------------------------------------------------------------------
+            0   4.7684e+05   4.8070e+01
+
+   1.0000e+00   1.3765e+04   9.9241e-02   5.0114e+00   4.0000e+00
+
+   2.0000e+00   4.8436e+02   8.8635e-02   8.6997e-03   4.0000e+00
+
+   3.0000e+00   3.2726e+01   8.8665e-02   2.0033e-03   4.0000e+00
+
+   4.0000e+00   2.1703e+00   8.8668e-02   1.2812e-04   4.0000e+00
+
+   5.0000e+00   1.4399e-01   8.8669e-02   8.5044e-06   4.0000e+00
+
+   6.0000e+00   9.5538e-03   8.8669e-02   5.6427e-07   2.0000e+00
+
+   6.0000e+00   9.5538e-03   8.8669e-02   5.6427e-07   2.0000e+00
+
+   6.0000e+00   9.5538e-03   8.8669e-02   5.6427e-07   2.0000e+00
+
+   6.0000e+00   9.5538e-03   8.8669e-02   5.6427e-07   2.0000e+00
+
+   6.0000e+00   9.5538e-03   8.8669e-02   5.6427e-07   2.0000e+00
+
+------------------------------------------------------------------
+betak
+  Columns 1 through 10
+
+   1.0000e+01   1.5011e+01   1.5020e+01   1.5018e+01   1.5018e+01   1.5018e+01   1.5018e+01   1.5018e+01   1.5018e+01   1.5018e+01
+   1.0000e-04   1.0573e-04   1.0424e-04   1.0415e-04   1.0414e-04   1.0414e-04   1.0414e-04   1.0414e-04   1.0414e-04   1.0414e-04
+
+  Column 11
+
+   1.5018e+01
+   1.0414e-04
+
