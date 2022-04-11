@@ -1,0 +1,98 @@
+PILE1 = 0x200
+PILE2 = 0x300
+LEDS = 0xB0000000
+
+                      ba init
+
+
+handler_IT:           push %r1
+                      push %r2
+                      push %r3
+                      push %r4
+                      push %r5
+                      push %r6
+                      push %r7
+                      push %r8
+                      push %r9
+                      push %r10
+                      push %r28
+                      
+                      ld [%r17], %r11
+                      ld [%r18], %r12
+                      st %sp, [%r19 + %r11]
+                      inc %r11
+                      cmp %r11, %r12
+                      blu Next
+                      mov %r0, %r11
+Next:                 st %r11, [%r17]
+                      
+                      ld [%r19 + %r11], %sp
+                      
+                      pop %r28
+                      pop %r10
+                      pop %r9
+                      pop %r8
+                      pop %r7
+                      pop %r6
+                      pop %r5
+                      pop %r4
+                      pop %r3
+                      pop %r2
+                      pop %r1
+                      reti // retour dans le prog interrompu
+
+init:                 set PILE2, %sp
+                      set LEDS, %r20
+                      set current, %r17
+                      set nbProg, %r18
+                      set Tab_sp, %r19
+                      set prog2, %r1
+                      push %r1
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      st %sp, [%r19 + 1]
+                      set PILE1, %sp
+                      ba prog1
+
+
+prog1:                mov %r0, %r1
+TantQue1:             set 0b0000000011111111, %r2
+                      and %r2, %r1, %r1
+                      st %r1, [%r20]
+                      inc %r1
+                      ba TantQue1
+
+
+prog2:                mov %r0, %r1
+TantQue2:             set 256, %r2
+                      mov %r1, %r3
+                      umulcc %r3, %r2, %r3 // r2 <- r1 * r2
+                      set 0b1111111100000000, %r4
+                      and %r4, %r3, %r3
+                      st %r3, [%r20]
+                      inc %r1
+                      ba TantQue2
+
+
+
+Stop:                 ba Stop
+
+
+
+
+
+
+
+current:  .word 0
+nbProg:   .word 2
+Tab_sp:   .word 0, 0

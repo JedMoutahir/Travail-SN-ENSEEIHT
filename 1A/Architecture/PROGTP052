@@ -1,0 +1,413 @@
+PILE1 = 0x200
+PILE2 = 0x300
+PILE3 = 0x400
+PILE4 = 0x500
+PILE5 = 0x600
+PILE6 = 0x700
+PILE7 = 0x800
+PILE8 = 0x900
+PILE9 = 0x1000
+PILE10 = 0x1100
+PILE11 = 0x1200
+PILE12 = 0x1300
+PILE13 = 0x1400
+PILE14 = 0x1500
+PILE15 = 0x1600
+PILE16 = 0x1700
+LEDS = 0xB0000000
+
+                      ba init
+
+
+handler_IT:           push %r1
+                      push %r2
+                      push %r3
+                      push %r4
+                      push %r5
+                      push %r6
+                      push %r7
+                      push %r8
+                      push %r9
+                      push %r10
+                      push %r28
+                      
+                      ld [%r17], %r11
+                      ld [%r18], %r12
+                      st %sp, [%r19 + %r11]
+                      inc %r11
+                      cmp %r11, %r12
+                      blu Next
+                      mov %r0, %r11
+Next:                 st %r11, [%r17]
+                      
+                      ld [%r19 + %r11], %sp
+                      
+                      pop %r28
+                      pop %r10
+                      pop %r9
+                      pop %r8
+                      pop %r7
+                      pop %r6
+                      pop %r5
+                      pop %r4
+                      pop %r3
+                      pop %r2
+                      pop %r1
+                      reti // retour dans le prog interrompu
+
+init:                 set LEDS, %r20
+                      set current, %r17
+                      set nbProg, %r18
+                      set Tab_sp, %r19
+                      set PILE2, %sp
+                      set prog2, %r1
+                      push %r1
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      st %sp, [%r19 + 1]
+                      set PILE3, %sp
+                      set prog3, %r1
+                      push %r1
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      st %sp, [%r19 + 2]
+                      set PILE4, %sp
+                      set prog4, %r1
+                      push %r1
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      st %sp, [%r19 + 3]
+                      set PILE5, %sp
+                      set prog5, %r1
+                      push %r1
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      st %sp, [%r19 + 4]
+                      set PILE6, %sp
+                      set prog6, %r1
+                      push %r1
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      st %sp, [%r19 + 5]
+                      set PILE7, %sp
+                      set prog7, %r1
+                      push %r1
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      st %sp, [%r19 + 6]
+                      set PILE8, %sp
+                      set prog8, %r1
+                      push %r1
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      st %sp, [%r19 + 7]
+                      set PILE9, %sp
+                      set prog9, %r1
+                      push %r1
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      st %sp, [%r19 + 8]
+                      set PILE10, %sp
+                      set prog10, %r1
+                      push %r1
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      st %sp, [%r19 + 9]
+                      set PILE11, %sp
+                      set prog11, %r1
+                      push %r1
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      st %sp, [%r19 + 10]
+                      set PILE12, %sp
+                      set prog12, %r1
+                      push %r1
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      st %sp, [%r19 + 11]
+                      set PILE13, %sp
+                      set prog13, %r1
+                      push %r1
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      st %sp, [%r19 + 12]
+                      set PILE14, %sp
+                      set prog14, %r1
+                      push %r1
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      st %sp, [%r19 + 13]
+                      set PILE15, %sp
+                      set prog15, %r1
+                      push %r1
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      st %sp, [%r19 + 14]
+                      set PILE16, %sp
+                      set prog16, %r1
+                      push %r1
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      push %r0
+                      st %sp, [%r19 + 15]
+                      set PILE1, %sp
+                      ba prog1
+
+
+prog1:                mov %r0, %r1
+TantQue1:             set 0b0000000000000001, %r1
+                      st %r1, [%r20]
+                      st %r0, [%r20]
+                      ba TantQue1
+
+prog2:                mov %r0, %r1
+TantQue2:             set 0b0000000000000010, %r1
+                      st %r1, [%r20]
+                      st %r0, [%r20]
+                      ba TantQue2
+
+prog3:                mov %r0, %r1
+TantQue3:             set 0b0000000000000100, %r1
+                      st %r1, [%r20]
+                      st %r0, [%r20]
+                      ba TantQue3
+
+prog4:                mov %r0, %r1
+TantQue4:             set 0b0000000000001000, %r1
+                      st %r1, [%r20]
+                      st %r0, [%r20]
+                      ba TantQue4
+
+prog5:                mov %r0, %r1
+TantQue5:             set 0b0000000000010000, %r1
+                      st %r1, [%r20]
+                      st %r0, [%r20]
+                      ba TantQue5
+
+prog6:                mov %r0, %r1
+TantQue6:             set 0b0000000000100000, %r1
+                      st %r1, [%r20]
+                      st %r0, [%r20]
+                      ba TantQue6
+
+prog7:                mov %r0, %r1
+TantQue7:             set 0b0000000001000000, %r1
+                      st %r1, [%r20]
+                      st %r0, [%r20]
+                      ba TantQue7
+
+prog8:                mov %r0, %r1
+TantQue8:             set 0b0000000010000000, %r1
+                      st %r1, [%r20]
+                      st %r0, [%r20]
+                      ba TantQue8
+
+prog9:                mov %r0, %r1
+TantQue9:             set 0b0000000100000000, %r1
+                      st %r1, [%r20]
+                      st %r0, [%r20]
+                      ba TantQue9
+
+prog10:                mov %r0, %r1
+TantQue10:             set 0b0000001000000000, %r1
+                      st %r1, [%r20]
+                      st %r0, [%r20]
+                      ba TantQue10
+
+prog11:                mov %r0, %r1
+TantQue11:             set 0b0000010000000000, %r1
+                      st %r1, [%r20]
+                      st %r0, [%r20]
+                      ba TantQue11
+
+prog12:                mov %r0, %r1
+TantQue12:             set 0b0000100000000000, %r1
+                      st %r1, [%r20]
+                      st %r0, [%r20]
+                      ba TantQue12
+
+prog13:                mov %r0, %r1
+TantQue13:             set 0b0001000000000000, %r1
+                      st %r1, [%r20]
+                      st %r0, [%r20]
+                      ba TantQue13
+
+prog14:                mov %r0, %r1
+TantQue14:             set 0b0010000000000000, %r1
+                      st %r1, [%r20]
+                      st %r0, [%r20]
+                      ba TantQue14
+
+prog15:                mov %r0, %r1
+TantQue15:             set 0b0100000000000000, %r1
+                      st %r1, [%r20]
+                      st %r0, [%r20]
+                      ba TantQue15
+
+prog16:                mov %r0, %r1
+TantQue16:             set 0b1000000000000000, %r1
+                      st %r1, [%r20]
+                      st %r0, [%r20]
+                      ba TantQue16
+
+
+Stop:                 ba Stop
+
+
+
+
+
+
+
+current:  .word 0
+nbProg:   .word 16
+Tab_sp:   .word 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0

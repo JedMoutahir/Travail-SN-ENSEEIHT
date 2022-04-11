@@ -1,0 +1,119 @@
+// Test du module tri_tab (rst, clk, cal, ad1[7..0], ad2[7..0], maxOK : 
+// etats[4..0], calMax,  adCour[7..0]) 
+// Attention : il faut que le module testé ait exactement les mêmes signaux
+// d'entrée et de sortie, en respectant la casse.
+
+// 1- Remplacer X dans etats[X..0] : ligne 2 et ligne 109
+// 2- compléter à l'endroit des ..., lignes 60, 75, 90 et 105
+
+
+// Initialisation
+set rst 1
+set rst 0
+set cal 0
+set clk 0
+set ad1[7..0] 00000000
+set ad2[7..0] 00000100
+set maxOK 0
+
+check etats[0] 1
+
+// cal = 0
+set clk 1
+set clk 0
+
+check etats[0] 1
+check calMax 0
+
+// Lancement du calcul
+set cal 1
+
+// calcul du max jusqu'à maxOK = 1
+// ce calcul peut prendre plusieurs cycles
+set clk 1
+set clk 0
+set clk 1
+set clk 0
+set clk 1
+set clk 0
+set clk 1
+set clk 0
+
+check calMax 1
+check adCour[7..0] 00000100
+
+set maxOK 1
+
+// 1er passage dans la boucle jusqu'à incrémentation de adCour
+// et retour à l'état du calcul du max 
+
+set clk 1
+set clk 0
+
+// calMax retombe à 0 après prise en compte de maxOK
+check calMax 0
+
+// bien calculer le nombre de top d'horloges nécessaires pour échanger
+// l'élément courant avec l'élément max et revenir à l'état du calcul du max 
+set clk 1
+set clk 0
+set clk 1
+set clk 0		// Compléter par le bon nombre de set clk 1 set clk 0
+
+check adCour[7..0] 00000011
+check calMax 1
+
+// 2eme passage dans la boucle jusqu'à incrémentation de adCour
+// et retour à l'état du calcul du max 
+
+set clk 1
+set clk 0
+
+check calMax 0
+
+set clk 1
+set clk 0
+set clk 1
+set clk 0		// Compléter par le bon nombre de set clk 1 set clk 0
+
+check adCour[7..0] 00000010	
+check calMax 1
+
+// 3eme passage dans la boucle jusqu'à incrémentation de adCour
+// et retour à l'état du calcul du max 
+
+set clk 1
+set clk 0
+
+check calMax 0
+
+set clk 1
+set clk 0
+set clk 1
+set clk 0		// Compléter par le bon nombre de set clk 1 set clk 0
+
+check adCour[7..0] 00000001
+check calMax 1
+
+// 4eme passage complet dans la boucle jusqu'à incrémentation de adCour
+// et retour à l'état du calcul du max 
+
+set clk 1
+set clk 0
+
+check calMax 0
+
+set clk 1
+set clk 0
+set clk 1
+set clk 0
+set clk 1
+set clk 0 
+set clk 1
+set clk 0     // Compléter par le bon nombre de set clk 1 set clk 0
+
+check adCour[7..0] 00000000
+check calMax 0
+check etats[4] 1 	// remplacer X par la bonne valeur
+
+
