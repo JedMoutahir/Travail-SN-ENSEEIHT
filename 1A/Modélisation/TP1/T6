@@ -1,0 +1,19 @@
+Require Import Naturelle.
+Section LogiqueProposition.
+Variable A B C E Y R : Prop.
+Theorem Thm_6 : ((E -> (Y \/ R)) /\ (Y -> R)) -> (~R -> ~E).
+I_imp H.
+I_imp J.
+I_non K.
+I_antiT R.
+E_ou Y R.
+E_imp E.
+E_et_g (Y -> R).
+Hyp H.
+Hyp K.
+E_et_d (E -> (Y \/ R)).
+Hyp H.
+I_imp L.
+Hyp L.
+Hyp J.
+Qed.

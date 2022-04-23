@@ -1,0 +1,13 @@
+Require Import Naturelle.
+Section LogiqueProposition.
+Variable A B C E Y R : Prop.
+Theorem Thm_5 : (~B -> ~A) -> (A -> B).
+I_imp H.
+I_imp J.
+absurde K.
+I_antiT A.
+Hyp J.
+E_imp (~B).
+Hyp H.
+Hyp K.
+Qed.

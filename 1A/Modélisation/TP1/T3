@@ -1,0 +1,13 @@
+Require Import Naturelle.
+Section LogiqueProposition.
+Variable A B C E Y R : Prop.
+Theorem Thm_3 : (A -> B) -> (~B -> ~A).
+I_imp H.
+I_imp J.
+I_non K.
+I_antiT B.
+E_imp A.
+Hyp H.
+Hyp K.
+Hyp J.
+Qed.

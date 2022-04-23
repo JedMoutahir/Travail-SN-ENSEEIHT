@@ -1,0 +1,10 @@
+Require Import Naturelle.
+Section LogiqueProposition.
+Variable A B C E Y R : Prop.
+Theorem Thm_4 : ~~A -> A.
+I_imp H.
+absurde J.
+I_antiT (~A).
+Hyp J.
+Hyp H.
+Qed.

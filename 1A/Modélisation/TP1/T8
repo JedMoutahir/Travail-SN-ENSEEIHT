@@ -1,0 +1,8 @@
+Require Import Naturelle.
+Section LogiqueProposition.
+Variable A B C E Y R : Prop.
+Theorem Coq_E_et_g : (A /\ B) -> A.
+intro H.
+destruct H as (H1,H2).
+exact H1.
+Qed.
