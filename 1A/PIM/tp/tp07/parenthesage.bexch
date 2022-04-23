@@ -1,0 +1,20 @@
+[GENERATED OBJECT FILE]
+b__parenthesage.o
+[PROJECT FILES]
+/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr
+20211018120608 021c8712306e3c725667e4674ffee155
+[BOUND OBJECT FILES]
+/home/jmoutahi/Bureau/1A/PIM/tp/tp07/piles.o
+/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.o
+[GENERATED SOURCE FILES]
+b__parenthesage.ads
+b__parenthesage.adb
+b__parenthesage.ali
+[RESULTING OPTIONS]
+-L/home/jmoutahi/Bureau/1A/PIM/tp/tp07/
+-L/home/jmoutahi/Bureau/1A/PIM/tp/tp07/
+-L/mnt/n7fs/ens/tp_cregut/GNAT/2021/lib/gcc/x86_64-pc-linux-gnu/10.3.1/adalib/
+-static
+-static-libgcc
+/mnt/n7fs/ens/tp_cregut/GNAT/2021/lib/gcc/x86_64-pc-linux-gnu/10.3.1/adalib/libgnat.a
+-ldl
