@@ -1,0 +1,2 @@
+illustrer_affectation_pile.adb:22:09: error: left hand of assignment must not be limited type
+illustrer_affectation_pile.adb:23:27: error: there is no applicable operator "=" for private type "T_Pile" defined at piles.ads:8, instance at line 7
