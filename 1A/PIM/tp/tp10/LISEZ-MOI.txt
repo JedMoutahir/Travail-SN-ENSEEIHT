@@ -1,0 +1,170 @@
+% Compte-rendu minimal du mini-projet SDA : LCA et TH
+% Auteur : MOUTAHIR Jed
+% Groupe de TP : C
+
+
+**Consigne :** Vous devez écrire vos réponse à la place des ... en laissant
+une ligne vide avant et deux après votre réponse.
+
+**Remarque :** Ce document utilise le langage Markdown. On peut en engendrer
+une version PDF en faisant par exemple :
+
+~~~
+pandoc --toc -N -o LISEZ-MOI.pdf LISEZ-MOI.txt
+~~~
+
+
+# Exercice 1
+
+## Question 1.4
+
+**Indiquer les inconvénients/avantages d'une implantation par listes chaînées
+d'une SDA.**
+
+Avantages :
+-   Implémentation Simple
+-   Type génerique
+-   Taille de la liste variable
+-   
+
+Inconveniants :
+-   Recherche d'une donnee particulière difficile
+-   Temps d'accès aux données long
+-   
+
+# Évaluation expérimentale.
+
+## Performance comparée de LCA et TH
+
+Indiquer ici les résultats obtenus.
+
+jmoutahi@dragon:~/Bureau/1A/PIM/tp/tp10$ time ./evaluer_alea_lca 10 10
+Borne  : 10
+Taille : 10
+Min : 1
+Max : 2
+
+real	0m0,005s
+user	0m0,000s
+sys	0m0,004s
+jmoutahi@dragon:~/Bureau/1A/PIM/tp/tp10$ time ./evaluer_alea_th 10 10
+Borne  : 10
+Taille : 10
+Min : 1
+Max : 2
+
+real	0m0,004s
+user	0m0,004s
+sys	0m0,001s
+jmoutahi@dragon:~/Bureau/1A/PIM/tp/tp10$ time ./evaluer_alea_lca 100 10
+Borne  : 100
+Taille : 10
+Min : 1
+Max : 1
+
+real	0m0,003s
+user	0m0,003s
+sys	0m0,000s
+jmoutahi@dragon:~/Bureau/1A/PIM/tp/tp10$ time ./evaluer_alea_th 100 10
+Borne  : 100
+Taille : 10
+Min : 1
+Max : 2
+
+real	0m0,001s
+user	0m0,001s
+sys	0m0,000s
+jmoutahi@dragon:~/Bureau/1A/PIM/tp/tp10$ time ./evaluer_alea_lca 100 100
+Borne  : 100
+Taille : 100
+Min : 1
+Max : 3
+
+real	0m0,009s
+user	0m0,009s
+sys	0m0,000s
+jmoutahi@dragon:~/Bureau/1A/PIM/tp/tp10$ time ./evaluer_alea_th 100 100
+Borne  : 100
+Taille : 100
+Min : 1
+Max : 4
+
+real	0m0,008s
+user	0m0,008s
+sys	0m0,000s
+jmoutahi@dragon:~/Bureau/1A/PIM/tp/tp10$ time ./evaluer_alea_lca 1000 10000
+Borne  : 1000
+Taille : 10000
+Min : 1
+Max : 23
+
+real	2m13,083s
+user	2m12,516s
+sys	0m0,224s
+jmoutahi@dragon:~/Bureau/1A/PIM/tp/tp10$ time ./evaluer_alea_th 1000 10000
+Borne  : 1000
+Taille : 10000
+Min : 2
+Max : 22
+
+real	0m0,599s
+user	0m0,583s
+sys	0m0,012s
+jmoutahi@dragon:~/Bureau/1A/PIM/tp/tp10$ time ./evaluer_alea_th 1000 100000
+Borne  : 1000
+Taille : 100000
+Min : 69
+Max : 135
+
+real	0m5,791s
+user	0m5,781s
+sys	0m0,008s
+jmoutahi@dragon:~/Bureau/1A/PIM/tp/tp10$ time ./evaluer_alea_th 1000 1000000
+Borne  : 1000
+Taille : 1000000
+Min : 873
+Max : 1107
+
+real	0m58,165s
+user	0m57,898s
+sys	0m0,161s
+
+
+
+## Qualité du générateur aléatoire
+
+Indiquer les conclusions quant à la qualité du générateur aléatoire.
+
+On remarque une difference de frequence faible. On a donc un générateur aléatoire de bonne qualité.
+
+
+
+# Principales difficultés rencontrées
+
+Indiquer ici les principales difficultés rencontrées lors de la réalisation de
+ce projet et comment elles ont été surmontées ou contournéeS.
+
+-   La définition de la procedure Pour_Chaque était difficile à mettre en oeuvre pour le type TH.
+-   Gérer l'utilisation des exceptions a été compliqué.
+-   
+
+
+
+
+# Informations complémentaires
+
+Indiquer ici les informations qui pourraient aider à la compréhension du
+travail réalisé.
+
+Cette partie peut être vide.
+
+...
+
+
+
+# Bilan personnel
+
+Quel bilan personnel tirez vous de ce mini-projet ?
+
+J'ai pu utiliser et mieux comprendre les différents outils que nous avons développé en cours et en TP.
+

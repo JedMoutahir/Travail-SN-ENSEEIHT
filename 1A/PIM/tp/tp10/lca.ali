@@ -1,0 +1,122 @@
+V "GNAT Lib v2021"
+A -gnatA
+A -gnatwa
+A -gnata
+A -g
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_IO
+RV NO_LOCAL_ALLOCATORS
+RV NO_RECURSION
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_UNCHECKED_DEALLOCATION
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_ASPECT_SPECIFICATIONS
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U lca%b			lca.adb			28090b6f NE OO PK GE IU
+W ada%s			ada.ads			ada.ali
+Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W ada.unchecked_deallocation%s
+
+U lca%s			lca.ads			ef027bc8 BN EE NE OO PK GE IU
+Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
+W sda_exceptions%s	sda_exceptions.ads	sda_exceptions.ali
+
+D ada.ads		20210520051130 76789da1 ada%s
+D a-except.ads		20210520051127 946f3014 ada.exceptions%s
+D a-ioexce.ads		20210520051127 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20210520051128 119b8fb3 ada.streams%s
+D a-string.ads		20210520051128 90ac6797 ada.strings%s
+D a-sttebu.ads		20210520051128 18209c64 ada.strings.text_buffers%s
+D a-stuten.ads		20210520051128 808c40ad ada.strings.utf_encoding%s
+D a-tags.ads		20210520051129 9eaa38c6 ada.tags%s
+D a-textio.ads		20210520051129 aef4d56d ada.text_io%s
+D a-unccon.ads		20210520051129 0e9b276f ada.unchecked_conversion%s
+D a-uncdea.ads		20210520051129 c3a8ac65 ada.unchecked_deallocation%s
+D interfac.ads		20210520051131 edec285f interfaces%s
+D i-cstrea.ads		20210520051131 e53d8b8e interfaces.c_streams%s
+D lca.ads		20211118091513 b7f8ccac lca%s
+D lca.adb		20211126121756 f2adbecb lca%b
+D sda_exceptions.ads	20211115151926 58fab764 sda_exceptions%s
+D system.ads		20210520051134 a2da961d system%s
+D s-crtl.ads		20210520051131 0ebbdb71 system.crtl%s
+D s-exctab.ads		20210520051131 54135002 system.exception_table%s
+D s-ficobl.ads		20210520051131 078245e4 system.file_control_block%s
+D s-parame.ads		20210520051133 4752c4cb system.parameters%s
+D s-putima.ads		20210520051133 4e095881 system.put_images%s
+D s-secsta.ads		20210520051133 9b3ab94b system.secondary_stack%s
+D s-soflin.ads		20210520051133 a7318a92 system.soft_links%s
+D s-stache.ads		20210520051133 a37c21ec system.stack_checking%s
+D s-stalib.ads		20210520051133 472fbca8 system.standard_library%s
+D s-stoele.ads		20210520051133 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20210520051133 ed88f8fb system.storage_elements%b
+D s-traent.ads		20210520051133 26a8d361 system.traceback_entries%s
+D s-unstyp.ads		20210520051133 2b077493 system.unsigned_types%s
+D s-wchcon.ads		20210520051134 1b7d22d2 system.wch_con%s
+D unchconv.ads		20210520051134 ca2f9e18 unchecked_conversion%s
+G a e
+G c Z s b [lca standard 9 9 none]
+X 1 ada.ads
+16K9*Ada 20e8 15|1r6 1r34 3r6 8r17
+X 9 a-textio.ads
+58K13*Text_IO 725e16 15|1w10 1r38
+X 11 a-uncdea.ads
+17+9 Object 15|8r45
+18P9 Name(17+9) 15|8r64
+20u15*Unchecked_Deallocation 15|3w10 8r21
+X 14 lca.ads
+5+14 T_Cle 32r62 39r60 45r58 50r55 60r50 77r30 15|31r58 43r54 55r51 68r56
+6+14 T_Donnee 32r82 50r69 60r68 78r34 15|31r78 55r65
+9k9*LCA 5z14 6z14 75E10 86l5 86e8 15|5b14 106l5 106t8
+11P14*T_LCA 16r40 21r34 25r35 32r45 39r43 45r41 50r38 54r39 61r41 79r38 83c10
+. 15|8r72 10r36 16r30 22r31 31r41 43r37 55r34 68r39 69r20 84r35 92r37
+12R14*T_Noeud 75c10 82e19 83r26 15|8r55 34r24
+16U19*Initialiser 16<31 15|10b15 13l9 13t20
+16p31 Sda{11P14} 17r35 15|10b27 12m9
+21V18*Est_Vide{boolean} 17s25 21>28 27s51 55s25 15|16b14 19t8 86s16
+21p28 Sda{11P14} 15|16b24 18r16
+25V18*Taille{integer} 25>26 26r25 27r30 34s75 34s90 35s69 35s84 40s26 40s41
+. 15|22b14 27s20 28l9 28t15
+25p26 Sda{11P14} 27r61 15|22b22 24r12 27r27
+32U19*Enregistrer 32=32 32>53 32>70 15|31b15 38s13 40l9 40t20
+32p32 Sda{11P14} 33r39 33r65 34r57 34r83 34r98 35r52 35r77 35r92 15|31b28
+. 33r12 34m13 35r15 36r13 38r25
+32*53 Cle{5+14} 33r44 33r70 34r62 35r57 15|31b49 34r33 35r29 38r45
+32*70 Donnee{6+14} 33r77 15|31b66 34r38 36r31 38r50
+39U19*Supprimer 39=30 39>51 15|68b15 79s13 81l9 81t18
+39p30 Sda{11P14} 40r34 40r49 41r47 15|68b26 71r21 72r12 75r12 76m13 76r20
+. 79r23
+39*51 Cle{5+14} 41r52 15|68b47 75r26 79r43
+45V18*Cle_Presente{boolean} 33s25 34s43 35s38 41s33 45>32 45>49 15|43b14
+. 50s20 52t8
+45p32 Sda{11P14} 15|43b28 45r12 47r15 50r33
+45*49 Cle{5+14} 15|43b45 47r25 50r53
+50V18*La_Donnee{6+14} 33s54 50>29 50>46 15|55b14 63s20 65l9 65t18
+50p29 Sda{11P14} 15|55b25 57r12 60r12 61r20 63r30
+50*46 Cle{5+14} 15|55b42 60r26 63r50
+54U19*Vider 54=26 15|84b15 87s13 90l9 90t14
+54p26 Sda{11P14} 55r35 15|84b22 86r25 87r19 89m14
+60U32 Traiter 60>41 60>57 15|98s17
+60*41 Cle{5+14}
+60*57 Donnee{6+14}
+61u19*Pour_Chaque 61>32 15|92b15 101s13 103l9 103t20
+61p32 Sda{11P14} 15|92b28 94r12 98r25 98r38 101r25
+77*25 Cle{5+14} 15|35r23 47r19 60r20 75r20 98r33
+78*25 Donnee{6+14} 15|36m21 61r28 98r46
+79p25 Sous_Arbre{11P14} 15|27r35 38m33 50r41 63r38 76r28 79m31 87m27 101r33
+X 15 lca.adb
+7U15 Free[11|20] 77s13 89s9
+69p9 Sda_temp{14|11P14} 71m9 77m18 77r18
+X 16 sda_exceptions.ads
+2K9*SDA_Exceptions 14|1w6 1r37 16|6e19
+4X9*Cle_Absente_Exception 15|58r19 73r19
+

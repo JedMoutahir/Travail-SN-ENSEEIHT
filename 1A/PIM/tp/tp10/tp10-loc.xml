@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project>
+    <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp10/tp10.gpr</vfs_file>
+    <file_marker column=" 20" line=" 109" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp10/tp10.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp10/evaluer_alea_lca.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 29" line=" 91" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp10/tp10.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp10/evaluer_alea_th.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 36" line=" 49" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp10/tp10.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp10/th.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp10/tp10.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp10/th.ads</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>

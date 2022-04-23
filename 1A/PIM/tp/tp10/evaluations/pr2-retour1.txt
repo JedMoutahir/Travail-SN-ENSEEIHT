@@ -1,0 +1,9 @@
+
+* Voir le retour général
+* Voir le retour automatique
+
+* Supprimer les TODO traités.
+* Utiliser `Sda = null` plutôt que `Est_Vide (Sda)`
+* Revoir `Cle_Presente` Utilise Cle_Absente_Exception
+* Pour_Chaque : Il ne faut rien afficher. Ce n'est pas dans la spéc.
+

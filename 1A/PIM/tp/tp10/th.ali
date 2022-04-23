@@ -1,0 +1,138 @@
+V "GNAT Lib v2021"
+A -gnatA
+A -gnatwa
+A -gnata
+A -g
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_IO
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_UNCHECKED_DEALLOCATION
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U th%b			th.adb			a8ee1ae7 NE OO PK GE IU
+W ada%s			ada.ads			ada.ali
+Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W ada.unchecked_deallocation%s
+W lca%s			lca.adb			lca.ali
+
+U th%s			th.ads			23a0c7d3 BN EE NE OO PK GE
+W ada%s			ada.ads			ada.ali
+Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
+Z ada.text_io%s		a-textio.adb		a-textio.ali
+Z ada.unchecked_deallocation%s
+W lca%s			lca.adb			lca.ali
+W sda_exceptions%s	sda_exceptions.ads	sda_exceptions.ali
+
+D ada.ads		20210520051130 76789da1 ada%s
+D a-except.ads		20210520051127 946f3014 ada.exceptions%s
+D a-ioexce.ads		20210520051127 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20210520051128 119b8fb3 ada.streams%s
+D a-string.ads		20210520051128 90ac6797 ada.strings%s
+D a-sttebu.ads		20210520051128 18209c64 ada.strings.text_buffers%s
+D a-stuten.ads		20210520051128 808c40ad ada.strings.utf_encoding%s
+D a-tags.ads		20210520051129 9eaa38c6 ada.tags%s
+D a-textio.ads		20210520051129 aef4d56d ada.text_io%s
+D a-unccon.ads		20210520051129 0e9b276f ada.unchecked_conversion%s
+D a-uncdea.ads		20210520051129 c3a8ac65 ada.unchecked_deallocation%s
+D interfac.ads		20210520051131 edec285f interfaces%s
+D i-cstrea.ads		20210520051131 e53d8b8e interfaces.c_streams%s
+D lca.ads		20211118091513 b7f8ccac lca%s
+D lca.adb		20211126121756 f2adbecb lca%b
+D sda_exceptions.ads	20211115151926 58fab764 sda_exceptions%s
+D system.ads		20210520051134 a2da961d system%s
+D s-crtl.ads		20210520051131 0ebbdb71 system.crtl%s
+D s-exctab.ads		20210520051131 54135002 system.exception_table%s
+D s-ficobl.ads		20210520051131 078245e4 system.file_control_block%s
+D s-parame.ads		20210520051133 4752c4cb system.parameters%s
+D s-putima.ads		20210520051133 4e095881 system.put_images%s
+D s-secsta.ads		20210520051133 9b3ab94b system.secondary_stack%s
+D s-soflin.ads		20210520051133 a7318a92 system.soft_links%s
+D s-stache.ads		20210520051133 a37c21ec system.stack_checking%s
+D s-stalib.ads		20210520051133 472fbca8 system.standard_library%s
+D s-stoele.ads		20210520051133 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20210520051133 ed88f8fb system.storage_elements%b
+D s-traent.ads		20210520051133 26a8d361 system.traceback_entries%s
+D s-unstyp.ads		20210520051133 2b077493 system.unsigned_types%s
+D s-wchcon.ads		20210520051134 1b7d22d2 system.wch_con%s
+D th.ads		20211126123549 cca2bc1b th%s
+D th.adb		20211129082425 bee81358 th%b
+D unchconv.ads		20210520051134 ca2f9e18 unchecked_conversion%s
+G a e
+G c Z s b [th standard 13 9 none]
+X 1 ada.ads
+16K9*Ada 20e8 33|1r6 1r34 4r6
+X 9 a-textio.ads
+58K13*Text_IO 725e16 33|1w10 1r38
+X 11 a-uncdea.ads
+20u15*Unchecked_Deallocation 33|4w10
+X 14 lca.ads
+5+14 T_Cle 32|18r22
+6+14 T_Donnee 32|18r38
+9k9*LCA 86e8 32|2w6 18r17 33|2w6
+11P14 T_LCA 32|71r40[17]
+16U19 Initialiser 33|13s13[32|17]
+21V18 Est_Vide{boolean} 33|21s20[32|17]
+25V18 Taille{integer} 33|34s34[32|17]
+32U19 Enregistrer 33|43s9[32|17]
+39U19 Supprimer 33|61s9[32|17]
+45V18 Cle_Presente{boolean} 33|49s16[32|17]
+50V18 La_Donnee{32|7+10} 33|55s16[32|17]
+54U19 Vider 33|68s13[32|17]
+61u19 Pour_Chaque 33|74r33[32|17]
+X 16 sda_exceptions.ads
+2K9*SDA_Exceptions 6e19 32|1w6 1r37
+X 32 th.ads
+6+10 T_Cle 11r36 18r31 39r57 46r55 52r53 57r50 67r42 33|41r57 47r53 53r50
+. 59r55
+7+10 T_Donnee 18r50 39r77 57r64 67r60 33|41r77 53r64
+9i5 Capacite{integer} 71r27 33|12r21 20r21 33r21 67r21 76r21
+11V19 Hachage{integer} 11>27 33|43s25 49s33 55s30 61s23
+11*27 Cle{6+10}
+13k9*TH 6z10 7z10 9z5 11z19 71E10 74l5 74e7 33|5b14 81l5 81t7
+15A10*T_TH(14|11P14[17]) 23r36 28r30 32r31 39r41 46r39 52r37 57r34 61r35
+. 68r37 71c10 33|10r36 18r30 29r31 41r41 47r37 53r34 59r39 65r35 72r37
+17K13*LCA_package[14|9] 19r9 33|74r21
+23U15*Initialiser 23<27 33|10b15 15l9 15t20
+23a27 Sda{15A10} 24r31 33|10b27 13m25 13r25
+28V14*Est_Vide{boolean} 24s21 28>24 34s39 62s21 33|18b14 26t8
+28a24 Sda{15A10} 33|18b24 21r29
+32V14*Taille{integer} 32>22 41s55 41s70 42s49 42s64 47s22 47s37 33|29b14
+. 38l9 38t15
+32a22 Sda{15A10} 34r49 33|29b22 34r41
+39U15*Enregistrer 39=28 39>48 39>65 33|41b15 44l9 44t20
+39a28 Sda{15A10} 40r35 40r61 41r37 41r63 41r78 42r32 42r57 42r72 33|41b28
+. 43m21 43r21
+39*48 Cle{6+10} 40r40 40r66 41r42 42r37 33|41b48 43r33 43r40
+39*65 Donnee{7+10} 40r73 33|41b65 43r45
+46U15*Supprimer 46=26 46>46 33|59b15 62l9 62t18
+46a26 Sda{15A10} 47r30 47r45 48r35 33|59b26 61m19 61r19
+46*46 Cle{6+10} 48r40 33|59b46 61r31 61r38
+52V14*Cle_Presente{boolean} 40s21 41s23 42s18 48s21 52>28 52>44 33|47b14
+. 50t8
+52a28 Sda{15A10} 33|47b28 49r29
+52*44 Cle{6+10} 33|47b44 49r41 49r48
+57V14*La_Donnee{7+10} 40s50 57>25 57>41 33|53b14 56l9 56t18
+57a25 Sda{15A10} 33|53b25 55r26
+57*41 Cle{6+10} 33|53b41 55r38 55r45
+61U15*Vider 61=22 33|65b15 70l9 70t14
+61a22 Sda{15A10} 62r31 33|65b22 68m19 68r19
+67U24 Traiter 67>33 67>49 33|74r46
+67*33 Cle{6+10}
+67*49 Donnee{7+10}
+68u15*Pour_Chaque 68>28 33|72b15 79l9 79t20
+68a28 Sda{15A10} 33|72b28 77r29
+X 33 th.adb
+12i13 i{integer} 13r29
+20i13 i{integer} 21r33
+30i9 Nb_elem{integer} 32m9 34m13 34r24 37r16
+33i13 i{integer} 34r45
+67i13 i{integer} 68r23
+73U19 Traiter_element[14|61] 77s13
+76i13 i{integer} 77r33
+
