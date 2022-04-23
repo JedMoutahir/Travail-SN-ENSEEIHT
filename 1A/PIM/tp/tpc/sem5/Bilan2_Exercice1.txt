@@ -1,0 +1,23 @@
+Indiquer vos réponses aux questions de l'exercice 1 du Bilan 2 ci-après : 
+
+[B1.1] Quelle est la portée de chaque variable déclarée ? Pour chaque variable, on donnera le numéro de ligne où commence et se termine sa portée.
+n : 8 à 37
+p : 9 à 37
+a : 13 à 18
+n : 22 à 25
+r : 30 à 33
+
+[B1.2] Y a-t-il un exemple de masquage de variable dans ce programme ?
+Oui, l.22.
+
+[B1.3] Peut-on savoir ce que devrait afficher l’exécution de ce programme ?
+Oui.
+
+[B1.4] Même s’il compile sans erreur, ce programme est faux. Pourquoi ?
+A la ligne 14, on fait pointer p, une variable globale de main, sur une variable locale : a, valable seulement entre la ligne 13 et 18. De ce fait, lors des accès à p comme à la ligne 19, il y aura une erreur.
+
+[B1.5] La valeur de `p` change-t-elle après l’initialisation de la ligne 14 ?
+Non.
+
+[B1.6] Que se passerait-il si on modifiait `*p` après la ligne 19 ?
+Il y aurait une erreur.
