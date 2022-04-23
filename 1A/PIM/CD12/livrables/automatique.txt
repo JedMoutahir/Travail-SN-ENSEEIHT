@@ -1,0 +1,53 @@
+% Validation de http:///cregut.svn.enseeiht.fr/2021/1sn/pim/projet/CD12
+% 2022-01-20 17:57:24.534018
+
+
+################################################################################
+# Fichiers attendus
+################################################################################
+
+Remarque : un livrable peut ne pas être trouvé car il n'a pas été déposé
+avec le bon nom. Dans ce cas, on peut le renommer en faisant :
+
+	svn mv ancien_nom nouveau_nom
+
+Sinon, si le fichier n'est pas sur SVN, c'est qu'il n'y a pas été ajouté :
+
+	svn add mon_fichier
+
+Ne pas oublier le commit pour pousser les modifications sur le serveur SVN.
+
+
+
+================================================================================
+## Livrables
+================================================================================
+
+* Fichier rapport.pdf trouvé... oui
+* Fichier sources.tgz trouvé... oui
+* Fichier presentation.pdf trouvé... oui
+* Fichier manuel.pdf trouvé... oui
+* Fichier demo.txt ou demo.pdf trouvé... oui (demo.txt)
+
+================================================================================
+## Fichiers ADA
+================================================================================
+
+* Fichier compresser.adb trouvé... NON
+* Fichier decompresser.adb trouvé... NON
+
+
+################################################################################
+# Format archive sources.tgz
+################################################################################
+
+* Archive construite avec `tar cz` (sources.tgz)... ok
+
+
+################################################################################
+# Compilation des programmes
+################################################################################
+
+* Pas de fichier compresser.adb... ERREUR
+* Pas de fichier decompresser.adb... ERREUR
+* Running gnatclean... ok

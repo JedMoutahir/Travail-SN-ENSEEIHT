@@ -1,0 +1,11 @@
+compression :
+./compresser test.txt
+
+
+compression bavarde : 
+./compresser -b test.txt
+
+
+decompression : 
+./decompresser test.txt.hff
+
