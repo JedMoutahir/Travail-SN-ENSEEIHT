@@ -1,0 +1,31 @@
+(* Ouverture d’une section *)
+Section LogiquePredicats.
+(* Définition de 2 domaines pour les prédicats *)
+Variable A B : Type.
+(* Formule du second ordre : Quantification des prédicats P et Q *)
+Theorem Thm_8 : forall (P Q : A -> Prop),
+(forall x1 : A, (P x1) /\ (Q x1))
+-> (forall x2 : A, (P x2)) /\ (forall x3 : A, (Q x3)).
+intro P.
+intro Q.
+intro H.
+split.
+intro x1.
+cut (P x1 /\ Q x1).
+intro H1.
+elim H1.
+intro H2.
+intro H3.
+exact H2.
+generalize x1.
+exact H.
+intro x1.
+cut (P x1 /\ Q x1).
+intro H1.
+elim H1.
+intro H2.
+intro H3.
+exact H3.
+generalize x1.
+exact H.
+Qed.

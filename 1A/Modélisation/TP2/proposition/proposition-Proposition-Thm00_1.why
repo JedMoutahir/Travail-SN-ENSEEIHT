@@ -1,0 +1,16 @@
+(* this is the prelude for Alt-Ergo, version >= 0.95.2 and <= 2.2.0 *)
+type string
+
+logic match_bool : bool, 'a, 'a -> 'a
+
+axiom match_bool_True :
+  (forall z:'a. forall z1:'a. (match_bool(true, z, z1) = z))
+
+axiom match_bool_False :
+  (forall z:'a. forall z1:'a. (match_bool(false, z, z1) = z1))
+
+logic a : prop
+
+logic b : prop
+
+goal Thm00 : ((a and b) -> (b and a))

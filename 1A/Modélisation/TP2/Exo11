@@ -1,0 +1,23 @@
+(* Ouverture d’une section *)
+Section LogiquePredicats.
+(* Définition de 2 domaines pour les prédicats *)
+Variable A B : Type.
+(* Type représentant l’humanité *)
+Variable H : Type.
+(* Prédicat définissant la paternité *)
+Variable P : H -> H -> Prop.
+(* Prédicat définissant la grand paternité paternelle *)
+Variable GPP : H -> H -> Prop.
+(* Formule du premier ordre : *)
+Theorem Thm_11 : (forall (e : H), exists (p : H), (P e p))
+/\
+(forall (e : H), forall (gpp : H),
+((GPP e gpp)
+<->
+exists (p : H), (P e p) /\ (P p gpp))
+)
+->
+(forall (e : H), exists (gpp : H), (GPP e gpp)).
+intro H0.
+destruct H0 as (H1, H2).
+destruct H2 as (H3, H4).

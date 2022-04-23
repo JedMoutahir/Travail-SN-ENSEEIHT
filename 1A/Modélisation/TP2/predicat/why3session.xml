@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
+"http://why3.lri.fr/why3session.dtd">
+<why3session shape_version="6">
+<prover id="0" name="Alt-Ergo" version="2.0.0" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="1" name="Z3" version="4.8.7" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="2" name="CVC4" version="1.6" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="3" name="Z3" version="4.8.7" alternative="noBV" timelimit="5" steplimit="0" memlimit="1000"/>
+<file format="whyml" proved="true">
+<path name=".."/><path name="predicat.mlw"/>
+<theory name="Predicat" proved="true">
+ <goal name="THM08" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="5"/></proof>
+ </goal>
+ <goal name="THM09" proved="true">
+ <proof prover="0"><result status="unknown" time="0.01"/></proof>
+ <proof prover="1"><result status="valid" time="0.04" steps="607"/></proof>
+ <proof prover="2"><result status="unknown" time="0.02" steps="173"/></proof>
+ </goal>
+ <goal name="THM10" proved="true">
+ <proof prover="1"><result status="valid" time="0.00" steps="530"/></proof>
+ </goal>
+</theory>
+</file>
+<file format="whyml">
+<path name=".."/><path name="exofin.mlw"/>
+<theory name="Compatible">
+ <goal name="Q1">
+ <proof prover="0"><result status="unknown" time="0.01"/></proof>
+ <proof prover="1"><result status="unknown" time="0.01" steps="255"/></proof>
+ <proof prover="2"><result status="unknown" time="0.00" steps="113"/></proof>
+ <proof prover="3"><result status="unknown" time="0.01"/></proof>
+ </goal>
+ <goal name="Q3a" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="4"/></proof>
+ </goal>
+ <goal name="Q3b">
+ <proof prover="0"><result status="unknown" time="0.01"/></proof>
+ <proof prover="3"><result status="unknown" time="0.01"/></proof>
+ </goal>
+ <goal name="Q3c" proved="true">
+ <proof prover="2"><result status="valid" time="0.00" steps="82"/></proof>
+ </goal>
+</theory>
+<theory name="Predicat">
+ <goal name="THM08">
+ </goal>
+ <goal name="THM09">
+ </goal>
+ <goal name="THM10">
+ </goal>
+</theory>
+<theory name="ExoFin">
+ <goal name="THM01">
+ <proof prover="0"><result status="unknown" time="0.01"/></proof>
+ <proof prover="1"><result status="unknown" time="0.02" steps="138"/></proof>
+ <proof prover="2"><result status="unknown" time="0.01" steps="80"/></proof>
+ <proof prover="3"><result status="unknown" time="0.02"/></proof>
+ </goal>
+</theory>
+</file>
+</why3session>

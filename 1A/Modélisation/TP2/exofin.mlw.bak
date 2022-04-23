@@ -1,0 +1,29 @@
+(* Etude avec Why3 des théorèmes de la logique des prédicats prouvés avec Coq *)
+theory Base
+
+   (* Types abstraits manipulés par les prédicats *)
+   type personne
+
+   (* Prédicats sur le type t *)
+   predicate b
+   predicate c
+   predicate a
+   
+   predicate da = b /\ (not c)
+   predicate db = a -> c
+   predicate dc = (not c) /\ (a \/ b)
+   
+end
+
+theory Compatible
+use Base
+
+   (* Q1 *)
+   
+   goal Q1 :  (a /\ b /\ c) -> (da /\ db /\ dc)
+   
+   goal Q3 :  (not a) /\ (not b) /\ (not c) -> (not da)
+   (not a) /\ (not b) /\ (not c) -> (not db)
+   (not a) /\ (not b) /\ (not c) -> (not dc)
+   
+ end

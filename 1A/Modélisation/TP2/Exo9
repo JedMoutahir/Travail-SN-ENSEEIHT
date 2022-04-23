@@ -1,0 +1,16 @@
+(* Ouverture d’une section *)
+Section LogiquePredicats.
+(* Définition de 2 domaines pour les prédicats *)
+Variable A B : Type.
+(* Formule du second ordre : Quantification du prédicat P *)
+Theorem Thm_9 : forall (P : A -> B -> Prop),
+(exists x1 : A, forall y1 : B, (P x1 y1))
+-> forall y2 : B, exists x2 : A, (P x2 y2).
+intro P.
+intro H.
+intro y0.
+destruct H as (x0, H0).
+exists x0.
+generalize y0.
+exact H0.
+Qed.
