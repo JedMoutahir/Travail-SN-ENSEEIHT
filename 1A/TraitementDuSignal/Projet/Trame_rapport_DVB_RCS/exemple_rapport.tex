@@ -1,0 +1,244 @@
+\documentclass[frenchb]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+%Pour utilisation sous unix
+%\usepackage[utf8]{inputenc}
+%\usepackage[utf8x]{inputenc}
+\usepackage{a4wide}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{babel}
+
+\begin{document}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=5cm]{inp_n7.png}
+\end{figure}
+
+\title{\vspace{4cm} \textbf{Simulation d'une transmission au format DVB-RCS
+sous MatLab}}
+\author{MOUTAHIR Jed\\KIEGAIN DJOKO Yvan Charles }
+\date{\vspace{7cm} Département Sciences du Numérique - Première année \\
+2021-2022 }
+
+\maketitle
+
+\newpage
+\tableofcontents
+\listoffigures
+
+\newpage
+\section{Introduction}
+L'objectif de ce projet était de mettre en place une transmission au
+format DVB-RCS de deux utilisateurs sous MatLab. On devait faire :
+\\- la modulation bande de base pour chaque utilisateur
+\\- la construction de la trame MF-TDMA bruitée
+\\- le démultiplexage des porteuses et démodulation bande
+base
+\\- retrouver les messages cachés
+\section{Construction du signal MF-TDMA à décoder}
+La figure \ref{fig : MF_TDMA_recu} présente la trame MF-TDMA à étudier, implanter puis décoder.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=15cm]{MF_TDMA_recu.png}
+    \caption{Construction du signal MF-TDMA à décoder \label{fig : MF_TDMA_recu}}
+ \end{figure}
+
+
+    \subsection{Paramètres}
+    La trame MF-TDMA est composée de $2$ porteuses, $f_{p_1}=0$ kHz et $f_{p_2}=46$ kHz, contenant chacune $5$ timeslots de durées $T=40$ ms. La fréquence d'échantillonnage est fixée à $128$ kHz. Les deux utilisateurs vont accéder au système en utilisant la trame de la manière suivante :
+        \begin{itemize}
+            \item L'utilisateur n° $1$ exploite le $2^{ème}$ timeslot de la porteuse n° $1$ ($f_{p_1}$).
+            \item L'utilisateur n° $2$ exploite le $5^{ème}$ timeslot de la porteuse n° $2$ ($f_{p_2}$).
+        \end{itemize}
+
+    Le canal de transmission considéré sera à bruit additif blanc et Gaussien (canal AWGN : Additive White Gaussian Noise). La puissance du bruit à ajouter devra être déduite du rapport signal sur bruit (SNR : Signal to Noise Ratio) souhaité donné en dB.
+
+    \subsection{Etude théorique}
+    Le signal MF-TDMA non bruité peut s'écrire de la manière suivante :
+    \Large
+        $$
+        x(t)=m_1(t) \cos\left(2 \pi f_1 t + \phi_1\right) + m_2(t) \cos\left(2 \pi f_2 t + \phi_2\right)
+        $$\
+        \subsubsection{Calcul de la densité spectrale de puissance} \label{Calcul_DSP}
+                    \Large
+
+		$$
+        S_x(f)=| M_1(f)* [ \delta(f-f_{p1}) + \delta(f+f_{p1}) ] + M_2(f)* [ \delta(f-f_{p2}) + \delta(f+f_{p2}) ]  |^2
+        $$
+        $$
+		S_x(f) = | M_1(f-f_{p1}) +M_1(f+f_{p1}) + M_2(f-f_{p2}) + M_2(f+f_{p2})  |^2
+		$$
+		$$
+		S_x(f) = |M_1(f-f_{p1})|^2 + |M_1(f+f_{p1})|^2 + |M_2(f-f_{p2})|^2 + |M_2(f+f_{p2})|^2
+		$$
+        Or,
+        $$
+        S_{m1}(f)=| M_1(f) |^2
+        $$
+        et
+        $$
+        S_{m2}(f)=| M_2(f) |^2
+        $$
+        Donc,
+        $$
+		S_x(f) = S_{m1}(f-f_{p1}) + S_{m1}(f+f_{p1}) + S_{m2}(f-f_{p2}) + S_{m2}(f+f_{p2})
+		$$
+		\
+
+                \subsubsection{Expression de la puissance du bruit à ajouter}
+            Soit $SNR_{dB}$ et $P_{signal}$ fixés :
+            \Large
+$$
+            SNR_{dB} = 10 log(\frac{P_{signal}}{ P_n})
+            $$
+            $$
+            \Rightarrow P_n = \frac{P_{signal}}{10^\frac{SNR_{dB}}{10}}
+            $$\
+ \newpage
+    \subsection{Implantation}
+        \subsubsection{Modulation bande base}
+        On construit les messages $m_1$ et $m_2$ de manière à respecter la norme NRZ à partir des données \textit{bits\_utilisateur1} et \textit{bits\_utilisateur2}
+            \begin{enumerate}
+                \item Calcul de $N_s$\\
+                Soit T la durée d'un slot, L le nombre de bits dans  \textit{bits\_utilisateur1}, Te la période d'échantillonnage.\\
+                $
+				Ts = T/L;\\
+				Ns = Ts/Te;
+				$
+                \item Tracés des signaux $m_1(t)$ et $m_2(t)$
+                \begin{figure}[ht!]
+    				\centering
+                \includegraphics[scale=0.3]{m1m2.jpg} 
+				\end{figure}               
+                \item Estimation et tracé des densités spectrales de puissance des signaux $m_1(t)$ et $m_2(t)$. Concernant l'estimation on donnera notamment l'estimateur utilisé.\\
+                On utilise l'outil \textit{pwelch} de MatLab pour estimer les densités spectrales de puissance de ces signaux :
+                 \begin{figure}[ht!]
+    				\centering
+                \includegraphics[scale=0.3]{Sm1Sm2.jpg} 
+				\end{figure}               
+            \end{enumerate}
+
+        \subsubsection{Construction du signal MF-TDMA}
+        On construit le signal à transmettre.
+            \begin{enumerate}
+                \item Tracé des signaux à envoyer sur porteuse pour chaque utilisateur.
+                \begin{figure}[ht!]
+    				\centering
+                \includegraphics[scale=0.3]{signaux1et2.jpg} 
+				\end{figure}
+                \item Tracé du signal MF-TDMA. Le tracé observé est-il conforme à ce qui est attendu ? Explications.
+                \begin{figure}[ht!]
+    				\centering
+                \includegraphics[scale=0.3]{signalatransmettre.jpg} 
+				\end{figure}
+				Le signal est bien conforme à ce qui est attendu. En effet, on observe bien les deux messages dans leur slot correspondant et le bruit ajouté au signal. En ayant fixé un SNR de 5 dB, on constate un bruit conséquent.
+                \item Estimation puis tracé de la densité spectrale de puissance du signal MF-TDMA. Le tracé observé est-il conforme à l'expression théorique obtenue précédemment ? Explications. Pour faire un appel à section : on retrouve bien le résultat obtenu dans la partie théorique (paragraphe \ref{Calcul_DSP}).\\\\
+                Dans notre cas particulier fp1 = 0 Hz et fp2 = 46kHz. On remarque que la formule de la partie théorique nous indique la densité de m1 dois se situer autour de 0Hz avec une Amplitude double tandis que celle de m2 se situe autour de 46kHz et -46kHz. On retrouve bien ces caractéristiques sur notre tracé.
+                \begin{figure}[ht!]
+    				\centering
+                \includegraphics[scale=0.3]{densitePuissanceSignalatransmettre.jpg} 
+				\end{figure}
+                
+            \end{enumerate}
+
+\section{Mise en place du récepteur MF-TDMA}
+La figure \ref{fig : recepteur} présente le récepteur à implanter pour retrouver, à partir du signal MF-TDMA bruité, les messages binaires envoyés par les deux utilisateurs.
+ \begin{figure}[ht!]
+    \centering
+    \includegraphics[width=15cm]{recepteur.png}
+    \caption{Récepteur MF-TDMA à implanter \label{fig : recepteur}}
+ \end{figure}
+
+    \subsection{Démultiplexage des porteuses}
+        Le démultiplexage des porteuses se fait par filtrage : à partir du signal MF-TDMA reçu, un filtre passe-bas permet de récupérer le signal porté par le cosinus à la fréquence $f_{p_1}$ (provenant de l'utilisateur $1$), tandis qu'un filtre passe-haut permet de récupérer le signal porté par le cosinus à la fréquence $f_{p_2}$ (provenant de l'utilisateur $2$).\\
+        Avant de filtrer, on décale le signal vers la gauche de manière à anticiper le retard causé par le filtrage. Ce retard est égal à l'ordre du filtre (sous MatLab, on manipule des vecteurs).\\
+        
+
+        \subsubsection{Synthèse du filtre passe-bas}
+            On construit un filtre passe bas pour récupérer les fréquences du signal 1 du spectre du signal reçu.
+            \begin{enumerate}
+                \item Rappel de la réponse impulsionnelle idéale du filtre passe-bas à implanter (calcul effectué dans le TP$2$).\\
+                Pour filtrer entre -fc et fc, on convolue le signal avec un sinus cardinal : 
+                $$
+                h(t) = 2 \frac{fc}{Fe}sinc(2*fc*t)
+                $$
+                fc : fréquence de coupure\\
+                Fe : fréquence d'échantillonnage
+                \item Explications implémentation.\\
+                Dans notre cas, on échantillonne h et  on pose un ordre fini. En effet, h est un vecteur dans MatLab de même pour T (vecteur de temps) et $sinc(2*fc*T)$.
+                \item Tracé de la réponse impulsionnelle et de la réponse en fréquence du filtre implanté.
+                \begin{figure}[ht!]
+    				\centering
+                \includegraphics[scale=0.3]{passeBas.jpg} 
+				\end{figure}
+                \item Tracé de la densité spectrale de puissance du signal MF-TDMA reçu et du module de la réponse en fréquences du filtre implanté. Le filtre implanté vous parait-il réaliser la fonction souhaitée ? Explications.\\\\
+                On remarque que le filtre englobe bien la partie utile et coupe les parties inutiles du spectre. On peut donc considérer qu'il réalise la fonction souhaitée.
+                \begin{figure}[ht!]
+    				\centering
+                \includegraphics[scale=0.3]{supperpose1.jpg} 
+				\end{figure}
+            \end{enumerate}
+
+        \subsubsection{Synthèse du filtre passe-haut}
+            On construit un filtre passe haut pour récupérer les fréquences du signal 2 du spectre du signal reçu.
+            \begin{enumerate}
+                \item Calcul de la réponse impulsionnelle idéale du filtre passe-haut à implanter.\\
+                Pour filtrer entre -Fe et -fc et fc et Fe, on convolue le signal avec un dirac moins un sinus cardinal : 
+                $$
+                h(t) = \delta(t) - 2\frac{fc}{Fe}sinc(2*fc*t)
+                $$
+                fc : fréquence de coupure\\
+                Fe : fréquence d'échantillonnage
+                \item Explications implémentation.\\
+                Dans notre cas, on échantillonne h et  on pose un ordre fini. En effet, h est un vecteur dans MatLab de même pour T (vecteur de temps), $\delta(T)$ et $sinc(2*fc*T)$.
+                \item Tracé de la réponse impulsionnelle et de la réponse en fréquence du filtre implanté.
+                \begin{figure}[ht!]
+    				\centering
+                \includegraphics[scale=0.3]{passeHaut.jpg} 
+				\end{figure}
+                \item Tracé de la densité spectrale de puissance du signal MF-TDMA reçu et du module de la réponse en fréquences du filtre implanté. Le filtre implanté vous parait-il réaliser la fonction souhaitée ? Explications.\\\\
+                On remarque que le filtre englobe bien les parties utiles et coupe la partie inutile du spectre. On peut donc considérer qu'il réalise la fonction souhaitée.
+                \begin{figure}[ht!]
+    				\centering
+                \includegraphics[scale=0.3]{supperpose2.jpg} 
+				\end{figure}
+            \end{enumerate}
+
+        \subsubsection{Filtrage} \label{filtrage}
+            On retrouve bien le slot 2 conservé et 5 réduit après le filtrage par passe bas. De même, on retrouve bien le slot 5 conservé et 2 réduit après le filtrage par passe haut.\\
+            Tracés des signaux après filtrage et original :
+            \begin{figure}[ht!]
+    				\centering
+                \includegraphics[scale=0.3]{avantapresfiltrage.jpg} 
+				\end{figure}
+
+    \subsection{Retour en bande de base}
+        Pour retourner en bande de base se fait par multiplication par la porteuse de chaque signal et de les filtrer avec un passe bas.
+        Tracés des signaux après retour en bande de base : 
+        \begin{figure}[ht!]
+    				\centering
+                \includegraphics[scale=0.25]{retourEnBandeDeBase.jpg} 
+				\end{figure}
+        
+
+    \subsection{Détection du slot utile}
+        Pour chaque utilisateur, afin de procéder à la détection du slot utile, on divise la trame après retour en bande de base en tranches de durée $T=40$ ms. Afin de détecter le slot utile, on utilise un détecteur d'énergie. En effet, on calcule la puissance de chaque slot et on retient le slot avec la puissance la plus élevée (respectivement pour le signal 1 puis 2).
+
+    \subsection{Démodulation bande de base}
+        Pour chaque utilisateur, à partir du message retrouvé dans le slot utile, on réalise une démodulation bande de base qui permet de retrouver les messages binaires envoyés.\\
+        On filtre par un filtre adapté de manière à optimiser l'opération de démodulation. \\
+        On reconstruit les suites de bits \textit{bits\_utilisateur1\_recupéré} et \textit{bits\_utilisateur2\_recupéré}.  \\\\
+         On utilise ensuite la fonction \emph{bin2str.m} fournie afin de retrouver les messages texte :\\\\
+         \textbf{ message 1 : ' Ma probabilité d'apparition au semestre 5 est assez élevée '}\\
+         \textbf{message 2 : ' Mes initiales, placées à l'envers, évoquent un vert support'}\\
+         
+
+\section{Conclusion}
+Le message caché invoque la potentielle apparition du professeur Jean Yves Tourneret au semestre 5.
+
+
+\end{document} 
