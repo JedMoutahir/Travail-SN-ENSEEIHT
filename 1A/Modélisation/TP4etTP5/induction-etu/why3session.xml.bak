@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
+"http://why3.lri.fr/why3session.dtd">
+<why3session shape_version="5">
+<prover id="0" name="Z3" version="4.8.7" alternative="noBV" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="1" name="Alt-Ergo" version="2.0.0" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="2" name="Z3" version="4.8.7" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="3" name="CVC4" version="1.6" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="4" name="Coq" version="8.11.0" timelimit="0" steplimit="0" memlimit="0"/>
+<file format="whyml" proved="true">
+<path name=".."/>
+<path name="induction-etu.mlw"/>
+<theory name="Induction" proved="true">
+ <goal name="append_Nil_left" proved="true">
+ <proof prover="1"><result status="valid" time="0.00" steps="2"/></proof>
+ </goal>
+ <goal name="append_Cons_left" proved="true">
+ <proof prover="1"><result status="valid" time="0.00" steps="2"/></proof>
+ <transf name="induction_ty_lex" >
+  <goal name="append_Cons_left.0">
+  </goal>
+ </transf>
+ </goal>
+ <goal name="append_Nil_right" proved="true">
+ <proof prover="0" obsolete="true"><result status="timeout" time="5.00"/></proof>
+ <proof prover="1" obsolete="true"><result status="unknown" time="0.01"/></proof>
+ <proof prover="2" obsolete="true"><result status="timeout" time="5.00" steps="40884583"/></proof>
+ <proof prover="3" obsolete="true"><result status="unknown" time="0.02" steps="2412"/></proof>
+ <transf name="induction_ty_lex" proved="true" >
+  <goal name="append_Nil_right.0" proved="true">
+  <proof prover="1"><result status="valid" time="0.00" steps="5"/></proof>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="append_associative" proved="true">
+ <transf name="induction_ty_lex" proved="true" >
+  <goal name="append_associative.0" proved="true">
+  <proof prover="0" obsolete="true"><result status="timeout" time="5.00"/></proof>
+  <proof prover="1"><result status="valid" time="0.00" steps="11"/></proof>
+  <proof prover="2" obsolete="true"><result status="timeout" time="5.00" steps="42816446"/></proof>
+  <proof prover="3" obsolete="true"><result status="unknown" time="0.05" steps="4092"/></proof>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="rev_append" proved="true">
+ <proof prover="1"><result status="unknown" time="0.01"/></proof>
+ <transf name="induction_ty_lex" proved="true" >
+  <goal name="rev_append.0" proved="true">
+  <proof prover="1"><result status="valid" time="0.00" steps="20"/></proof>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="revrev" proved="true">
+ <proof prover="1"><result status="unknown" time="0.01"/></proof>
+ <proof prover="3"><result status="unknown" time="0.01"/></proof>
+ <proof prover="4" obsolete="true" edited="inductionmnetu_Induction_revrev_1.v"><result status="unknown" time="0.00" steps="0"/></proof>
+ <transf name="induction_ty_lex" proved="true" >
+  <goal name="revrev.0" proved="true">
+  <proof prover="1"><result status="valid" time="0.01" steps="27"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+</file>
+<file proved="true">
+<path name=".."/>
+<path name="home"/>
+<path name="jmoutahi"/>
+<path name="Bureau"/>
+<path name="1A"/>
+<path name="Modélisation"/>
+<path name="TP2"/>
+<path name="predicat.mlw"/>
+<theory name="Predicat">
+ <goal name="THM08">
+ <proof prover="1"><result status="valid" time="0.00" steps="5"/></proof>
+ </goal>
+ <goal name="THM09">
+ <proof prover="1"><result status="unknown" time="0.03"/></proof>
+ <proof prover="3"><result status="unknown" time="0.01"/></proof>
+ <proof prover="4" obsolete="true" edited="predicat_Predicat_THM09_1.v"><result status="unknown" time="0.00" steps="0"/></proof>
+ </goal>
+ <goal name="THM10">
+ <proof prover="1"><result status="valid" time="0.00" steps="5"/></proof>
+ </goal>
+</theory>
+</file>
+</why3session>
