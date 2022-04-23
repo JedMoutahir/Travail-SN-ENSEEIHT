@@ -1,0 +1,39 @@
+
+(* PGCD : Algorithme Euclide *)
+
+theory PGCD
+
+  use int.Int
+
+  function pgcd(a b : int) : int
+
+
+  axiom ax1 : forall a b : int. pgcd a b = pgcd (a-b) b
+  axiom ax2 : forall a : int. pgcd a a = a
+  axiom ax3 : forall a b : int. pgcd a b = pgcd b a
+
+end
+
+module PGCDEuclide
+
+  use import int.Int
+  use import ref.Refint
+  use import PGCD
+
+  let pgcd_euclide (a b: int) : int
+    requires { 0 < a && 0 < b }
+    ensures  { result = (pgcd a b)}
+  =
+    let ap = ref a in
+    let bp = ref b in
+    while (!ap <> !bp) do
+      invariant { pgcd a b = pgcd !ap !bp && !ap > 0 && !bp > 0 }
+      variant   { !ap + !bp }
+      if (!ap <= !bp) then
+      	 bp := !bp - !ap
+      else
+      	 ap := !ap - !bp
+    done;
+    !ap
+
+end
