@@ -1,0 +1,109 @@
+V "GNAT Lib v2021"
+A -gnatA
+A -gnatwa
+A -gnata
+A -g
+A -mtune=generic
+A -march=x86-64
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_IO
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_IMPLICIT_LOOPS
+
+U stocks_materiel%b	stocks_materiel.adb	5aefb761 NE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+Z system.assertions%s	s-assert.adb		s-assert.ali
+
+U stocks_materiel%s	stocks_materiel.ads	dff61d16 EE NE OO PK
+Z ada.strings.text_buffers%s  a-sttebu.adb	a-sttebu.ali
+
+D ada.ads		20210520051130 76789da1 ada%s
+D a-assert.ads		20210520051127 a718b65c ada.assertions%s
+D a-except.ads		20210520051127 946f3014 ada.exceptions%s
+D a-inteio.ads		20210520051127 f64b89a4 ada.integer_text_io%s
+D a-ioexce.ads		20210520051127 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20210520051128 119b8fb3 ada.streams%s
+D a-string.ads		20210520051128 90ac6797 ada.strings%s
+D a-sttebu.ads		20210520051128 18209c64 ada.strings.text_buffers%s
+D a-stuten.ads		20210520051128 808c40ad ada.strings.utf_encoding%s
+D a-tags.ads		20210520051129 9eaa38c6 ada.tags%s
+D a-textio.ads		20210520051129 aef4d56d ada.text_io%s
+D a-tiinio.ads		20210520051129 390edddb ada.text_io.integer_io%s
+D a-unccon.ads		20210520051129 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20210520051131 edec285f interfaces%s
+D i-cstrea.ads		20210520051131 e53d8b8e interfaces.c_streams%s
+D stocks_materiel.ads	20211018133943 dff61d16 stocks_materiel%s
+D stocks_materiel.adb	20211018134034 dda6f6be stocks_materiel%b
+D system.ads		20210520051134 a2da961d system%s
+D s-assert.ads		20210520051131 6a49a4e4 system.assertions%s
+D s-crtl.ads		20210520051131 0ebbdb71 system.crtl%s
+D s-exctab.ads		20210520051131 54135002 system.exception_table%s
+D s-ficobl.ads		20210520051131 078245e4 system.file_control_block%s
+D s-parame.ads		20210520051133 4752c4cb system.parameters%s
+D s-putima.ads		20210520051133 4e095881 system.put_images%s
+D s-secsta.ads		20210520051133 9b3ab94b system.secondary_stack%s
+D s-soflin.ads		20210520051133 a7318a92 system.soft_links%s
+D s-stache.ads		20210520051133 a37c21ec system.stack_checking%s
+D s-stalib.ads		20210520051133 472fbca8 system.standard_library%s
+D s-stoele.ads		20210520051133 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20210520051133 ed88f8fb system.storage_elements%b
+D s-traent.ads		20210520051133 26a8d361 system.traceback_entries%s
+D s-unstyp.ads		20210520051133 2b077493 system.unsigned_types%s
+D s-wchcon.ads		20210520051134 1b7d22d2 system.wch_con%s
+D unchconv.ads		20210520051134 ca2f9e18 unchecked_conversion%s
+G a e
+G c Z s b [creer stocks_materiel 25 15 none]
+G c Z s b [nb_materiels stocks_materiel 40 14 none]
+G c Z s b [nb_materiels_he stocks_materiel 55 14 none]
+G c Z s b [enregistrer stocks_materiel 74 15 none]
+G c Z s s [t_materielIP stocks_materiel 84 10 none]
+G c Z s s [Tt_materiel_tableauBIP stocks_materiel 95 5 none]
+G c Z s s [t_stockIP stocks_materiel 97 10 none]
+X 1 ada.ads
+16K9*Ada 20e8 17|1r6 1r32 2r6 2r32
+X 4 a-inteio.ads
+18K13*Integer_Text_IO[12|46] 17|2w10 2r36
+X 11 a-textio.ads
+58K13*Text_IO 725e16 17|1w10 1r36
+X 16 stocks_materiel.ads
+5K9*Stocks_Materiel 84E10 103l5 103e20 17|7b14 50l5 50t20
+8i5*CAPACITE{integer} 41r73 56r75 80r43 95r41
+10E10*T_Nature 10e74 77r35 87r28 17|36r35
+10n23*UNITE_CENTRALE{10E10}
+10n39*DISQUE{10E10}
+10n47*ECRAN{10E10}
+10n54*CLAVIER{10E10}
+10n63*IMPRIMANTE{10E10}
+13R10*T_Stock 25r34 40r38 55r41 75r35 97c10 101e19 17|9r34 15r38 20r41 34r35
+14R10*T_Materiel 84c10 93e19 95r54 17|39r20
+25U15*Creer 25<22 17|9b15 12l9 12t14
+25r22 Stock{13R10} 26r31 17|9b22 11m9
+40V14*Nb_Materiels{integer} 26s17 40>28 41r21 41r50 80s20 81s21 81s44 17|15b14
+. 18t8 45s24
+40r28 Stock{13R10} 17|15b28 17r16
+55V14*Nb_Materiels_HE{integer} 55>31 56r17 56r49 17|20b14 30t8
+55r31 Stock{13R10} 17|20b31 24r21 25r17
+74U15*Enregistrer 75=13 76>13 77>13 78>13 17|33b15 47t8
+75r13 Stock{13R10} 80r34 81r35 81r58 17|34b13 45m9 45r37 46m9 46r25
+76i13 Numero_Serie{integer} 17|35b13 41r34
+77e13 Nature{10E10} 17|36b13 42r28
+78i13 Annee_Achat{integer} 17|37b13 43r33
+86i13*Numero_Serie{integer} 17|41m18
+87e13*Nature{10E10} 17|42m18
+88i13*Annee_Achat{integer} 17|43m18
+89b13*Etat{boolean} 17|25r35 44m18
+95A10 T_Materiel_Tableau(14R10)<integer> 99r24
+99a13*Elements{95A10} 17|25r23 45m15
+100i13*Taille{integer} 17|11m15 17r22 24r27 46m15 46r31
+X 17 stocks_materiel.adb
+21i9 Nb_HE{integer} 23m9 26m17 26r26 29r16
+24i13 i{integer} 25r32
+39r9 Materiel{16|14R10} 41m9 42m9 43m9 44m9 45r50
+
