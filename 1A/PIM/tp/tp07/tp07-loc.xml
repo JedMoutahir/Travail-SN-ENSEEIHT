@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<Locations>
+  <Project>
+    <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_file>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/piles.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/piles.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/test_piles.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/utiliser_piles.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 9" line=" 167" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/utiliser_piles.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 9" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/piles.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 21" line=" 167" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/utiliser_piles.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 143" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/utiliser_piles.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 138" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/utiliser_piles.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 235" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/utiliser_piles.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 31" line=" 20" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 23" line=" 15" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 31" line=" 20" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 6" line=" 1" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 20" line=" 18" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 16" line=" 20" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 6" line=" 1" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 16" line=" 20" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 6" line=" 1" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/piles.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 30" line=" 20" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 6" line=" 1" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/test_piles.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/piles.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 30" line=" 116" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 30" line=" 84" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 16" line=" 122" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 95" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 9" line=" 62" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 82" line=" 50" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 123" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 23" line=" 84" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 12" line=" 24" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 23" line=" 84" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 64" line=" 118" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 48" line=" 74" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 28" line=" 54" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 25" line=" 62" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 21" line=" 142" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 4" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 9" line=" 142" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 54" line=" 3" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 9" line=" 2" >
+      <vfs_project>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/tp07.gpr</vfs_project>
+      <vfs_file>/home/jmoutahi/Bureau/1A/PIM/tp/tp07/parenthesage.adb</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>
