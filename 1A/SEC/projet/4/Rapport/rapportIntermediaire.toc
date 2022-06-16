@@ -1,0 +1,10 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{\numberline {1}Questions trait\'ees}{3}{}%
+\contentsline {section}{\numberline {2}Choix de conception}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Question 2}{3}{}%
+\contentsline {subsection}{\numberline {2.2}Question 3}{3}{}%
+\contentsline {subsection}{\numberline {2.3}Question 4}{3}{}%
+\contentsline {subsection}{\numberline {2.4}Question 5}{3}{}%
+\contentsline {subsection}{\numberline {2.5}Question 6}{3}{}%
+\contentsline {subsection}{\numberline {2.6}Question 7}{3}{}%
+\contentsline {subsection}{\numberline {2.7}Question 8}{3}{}%

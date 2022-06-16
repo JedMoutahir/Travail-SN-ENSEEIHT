@@ -1,0 +1,71 @@
+\documentclass[frenchb]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+%Pour utilisation sous unix
+%\usepackage[utf8]{inputenc}
+%\usepackage[utf8x]{inputenc}
+\usepackage{a4wide}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{babel}
+
+\begin{document}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=5cm]{inp_n7.png}
+\end{figure}
+
+\title{\vspace{4cm} \textbf{Projet minishell :\\Rapport Intermédiaire}}
+\author{MOUTAHIR Jed}
+\date{\vspace{7cm} Département Sciences du Numérique - Première année \\
+2021-2022 }
+
+\maketitle
+
+%\newpage
+%\tableofcontents
+%\listoffigures
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Questions traitées}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Les questions de 1 à 8 ont été complètement traitées.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Choix de conception}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Question 2}
+Cf. $Q2.pdf$.
+
+\subsection{Question 3}
+Pour répondre à cette demande ont utilise \textbf{wait}.
+
+\subsection{Question 4}
+Après avoir vérifié les arguments en entrée, pour \textbf{cd}, ont utilise \textbf{chdir()}.\\
+
+On utilise un simple \textbf{exit()} pour \textbf{exit}.
+
+\subsection{Question 5}
+Si la commande doit être exécutée en arrière plan (détection du \textbf{$\&$}), alors, on ne bloque pas l'invité de commande. A la place, on lance la commande et on affiche à nouveau l'invité de commande.
+
+\subsection{Question 6}
+De manière à pouvoir gérer les processus et le mettre à jour, j'ai opté pour :
+
+\begin{enumerate}
+	\item Une structure qui résume les informations du processus.
+	\item Une liste des processus.
+	\item Une suite de méthodes qui gèrent ces processus.
+\end{enumerate}
+
+\subsection{Question 7}
+Le fonctionnement ainsi que les méthodes nécessaires à suspendre un processus ont déjà été implémentés en question 6. De ce fait, il suffit de rajouter un handler pour le signal \textbf{SIGSTOP} et masquer ce signal pour les fils du minishell.
+
+\subsection{Question 8}
+On fait de la même façon que pour la question 7 mais avec le signal \textbf{SIGINT}.
+
+\end{document} 

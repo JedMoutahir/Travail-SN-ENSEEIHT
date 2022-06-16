@@ -1,0 +1,2 @@
+\babel@toc {french}{}
+\contentsline {section}{\numberline {1}Exemple de session simple}{3}%

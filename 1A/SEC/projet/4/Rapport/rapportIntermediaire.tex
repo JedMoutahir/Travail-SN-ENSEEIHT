@@ -1,0 +1,138 @@
+\documentclass[frenchb]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+%Pour utilisation sous unix
+%\usepackage[utf8]{inputenc}
+%\usepackage[utf8x]{inputenc}
+\usepackage{a4wide}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{babel}
+
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{red},
+  keywordstyle=\color{blue}
+}
+
+\begin{document}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=5cm]{inp_n7.png}
+\end{figure}
+
+\title{\vspace{4cm} \textbf{Projet minishell :\\Rapport Final}}
+\author{MOUTAHIR Jed}
+\date{\vspace{7cm} Département Sciences du Numérique - Première année \\
+2021-2022 }
+
+\maketitle
+
+%\newpage
+%\tableofcontents
+%\listoffigures
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Questions traitées}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Toutes les questions ont été traitées.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Choix de conception}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Question 2}
+Cf. $Q2.pdf$.
+
+\subsection{Question 3}
+Pour répondre à cette demande ont utilise \textbf{wait}.
+
+\subsection{Question 4}
+Après avoir vérifié les arguments en entrée, pour \textbf{cd}, ont utilise \textbf{chdir()}.\\
+
+On utilise un simple \textbf{exit()} pour \textbf{exit}.
+
+\subsection{Question 5}
+Si la commande doit être exécutée en arrière plan (détection du \textbf{$\&$}), alors, on ne bloque pas l'invité de commande. A la place, on lance la commande et on affiche à nouveau l'invité de commande.
+
+\subsection{Question 6}
+De manière à pouvoir gérer les processus et le mettre à jour, j'ai opté pour :
+
+\begin{enumerate}
+	\item Une structure qui résume les informations du processus.
+	\item Une liste des processus.
+	\item Une suite de méthodes qui gèrent ces processus.
+\end{enumerate}
+
+\subsection{Question 7}
+Le fonctionnement ainsi que les méthodes nécessaires à suspendre un processus ont déjà été implémentés en question 6. De ce fait, il suffit de rajouter un handler pour le signal \textbf{SIGSTOP} et masquer ce signal pour les fils du minishell.
+
+\subsection{Question 8}
+On fait de la même façon que pour la question 7 mais avec le signal \textbf{SIGINT}.
+
+\subsection{Question 9, 10 et 11}
+On utilise les méthodes vues en TP pour gérer les fichiers, rediriger et utiliser les tubes. Cependant, il a fallut généraliser à une utilisation quelconque de ces éléments (nombre quelconque de pipe, ...).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Tests}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Les exemples proposés par le sujets ont été passés.
+
+\subsection{Q3}
+Un simple $ls$ suffit à voir que le problème a été réglé.
+
+\subsection{Q4}
+Tests :\\
+\begin{enumerate}
+	\item \textbf{cd ..}
+	\item \textbf{cd dossier}
+	\item \textbf{cd chemin/absolu}
+\end{enumerate}
+
+\subsection{Q5}
+Tests :\\
+\begin{enumerate}
+	\item \textbf{arduino \&}
+\end{enumerate}
+
+\subsection{Q6}
+Tests :\\
+\begin{enumerate}
+	\item \textbf{arduino \& \\ lj \\ sj 1 \\ bg 1}
+	\item \textbf{arduino \& \\ lj \\ fg 1}
+	\item \textbf{sj \\ bg \\ fg \\ lj}
+\end{enumerate}
+
+\subsection{Q7 et Q8}
+Tests :\\
+\begin{enumerate}
+	\item \textbf{arduino \& \\ (Ctrl + Z) \\ (Ctrl + C)}
+	\item \textbf{arduino \& \\ fg 1 \\ (Ctrl + Z)}
+	\item \textbf{arduino \& \\ fg 1 \\ (Ctrl + C)}
+	\item \textbf{arduino \\ (Ctrl + Z) \\ bg 1}
+\end{enumerate}
+
+\subsection{Q9}
+Tests :\\
+\begin{enumerate}
+	\item \textbf{cat < f1 > f2}
+\end{enumerate}
+
+\subsection{Q10}
+Tests :\\
+\begin{enumerate}
+	\item \textbf{ls | wc -l}
+\end{enumerate}
+
+\subsection{Q11}
+Tests :\\
+\begin{enumerate}
+	\item \textbf{cat toto.c lulu.c | grep int | wc -l}
+\end{enumerate}
+\end{document} 

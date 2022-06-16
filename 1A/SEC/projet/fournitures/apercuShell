@@ -1,0 +1,19 @@
+jmoutahi@baudelaire:~/Bureau/1A/SEC/projet/fournitures$ ./minishell5 
+sh-3.2$ exit
+jmoutahi@baudelaire:~/Bureau/1A/SEC/projet/fournitures$ ./minishell5 
+sh-3.2$ ls
+LisezMoi.html  LisezMoi.md  minishell5	minishell5.c  readcmd.c  readcmd.h
+sh-3.2$ ls -l
+total 44
+-rwxr-xr-x 1 jmoutahi jmoutahi  3009 mai    7  2021 LisezMoi.html
+-rwxr-xr-x 1 jmoutahi jmoutahi  2165 mai    7  2021 LisezMoi.md
+-rwxrwxr-x 1 jmoutahi jmoutahi 18176 avril  4 09:38 minishell5
+-rw-rw-r-- 1 jmoutahi jmoutahi  3831 avril  4 09:38 minishell5.c
+-rw-r--r-- 1 jmoutahi jmoutahi  5344 mai    7  2021 readcmd.c
+-rwxr-xr-x 1 jmoutahi jmoutahi  2155 avril 29  2020 readcmd.h
+sh-3.2$ pwd
+/home/jmoutahi/Bureau/1A/SEC/projet/fournitures
+sh-3.2$ exit
+jmoutahi@baudelaire:~/Bureau/1A/SEC/projet/fournitures$ 
+
+

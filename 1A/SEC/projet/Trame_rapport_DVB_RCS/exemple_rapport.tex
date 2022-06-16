@@ -1,0 +1,64 @@
+\documentclass[frenchb]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+%Pour utilisation sous unix
+%\usepackage[utf8]{inputenc}
+%\usepackage[utf8x]{inputenc}
+\usepackage{a4wide}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{babel}
+
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{red},
+  keywordstyle=\color{blue}
+}
+
+\begin{document}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=5cm]{inp_n7.png}
+\end{figure}
+
+\title{\vspace{4cm} \textbf{Projet : minishell\\
+Question 2}}
+\author{MOUTAHIR Jed}
+\date{\vspace{7cm} Département Sciences du Numérique - Première année \\
+2021-2022 }
+
+\maketitle
+
+\newpage
+%\tableofcontents
+%\listoffigures
+
+\newpage
+
+\section{Exemple de session simple}
+Voici ce qu'on obtient en exécutant les commandes "ls", "ls -l", "pwd" et "exit" à la suite :
+
+\begin{lstlisting}[language=bash,caption={session simple}]
+jmoutahi@baudelaire:~/Bureau/1A/SEC/projet/fournitures$ ./minishell5 
+sh-3.2$ ls
+sh-3.2$ apercuShell  LisezMoi.html  LisezMoi.md  minishell5  minishell5.c  readcmd.c  readcmd.h
+ls -l
+sh-3.2$ total 48
+-rw-rw-r-- 1 jmoutahi jmoutahi   775 avril  4 09:39 apercuShell
+-rwxr-xr-x 1 jmoutahi jmoutahi  3009 mai    7  2021 LisezMoi.html
+-rwxr-xr-x 1 jmoutahi jmoutahi  2165 mai    7  2021 LisezMoi.md
+-rwxrwxr-x 1 jmoutahi jmoutahi 18176 avril  4 09:57 minishell5
+-rw-rw-r-- 1 jmoutahi jmoutahi  3827 avril  4 09:57 minishell5.c
+-rw-r--r-- 1 jmoutahi jmoutahi  5344 mai    7  2021 readcmd.c
+-rwxr-xr-x 1 jmoutahi jmoutahi  2155 avril 29  2020 readcmd.h
+sh-3.2$ pwd
+/home/jmoutahi/Bureau/1A/SEC/projet/fournitures
+exit
+jmoutahi@baudelaire:~/Bureau/1A/SEC/projet/fournitures$ 
+\end{lstlisting}
+
+\end{document} 
