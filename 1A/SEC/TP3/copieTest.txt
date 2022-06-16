@@ -1,0 +1,4 @@
+Fichier test : 
+ok
+1234
+fin du fichier test
