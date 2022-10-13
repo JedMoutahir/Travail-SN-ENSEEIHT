@@ -1,0 +1,5 @@
+tr livrer [0,w[ R1_libre Cl1_G1_req -> G1_Cl1_ack
+tr liberer [0,w[ Cl1_G1_release -> R1_libre
+pl R1_libre (1)
+net gest1
+

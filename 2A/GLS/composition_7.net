@@ -1,0 +1,21 @@
+net gest2_7
+tr Cl1_enter G2_Cl1_ack Cl1_wait2 -> Cl1_work 
+tr Cl1_exit Cl1_work -> Cl1_G1_release Cl1_G2_release Cl1_idle 
+tr Cl1_req1 Cl1_idle -> Cl1_G1_req Cl1_wait1 
+tr Cl1_req2 Cl1_wait1 G1_Cl1_ack -> Cl1_G2_req Cl1_wait2 
+tr Cl2_enter Cl2_wait2 G1_Cl2_ack -> Cl2_work 
+tr Cl2_exit Cl2_work -> Cl2_G1_release Cl2_G2_release Cl2_idle 
+tr Cl2_req1 Cl2_wait1 G2_Cl2_ack -> Cl2_G1_req Cl2_wait2 
+tr Cl2_req2 Cl2_idle -> Cl2_G2_req Cl2_wait1 
+tr liberer1_1 Cl1_G1_release Cl1_uses_R1 -> R1_libre 
+tr liberer1_2 Cl2_G1_release Cl2_uses_R1 -> R1_libre 
+tr liberer2_1 Cl1_G2_release Cl1_uses_R2 -> R2_libre 
+tr liberer2_2 Cl2_G2_release Cl2_uses_R2 -> R2_libre 
+tr livrer1_1 Cl1_G1_req R1_libre -> G1_Cl1_ack Cl1_uses_R1 
+tr livrer1_2 Cl2_G1_req R1_libre -> G1_Cl2_ack Cl2_uses_R1 
+tr livrer2_1 Cl1_G2_req R2_libre -> G2_Cl1_ack Cl1_uses_R2 
+tr livrer2_2 Cl2_G2_req R2_libre -> G2_Cl2_ack Cl2_uses_R2 
+pl Cl1_idle (1)
+pl Cl2_idle (1)
+pl R1_libre (1)
+pl R2_libre (1)

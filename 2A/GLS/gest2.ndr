@@ -1,0 +1,14 @@
+t 210.0 100.0 livrer2 0 w n
+p 360.0 100.0 G2_Cl1_ack 0 n
+p 45.0 50.0 Cl1_G2_req 0 n
+p 45.0 185.0 R2_libre 1 n
+t 45.0 300.0 liberer2 0 w n
+p 210.0 365.0 Cl1_G2_release 0 n
+e Cl1_G2_release liberer2 1 n
+e liberer2 R2_libre 1 n
+e Cl1_G2_req livrer2 1 n
+e R2_libre livrer2 1 n
+e livrer2 G2_Cl1_ack 1 n
+h gest2
+
+

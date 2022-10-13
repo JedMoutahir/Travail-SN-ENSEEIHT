@@ -1,0 +1,30 @@
+p 160.0 185.0 R1_libre 1 n
+t 160.0 300.0 liberer1_1 0 w n
+p 165.0 460.0 Cl1_G1_release 0 n
+t 325.0 100.0 livrer1_1 0 w n
+p 160.0 50.0 Cl1_G1_req 0 n
+t 365.0 230.0 livrer1_2 0 w n
+p 480.0 220.0 G1_Cl2_ack 0 n
+t 275.0 310.0 liberer1_2 0 w n
+p 270.0 485.0 Cl2_G1_release 0 n
+p 270.0 255.0 Cl2_G1_req 0 n
+p 475.0 140.0 G1_Cl1_ack 0 n
+p 395.0 345.0 Cl2_uses_R1 0 n
+p 50.0 150.0 Cl1_uses_R1 0 n
+e Cl2_uses_R1 liberer1_2 1 n
+e livrer1_2 Cl2_uses_R1 1 n
+e Cl1_uses_R1 liberer1_1 1 n
+e livrer1_1 Cl1_uses_R1 1 n
+e liberer1_2 R1_libre 1 n
+e Cl2_G1_release liberer1_2 1 n
+e livrer1_2 G1_Cl2_ack 1 n
+e R1_libre livrer1_2 1 n
+e Cl2_G1_req livrer1_2 1 n
+e Cl1_G1_release liberer1_1 1 n
+e liberer1_1 R1_libre 1 n
+e Cl1_G1_req livrer1_1 1 n
+e R1_libre livrer1_1 1 n
+e livrer1_1 G1_Cl1_ack 1 n
+h gest1_7
+
+

@@ -1,0 +1,89 @@
+Tina version 3.4.4 -- 01/05/16 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net composition
+
+12 places, 8 transitions
+
+net composition
+tr Cl1_enter Cl1_wait2 G2_Cl1_ack -> Cl1_work 
+tr Cl1_exit Cl1_work -> Cl1_G1_release Cl1_G2_release Cl1_idle 
+tr Cl1_req1 Cl1_idle -> Cl1_G1_req Cl1_wait1 
+tr Cl1_req2 Cl1_wait1 G1_Cl1_ack -> Cl1_G2_req Cl1_wait2 
+tr liberer Cl1_G1_release -> R1_libre 
+tr liberer2 Cl1_G2_release -> R2_libre 
+tr livrer Cl1_G1_req R1_libre -> G1_Cl1_ack 
+tr livrer2 Cl1_G2_req R2_libre -> G2_Cl1_ack 
+pl Cl1_idle (1)
+pl R1_libre (1)
+pl R2_libre (1)
+
+0.000s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+14 marking(s), 21 transition(s)
+
+MARKINGS:
+
+0 : Cl1_idle R1_libre R2_libre
+1 : Cl1_G1_req Cl1_wait1 R1_libre R2_libre
+2 : Cl1_wait1 G1_Cl1_ack R2_libre
+3 : Cl1_G2_req Cl1_wait2 R2_libre
+4 : Cl1_wait2 G2_Cl1_ack
+5 : Cl1_work
+6 : Cl1_G1_release Cl1_G2_release Cl1_idle
+7 : Cl1_G1_release Cl1_G1_req Cl1_G2_release Cl1_wait1
+8 : Cl1_G2_release Cl1_idle R1_libre
+9 : Cl1_G1_release Cl1_idle R2_libre
+10 : Cl1_G1_req Cl1_G2_release Cl1_wait1 R1_libre
+11 : Cl1_G1_release Cl1_G1_req Cl1_wait1 R2_libre
+12 : Cl1_G2_release Cl1_wait1 G1_Cl1_ack
+13 : Cl1_G2_release Cl1_G2_req Cl1_wait2
+
+REACHABILITY GRAPH:
+
+0 -> Cl1_req1/1
+1 -> livrer/2
+2 -> Cl1_req2/3
+3 -> livrer2/4
+4 -> Cl1_enter/5
+5 -> Cl1_exit/6
+6 -> Cl1_req1/7, liberer/8, liberer2/9
+7 -> liberer/10, liberer2/11
+8 -> Cl1_req1/10, liberer2/0
+9 -> Cl1_req1/11, liberer/0
+10 -> liberer2/1, livrer/12
+11 -> liberer/1
+12 -> Cl1_req2/13, liberer2/2
+13 -> liberer2/3
+
+0.000s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+live
+reversible
+
+0 dead marking(s), 14 live marking(s)
+0 dead transition(s), 8 live transition(s)
+
+STRONG CONNECTED COMPONENTS:
+
+0 : 13 12 11 10 9 8 7 6 5 4 3 2 1 0
+
+SCC GRAPH:
+
+0 -> liberer2/0, Cl1_req2/0, liberer/0, livrer/0, Cl1_req1/0, Cl1_exit/0, Cl1_enter/0, livrer2/0
+
+0.000s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+
+

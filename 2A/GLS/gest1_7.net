@@ -1,0 +1,7 @@
+tr liberer1_1 [0,w[ Cl1_uses_R1 Cl1_G1_release -> R1_libre
+tr livrer1_1 [0,w[ Cl1_G1_req R1_libre -> Cl1_uses_R1 G1_Cl1_ack
+tr livrer1_2 [0,w[ R1_libre Cl2_G1_req -> Cl2_uses_R1 G1_Cl2_ack
+tr liberer1_2 [0,w[ Cl2_uses_R1 Cl2_G1_release -> R1_libre
+pl R1_libre (1)
+net gest1_7
+

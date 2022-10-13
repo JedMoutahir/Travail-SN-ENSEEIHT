@@ -1,0 +1,2 @@
+[] Cl1_uses_R1 \/ Cl2_uses_R1;
+- <> Cl1_uses_R2 /\ Cl2_uses_R2;
