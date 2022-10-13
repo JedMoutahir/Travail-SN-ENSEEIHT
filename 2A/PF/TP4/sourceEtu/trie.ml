@@ -79,3 +79,5 @@ match l with
 | [] -> ()
 | t::q -> p t; afficher q
 in afficher list
+
+let%test _ = affiche affiche_chaine trie_sujet;;
