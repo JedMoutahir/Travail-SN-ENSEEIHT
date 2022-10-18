@@ -73,9 +73,11 @@ let trie_dico trie = failwith "trie_dico"
 (*                - un trie                                                   *)
 (*   résultat   : aucun                                                       *)
 (******************************************************************************)
-let affiche p (Trie(arbre,decompose,recompose)) = let list = (List.map recompose (parcours_arbre arbre)) in
+let affiche p (Trie(arbre,_,recompose)) = let list = (List.map recompose (parcours_arbre arbre)) in
 let rec afficher l = 
 match l with
 | [] -> ()
 | t::q -> p t; afficher q
 in afficher list
+
+(*let%test _ = affiche Tp__Chaines.affiche_chaine trie_sujet;;*)

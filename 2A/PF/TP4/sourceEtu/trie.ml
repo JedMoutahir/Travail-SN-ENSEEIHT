@@ -57,6 +57,9 @@ let trie_sujet =
 let retrait mot (Trie(arbre, decompose, recompose)) = 
   Trie((retrait_arbre (decompose mot) arbre),decompose,recompose)
 
+
+let retrait_normalise mot (Trie(arbre, decompose, recompose)) = 
+  Trie(normalisation ((retrait_arbre (decompose mot) arbre)), decompose, recompose)
 (******************************************************************************)
 (*   fonction interne au Module qui génère la liste de tous les mots          *)
 (*   d'un trie                                                                *)
@@ -73,11 +76,11 @@ let trie_dico trie = failwith "trie_dico"
 (*                - un trie                                                   *)
 (*   résultat   : aucun                                                       *)
 (******************************************************************************)
-let affiche p (Trie(arbre,decompose,recompose)) = let list = (List.map recompose (parcours_arbre arbre)) in
+let affiche p (Trie(arbre,_,recompose)) = let list = (List.map recompose (parcours_arbre arbre)) in
 let rec afficher l = 
 match l with
 | [] -> ()
 | t::q -> p t; afficher q
 in afficher list
 
-let%test _ = affiche affiche_chaine trie_sujet;;
+(*let%test _ = affiche Tp__Chaines.affiche_chaine trie_sujet;;*)

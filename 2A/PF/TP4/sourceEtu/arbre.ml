@@ -114,3 +114,13 @@ let rec parcours_arbre (Noeud (b, lb)) =
          then ([elem]::(List.map (fun list -> elem::list) (parcours_arbre sous_ar))) @ (parcours_arbre (Noeud (b, q)))
       else 
          (List.map (fun list -> elem::list) (parcours_arbre sous_ar)) @ (parcours_arbre (Noeud (b, q)))
+
+let rec normalisation (Noeud (b, lb)) = 
+   if lb = [] then Noeud(b,[])
+	else let lb_norm = 
+		List.fold_right (fun (c, sous_arb) qt -> let norm_abr = normalisation sous_arb in 
+			if norm_abr = Noeud(false,[]) then qt else (c, norm_abr)::qt) lb [] in
+		if (not b) && (lb_norm = []) then
+			Noeud(false,[])
+		else
+			Noeud(b, lb_norm)
