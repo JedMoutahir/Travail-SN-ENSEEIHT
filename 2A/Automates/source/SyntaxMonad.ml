@@ -56,8 +56,6 @@ type parseResult =
   #26 - ARG ->
 *)
 
-
-
 (* accept : token -> inputStream -> parseResult *)
 (* Vérifie que le premier token du flux d'entrée est bien le token attendu *)
 (* et avance dans l'analyse si c'est le cas *)
@@ -118,11 +116,43 @@ let rec parseE stream =
   *)
   (print_endline "E");
   (match (peekAtFirstToken stream) with
-    (* regle #1 *)
-    (* regle #2 *)
-    (* regle #3 *)
-    (* regle #4 *)
-    (* regle #5 *)
+    (* regle #1 - E -> fun ident -> E *)
+    |FunctionToken ->
+        inject stream >>=
+        accept FunctionToken >>=
+        acceptIdent >>=
+        accept BodyToken >>=
+        parseE
+
+    (* regle #2 - E -> let ident = E in E *)
+    |LetToken ->
+        inject stream >>=
+        accept LetToken >>=
+        acceptIdent >>=
+        accept EqualToken >>=
+        parseE >>=
+        accept InToken >>=
+        parseE
+
+    (* regle #3 - E -> letrec ident = E in E *)
+    |RecToken ->
+        inject stream >>=
+        acceptIdent >>=
+        accept EqualToken >>=
+        parseE >>=
+        accept InToken >>=
+        parseE
+
+    (* regle #4 - E -> if E then E else E *)
+    |IfToken ->
+        inject stream >>=
+        accept IfToken >>=
+        parseE >>=
+        accept ThenToken >>=
+        parseE >>=
+        accept ElseToken >>=
+        parseE
+    (* regle #5 - E -> ER EX     | { -, number, ident, true, false, ( } *)
     | ((IdentToken _) | (NumberToken _) | TrueToken | FalseToken | MinusToken | LeftParenthesisToken ) ->
         inject stream >>=
         parseER >>=
@@ -134,14 +164,14 @@ let rec parseE stream =
 and parseEX stream =
   (print_endline "EX");
   (match (peekAtFirstToken stream) with
-    (* regle #6 *)
+    (* regle #6 : EX -> = ER EX *)
     | EqualToken ->
         inject stream >>=
         accept EqualToken >>=
         parseER >>=
         parseEX
     (* regle #7 *)
-    | (RightParenthesisToken) -> inject stream
+    | (RightParenthesisToken | ThenToken | ElseToken | InToken) -> inject stream
     | EOSToken -> inject stream
     | _ -> Failure)
 
@@ -175,7 +205,7 @@ and parseTX stream =
         parseT >>=
         parseTX
     (* regle 11 *)
-    | (RightParenthesisToken | EqualToken) -> inject stream
+    | (RightParenthesisToken | EqualToken | ThenToken | ElseToken | InToken) -> inject stream
     | EOSToken -> inject stream
     | _ -> Failure)
 
@@ -209,7 +239,7 @@ and parseFX stream =
         parseF >>=
         parseFX
     (* regle 15 *)
-    | (RightParenthesisToken | EqualToken | PlusToken | MinusToken) ->
+    | (RightParenthesisToken | EqualToken | PlusToken | MinusToken | ElseToken | InToken | ThenToken) ->
         inject stream
     | EOSToken -> inject stream
     | _ -> Failure)
@@ -248,8 +278,16 @@ and parseF stream =
 and parseFF stream =
   (print_endline "FF");
   (match (peekAtFirstToken stream) with
-    (* regle 23 *)
-    (* regle 24 *)
+    (* regle 23 : FF -> ( E ) *)
+    | LeftParenthesisToken ->
+         inject stream >>=
+         accept LeftParenthesisToken >>=
+         parseE >>=
+         accept RightParenthesisToken
+    (* regle 24 : FF -> ident *)
+    | (IdentToken _) ->
+         inject stream >>=
+         acceptIdent     
     | _ -> Failure)
 
 (* parseARG : inputStream -> parseResult *)
@@ -257,7 +295,14 @@ and parseFF stream =
 and parseARG stream =
   (print_endline "ARG");
   (match (peekAtFirstToken stream) with
-    (* regle 25 *)
-    (* regle 26 *)
+    (* regle 25 : ARG -> ( E ) *)
+    | LeftParenthesisToken ->
+         inject stream >>=
+         accept LeftParenthesisToken >>=
+         parseE >>=
+         accept RightParenthesisToken
+    (* regle 26 : ARG -> *)
+    | (RightParenthesisToken | EqualToken | MinusToken | PlusToken | DivideToken | TimesToken | ThenToken | ElseToken | InToken) -> inject stream
+    | EOSToken -> inject stream
     | _ -> Failure)
 ;;

@@ -1,1 +1,1 @@
-if (x) then (x) else (x)
+if a=b then a else b
