@@ -1,7 +1,7 @@
 \* Probleme Exercice 1 :  Assemblage *\
 
 Maximize
-    MargeTotale: + 100 L + 90 S
+    MargeTotale: + 1000000 L + 900000 S
 
 Subject To
     MaxProdLuxe: + L <= 8

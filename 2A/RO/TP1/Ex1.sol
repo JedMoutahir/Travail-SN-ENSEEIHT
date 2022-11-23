@@ -3,7 +3,7 @@ Rows:       3
 Columns:    2 (2 integer, 0 binary)
 Non-zeros:  5
 Status:     INTEGER OPTIMAL
-Objective:  MargeTotale = 980 (MAXimum)
+Objective:  MargeTotale = 9800000 (MAXimum)
 
    No.   Row name        Activity     Lower bound   Upper bound
 ------ ------------    ------------- ------------- -------------
