@@ -3,61 +3,44 @@
 
 ###############################  Model ###############################
 
-param n, integer, >= 3;
-/* Nombre de noeuds */
+param n, integer, >= 1;
+/* Nombre de clients */
 
 ###############################  Sets  ###############################
 
 set V := 1..n;
-/* Sommets/Noeuds/Villes */
+/* Clients */
 
 set E := {V, V};
-/* Arcs/Choix de Chemins */
+/* Dimension de la matrice */
 
 ################### Variables ###################
 
 var Choix{(i,j) in E}, binary;
-/* Choix[i,j] = 1 si on choisi d'aller de la ville i vers la ville j */
+/* Choix[i,j] = 1 si on choisi d'aller du client i vers le client j */
 
-var y{(i,j) in E}, >= 0;
-/* y[i,j] is the number of cars, which the salesman has after leaving
-   node i and before entering node j; in terms of the network analysis,
-   y[i,j] is a flow through arc (i,j) */
+var Ventes{(i,j) in E}, >= 0;
+/* Variable qui indique le nombre de ventes restantes après une livraison */
 
 ###################  Constants: Data to load   #########################
 
 param Mcout{(i,j) in E};
-/* Distance/Cout entre deux Villes */
+/* Distance/Cout entre deux clients */
 
 ################### Constraints ###################
 
 s.t. leave{i in V}: sum{(i,j) in E} Choix[i,j] = 1;
-/* On quitte une ville une et une seule fois */
+/* On quitte le client une et une seule fois */
 
 s.t. enter{j in V}: sum{(i,j) in E} Choix[i,j] = 1;
-/* On entre une ville une et une seule fois */
+/* On va chez le client une et une seule fois */
 
-s.t. cap{(i,j) in E}: y[i,j] <= (n-1) * Choix[i,j];
-/* if arc (i,j) does not belong to the salesman's tour, its capacity
-   must be zero; it is obvious that on leaving a node, it is sufficient
-   to have not more than n-1 cars */
+s.t. cap{(i,j) in E}: Ventes[i,j] <= (n-1) * Choix[i,j];
+/* Le nombre de ventes restantes dépends de Choix. Ceci permet d'avoir un trajet valide. */
 
 s.t. node{i in V}:
-/* node[i] is a conservation constraint for node i */
-
-      sum{(j,i) in E} y[j,i]
-      /* summary flow into node i through all ingoing arcs */
-
-      + (if i = 1 then n)
-      /* plus n cars which the salesman has at starting node */
-
-      = /* must be equal to */
-
-      sum{(i,j) in E} y[i,j]
-      /* summary flow from node i through all outgoing arcs */
-
-      + 1;
-      /* plus one car which the salesman sells at node i */
+      sum{(j,i) in E} Ventes[j,i] + (if i = 1 then n) = sum{(i,j) in E} Ventes[i,j] + 1;
+/* Le nombre de ventes restantes dépends de Choix. Ceci permet d'avoir un trajet valide. */
 
 ###### Objective ######
 
