@@ -3,7 +3,7 @@ Rows:       22
 Columns:    18 (18 integer, 6 binary)
 Non-zeros:  60
 Status:     INTEGER OPTIMAL
-Objective:  CoutUnitaire = 368 (MINimum)
+Objective:  CoutTotal = 368 (MINimum)
 
    No.   Row name        Activity     Lower bound   Upper bound
 ------ ------------    ------------- ------------- -------------

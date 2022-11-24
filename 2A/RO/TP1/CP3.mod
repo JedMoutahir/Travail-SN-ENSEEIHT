@@ -40,7 +40,7 @@ s.t. cheminIf2{i in nDemande, j in nMagasin}:
 
 ###### Objective ######
 
-minimize CoutUnitaire: 
+minimize CoutTotal: 
 		(sum{i in nDemande, j in nMagasin} MtrajetChoisi[i,j] * McoutFixe[i,j]) + (sum{i in nDemande, j in nMagasin, k in nProduit } Mquantite[i,j,k] * (Mcout[j,k] + McoutVar[i,j]));
 
 #end;

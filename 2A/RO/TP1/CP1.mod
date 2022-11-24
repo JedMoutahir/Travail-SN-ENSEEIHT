@@ -31,7 +31,7 @@ s.t. stockMax{i in nMagasin, j in nFluide}:
 
 ###### Objective ######
 
-minimize CoutUnitaire: 
+minimize CoutTotal: 
 		sum{i in nMagasin, j in nFluide} Mquantite[i,j] * Mcout[i,j]; 
 
 #end;

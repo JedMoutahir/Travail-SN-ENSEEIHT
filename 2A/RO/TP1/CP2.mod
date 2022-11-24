@@ -31,7 +31,7 @@ s.t. stockMax{i in nMagasin, j in nProduit}:
 
 ###### Objective ######
 
-minimize CoutUnitaire: 
+minimize CoutTotal: 
 		sum{i in nMagasin, j in nProduit} Mquantite[i,j] * Mcout[i,j]; 
 #end;
 

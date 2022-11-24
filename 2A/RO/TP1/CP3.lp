@@ -1,7 +1,7 @@
 \* Problem: CP3 *\
 
 Minimize
- CoutUnitaire: + 11 Mquantite(1,1,1) + 3 Mquantite(1,2,1)
+ CoutTotal: + 11 Mquantite(1,1,1) + 3 Mquantite(1,2,1)
  + 8 Mquantite(1,3,1) + 3 Mquantite(2,1,1) + 22 Mquantite(2,2,1)
  + 13 Mquantite(2,3,1) + 11 Mquantite(1,1,2) + 4 Mquantite(1,2,2)
  + 7 Mquantite(1,3,2) + 3 Mquantite(2,1,2) + 23 Mquantite(2,2,2)
