@@ -124,7 +124,7 @@ let rec parseE stream =
           | _ -> Failure)
       | _ -> Failure)
 
-    | _ -> Failure)
+      | _ -> Failure)
   
 (* parseEX : inputStream -> parseResult *)
 (* Analyse du non terminal EX *)
