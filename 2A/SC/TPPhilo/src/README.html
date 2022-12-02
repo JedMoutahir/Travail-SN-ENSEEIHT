@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<h1 id="problème-des-philosophes">Problème des philosophes</h1>
+<h2 id="énoncé">Énoncé</h2>
+<p>N philosophes sont autour d’une table. Il y a une assiette par
+philosophe, et <em>une</em> fourchette entre chaque assiette. Pour
+manger, un philosophe doit utiliser les deux fourchettes adjacentes à
+son assiette (et celles-là seulement).</p>
+<p>Un philosophe peut être dans l’état :</p>
+<ul>
+<li>penseur : il n’utilise pas de fourchettes ;</li>
+<li>mangeur : il utilise les deux fourchettes adjacentes ; aucun de ses
+voisins ne peut manger ;</li>
+<li>demandeur : il souhaite manger mais ne dispose pas des deux
+fourchettes.</li>
+</ul>
+<p>Visuellement les états mangeur/demandeur/penseur sont représentés par
+un rond noir (ou rouge en cas de possible problème) / un rond blanc /
+rien.</p>
+<h2 id="code-fourni">Code fourni</h2>
+<ul>
+<li><p><code>StrategiePhilo.java</code> : interface de la
+synchronisation entre philosophes.</p></li>
+<li><p><code>PhiloSem.java</code> : une implantation de cette
+interface.</p></li>
+<li><p><code>ProcessusPhilosophe.java</code> : code d’un
+philosophe.</p></li>
+<li><p><code>Main.java</code> : programme principal. Définit aussi les
+<code>PhiloDroite(i)</code>, <code>PhiloGauche(i)</code>,
+<code>FourchetteGauche(i)</code>,
+<code>FourchetteDroite(i)</code>.</p></li>
+<li><p><code>EtatFourchette.java</code> : définition des constantes pour
+fourchette placée sur la table, l’assiette gauche, l’assiette
+droite.</p></li>
+<li><p><code>EtatPhilosophe.java</code> : définition des constantes pour
+philosophe penseur, demandeur ou mangeur.</p></li>
+<li><p><code>IHM*.java</code> : interface utilisateur.</p></li>
+<li><p><code>Synchro/Simulateur.java</code> : le simulateur de
+temps.</p></li>
+<li><p>Compilation:<br />
+<code>javac *.java</code></p></li>
+<li><p>Exécution:<br />
+<code>java Main</code><br />
+<code>java Main PhiloSem 10</code><br />
+(classe implantant l’interface StrategiePhilo) (nb de
+philosophes)</p></li>
+</ul>
+<h2 id="à-faire">À faire</h2>
+<p>Implanter des stratégies de résolution du problème, en utilisant des
+sémaphores.</p>
+<ul>
+<li><p><code>PhiloSem.java</code> est la seule classe à modifier. Le
+constructeur de cette classe prend un paramètre correspondant au nombre
+de philosophes lancés. Les variables d’état ou les sémaphores utilisés
+par les méthodes de cette classes seront (déclarés comme) des attributs
+de cette classe.</p></li>
+<li><p>Il est possible de contrôler la progression des philosophes pas à
+pas, en mettant la simulation en pause, puis en cliquant sur les
+philosophes (voir l’aide de la fenêtre), ce qui peut être très utile
+pour mettre en évidence des scénarios conduisant à des situations
+pathologiques (famine, erreur…)</p></li>
+<li><p>Utiliser <code>Main.java</code> pour les numéros
+(<code>Main.FourchetteGauche</code> / <code>Main.FourchetteDroite</code>
+/ <code>Main.PhiloGauche</code> /
+<code>Main.PhiloDroite</code>).</p></li>
+<li><p>(Optionnel, ce n’est que pour l’affichage) pour poser la
+fourchette n°f sur l’assiette à <em>sa</em> droite, à <em>sa</em> gauche
+ou sur la table, utiliser</p>
+<pre><code>  IHMPhilo.poser (f, EtatFourchette.AssietteDroite);
+  IHMPhilo.poser (f, EtatFourchette.AssietteGauche);
+  IHMPhilo.poser (f, EtatFourchette.Table);</code></pre></li>
+</ul>
+<h2 id="indications">Indications</h2>
+<h3 id="approche-1-la-fourchette-est-une-ressource-critique">Approche 1
+: la fourchette est une ressource critique</h3>
+<p>=&gt; associer un sémaphore par fourchette. Montrer qu’une solution
+naïve présente un risque d’interblocage, i.e. d’une situation où tous
+les philosophes sont définitivement bloqués, et trouver une solution
+évitant ce risque. Étudier le degré de parallélisme dans le pire des
+cas.</p>
+<h3
+id="approche-2-introduire-explicitement-la-notion-détat-des-philosophes.">Approche
+2 : introduire explicitement la notion d’état des philosophes.</h3>
+<p>Un philosophe peut manger si aucun de ses voisins ne mange, il doit
+attendre sinon. Les problèmes à résoudre sont alors :</p>
+<ul>
+<li>présence d’un test-and-set (regarder les voisins et devenir mangeur)
+qui doit être atomique ;</li>
+<li>déblocage d’un philosophe qui ne pouvait pas manger précédemment et
+qui peut le faire suite aux changements d’états d’un ou de ses deux
+voisins.</li>
+</ul>
+<p>Comparer le parallélisme avec le cas n°1.</p>
+<h2 id="approche-3-équité">Approche 3 : équité</h2>
+<p>Observer que la solution 2 peut conduire à la famine d’un philosophe
+(trouver un exemple avec 4 ou 5 philosophes). Imaginer une solution
+gérant une priorité entre les philosophes permettant de résoudre ce
+problème.</p>
+<h2 id="la-classe-semaphore">La classe Semaphore</h2>
+<p>La plateforme Java fournit la classe
+<code>java.util.concurrent.Semaphore</code> qui propose une implantation
+des sémaphores généraux, avec notamment :</p>
+<ul>
+<li><p>un constructeur prenant un paramètre entier, correspondant à la
+valeur initiale du sémaphore. Un second paramètre <em>optionnel</em>
+booléen, qui permet de préciser si le sémaphore créé est FIFO. Par
+défaut, les sémaphores de la classe
+<code>java.util.concurrent.Semaphore</code> ne sont pas FIFO.<br />
+Par exemple : <code>s=new Semaphore(5,true)</code> crée un sémaphore
+FIFO de valeur initiale 5.</p></li>
+<li><p>une méthode <code>acquire()</code>, qui correspond à l’opération
+<code>down()</code></p></li>
+<li><p>une méthode <code>release()</code>, qui correspond à l’opération
+<code>up()</code></p></li>
+</ul>
+</body>
+</html>
