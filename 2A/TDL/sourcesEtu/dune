@@ -4,7 +4,8 @@
  (modules parser))
 
 (library
- (name miniML)
+ (name rat)
+ (libraries unix)
  (inline_tests)
  (preprocess
-  (pps ppx_inline_test)))
+  (pps ppx_inline_test ppx_expect)))

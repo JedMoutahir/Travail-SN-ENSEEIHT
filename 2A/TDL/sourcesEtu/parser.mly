@@ -1,100 +1,93 @@
+/* Imports. */
+
 %{
-open Ast
+
+open Type
+open Ast.AstSyntax
 %}
 
 
-%token <int> NumberToken
-%token <string> IdentToken
-%token FunctionToken
-%token BodyToken
-%token IfToken
-%token ThenToken
-%token ElseToken
-%token LetToken
-%token InToken
-%token TrueToken
-%token FalseToken
-%token RecToken
-%token LeftParenthesisToken
-%token RightParenthesisToken
+%token <int> ENTIER
+%token <string> ID
+%token RETURN
+%token PV
+%token AO
+%token AF
+%token PF
+%token PO
+%token EQUAL
+%token CONST
+%token PRINT
+%token IF
+%token ELSE
+%token WHILE
+%token BOOL
+%token INT
+%token RAT
+%token CALL 
+%token CO
+%token CF
+%token SLASH
+%token NUM
+%token DENOM
+%token TRUE
+%token FALSE
+%token PLUS
+%token MULT
+%token INF
 %token EOF
-%token OrToken, AndToken, DifferentToken, EqualToken
-%token LesserToken, GreaterToken, LesserEqualToken, GreaterEqualToken
-%token PlusToken, MinusToken
-%token StarToken, SlashToken
-%token UMinusToken
-
-(* priorité et associativité *)
-(* Plus faible priorité au début *)
-(* http://caml.inria.fr/pub/docs/manual-ocaml/expr.html#sec116 *)
-%nonassoc BodyToken, ElseToken, InToken, RightParenthesisToken
-(* %nonassoc IfToken *)
-%right OrToken
-%right AndToken
-%left DifferentToken, EqualToken
-%nonassoc LesserToken, GreaterToken, LesserEqualToken, GreaterEqualToken
-%left PlusToken, MinusToken
-%left StarToken, SlashToken
-%left UMinusToken
-
-
 
 (* Type de l'attribut synthétisé des non-terminaux *)
-%type <Ast.ast> expr
+%type <programme> prog
+%type <instruction list> bloc
+%type <fonction> fonc
+%type <instruction> i
+%type <typ> typ
+%type <typ*string> param
+%type <expression> e 
 
 (* Type et définition de l'axiome *)
-%start <Ast.ast> main
+%start <Ast.AstSyntax.programme> main
 
 %%
-(*
-La grammaire n'est pas LR , on joue avec les priorités
 
-  E -> fun ident -> E
-  E -> let ident = E in E
-  E -> letrec ident = E in E
-  E -> if E then E else E
-  E -> (E) E
-  E -> (E)
-  E -> - E
-  E -> E = E
-  E -> E != E
-  E -> E >= E
-  E -> E > E
-  E -> E <= E
-  E -> E < E
-  E -> E & E
-  E -> E | E
-  E -> E * E
-  E -> E / E
-  E -> E - E
-  E -> E + E
-  E -> Ident
-  E -> Const
+main : lfi=prog EOF     {lfi}
 
-*)
-main : a = expr EOF   {a}
+prog : lf=fonc* ID li=bloc  {Programme (lf,li)}
 
-expr :
-| FunctionToken n = IdentToken BodyToken e = expr                    {FunctionNode (n,e)}
-| LetToken n = IdentToken EqualToken e1 = expr InToken e2 = expr     {LetNode (n,e1,e2)}
-| RecToken n = IdentToken EqualToken e1 = expr InToken e2 = expr     {LetrecNode (n,e1,e2)}
-| IfToken c= expr ThenToken t = expr ElseToken e = expr              {IfthenelseNode (c,t,e)}
-| LeftParenthesisToken f = expr RightParenthesisToken  p =expr       {CallNode (f,p)}
-| LeftParenthesisToken e = expr RightParenthesisToken                {e}
-| MinusToken  e = expr            %prec UMinusToken                  {UnaryNode (Negate,e)}
-| e1 = expr EqualToken e2 = expr                                     {BinaryNode (Equal,e1,e2)}
-| e1 = expr DifferentToken e2 = expr                                 {BinaryNode (Different,e1,e2)}
-| e1 = expr LesserToken e2 = expr                                    {BinaryNode (Lesser,e1,e2)}
-| e1 = expr GreaterToken e2 = expr                                   {BinaryNode (Greater,e1,e2)}
-| e1 = expr LesserEqualToken e2 = expr                               {BinaryNode (LesserEqual,e1,e2)}
-| e1 = expr GreaterEqualToken e2 = expr                              {BinaryNode (GreaterEqual,e1,e2)}
-| e1 = expr AndToken e2 = expr                                       {BinaryNode (And,e1,e2)}
-| e1 = expr OrToken e2 = expr                                        {BinaryNode (Or,e1,e2)}
-| e1 = expr PlusToken e2 = expr                                      {BinaryNode (Add,e1,e2)}
-| e1 = expr MinusToken e2 = expr                                     {BinaryNode (Substract,e1,e2)}
-| e1 = expr StarToken e2 = expr                                      {BinaryNode (Multiply,e1,e2)}
-| e1 = expr SlashToken e2 = expr                                     {BinaryNode (Divide,e1,e2)}
-| n = IdentToken                                                     {AccessNode n}
-| i = NumberToken                                                    {IntegerNode i}
-| TrueToken                                                          {TrueNode}
-| FalseToken                                                         {FalseNode}
+fonc : t=typ n=ID PO lp=param* PF li=bloc {Fonction(t,n,lp,li)}
+
+param : t=typ n=ID  {(t,n)}
+
+bloc : AO li=i* AF      {li}
+
+i :
+| t=typ n=ID EQUAL e1=e PV          {Declaration (t,n,e1)}
+| n=ID EQUAL e1=e PV                {Affectation (n,e1)}
+| CONST n=ID EQUAL e=ENTIER PV      {Constante (n,e)}
+| PRINT e1=e PV                     {Affichage (e1)}
+| IF exp=e li1=bloc ELSE li2=bloc   {Conditionnelle (exp,li1,li2)}
+| WHILE exp=e li=bloc               {TantQue (exp,li)}
+| RETURN exp=e PV                   {Retour (exp)}
+
+typ :
+| BOOL    {Bool}
+| INT     {Int}
+| RAT     {Rat}
+
+e : 
+| CALL n=ID PO lp=e* PF   {AppelFonction (n,lp)}
+| CO e1=e SLASH e2=e CF   {Binaire(Fraction,e1,e2)}
+| n=ID                    {Ident n}
+| TRUE                    {Booleen true}
+| FALSE                   {Booleen false}
+| e=ENTIER                {Entier e}
+| NUM e1=e                {Unaire(Numerateur,e1)}
+| DENOM e1=e              {Unaire(Denominateur,e1)}
+| PO e1=e PLUS e2=e PF    {Binaire (Plus,e1,e2)}
+| PO e1=e MULT e2=e PF    {Binaire (Mult,e1,e2)}
+| PO e1=e EQUAL e2=e PF   {Binaire (Equ,e1,e2)}
+| PO e1=e INF e2=e PF     {Binaire (Inf,e1,e2)}
+| PO exp=e PF             {exp}
+
+
