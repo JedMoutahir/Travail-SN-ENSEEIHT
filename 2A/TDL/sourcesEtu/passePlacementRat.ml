@@ -55,10 +55,11 @@ let rec analyse_placement_instruction i reg dep =
       end
   | AstType.Empty -> AstPlacement.Empty, 0
 
-(* analyse_type_bloc : AstTds.bloc -> AstType.bloc *)
+(* analyse_placement_bloc : AstType.bloc -> AstPlacement.bloc *)
 (* Paramètre li : liste d'instructions à analyser *)
-(* Vérifie la bonne utilisation des types et tranforme le bloc en un bloc de type AstType.bloc *)
-(* Erreur si mauvaise utilisation des types *)
+(* Paramètre dep *)
+(* Paramètre reg : registre de stockage *)
+(* Tranforme le bloc en un bloc de type AstPlacement.bloc *)
 and analyse_placement_bloc li dep reg =
 match li with
     | [] -> ([], 0)
@@ -66,11 +67,9 @@ match li with
     let (nli, tli) = analyse_placement_bloc qi (dep + taille) reg in
     (ni::nli , taille + tli)
 
-(* analyse_type_fonction : AstTds.fonction -> AstTypefonction *)
+(* analyse_placement_fonction : AstType.fonction -> AstPlacementfonction *)
 (* Paramètre fun : la fonction à analyser *)
-(* Vérifie la bonne utilisation des types et tranforme la fonction
-en une fonction de type AstType.fonction *)
-(* Erreur si mauvaise utilisation des types *)
+(* Tranforme la fonction en une fonction de type AstPlacement.fonction *)
 let analyse_placement_fonction (AstType.Fonction (info, linfo, bloc)) =
   let rec modifier_adresse_variable_param li depl =
     match li with
