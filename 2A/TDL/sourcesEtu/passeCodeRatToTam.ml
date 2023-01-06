@@ -1,11 +1,13 @@
 (* Module de la passe de gestion des placements memoire *)
 (* doit être conforme à l'interface Passe *)
 open Tds
-open Exceptions
 open Ast
 open Type
 open Tam
 open Code
+open Filename
+
+let () = Filename.set_temp_dir_name "/home/jmoutahi/Bureau/2A/TDL/TP02/sourceEtu/tempfortesting"
 
 type t1 = Ast.AstPlacement.programme
 type t2 = string
@@ -29,8 +31,9 @@ let rec generation_code_expression e =
   in loada dep base
   ^ loadi taille
   | AstType.Booleen(b) ->
-    if b then loadl_int 1
-    else loadl_int 0
+    (if b then loadl_int 1
+    else loadl_int 0)
+    ^ subr "I2B"
   | AstType.Entier(e) -> loadl_int e
   | AstType.Unaire(op, exp) ->
     generation_code_expression exp
@@ -42,14 +45,19 @@ let rec generation_code_expression e =
     ^ generation_code_expression ed
     ^ (match op with
       | AstType.PlusInt -> subr "IAdd"
-      | AstType.PlusRat -> call "SB" "RAdd"
+      | AstType.PlusRat -> call "LB" "RAdd"
       | AstType.MultInt -> subr "IMul"
-      | AstType.MultRat -> call "SB" "RMul"
-      | AstType.Fraction -> ""
+      | AstType.MultRat -> call "LB" "RMul"
+      | AstType.Fraction -> call "LB" "Norm"
       | AstType.EquBool -> subr "IEq"
       | AstType.EquInt -> subr "IEq"
-      | AstType.Inf -> subr "ILeq")
-  | AstType.AppelFonction(ia, le) -> ""
+      | AstType.Inf -> subr "ILss")
+  | AstType.AppelFonction(ia, le) -> 
+    let nom = (match info_ast_to_info ia with
+      | InfoFun (n,_,_) -> n
+      | _ -> failwith "Erreur dans generation_code_expression") in
+    String.concat "" (List.map generation_code_expression le)
+    ^ call "LB" nom
 
 (* analyse_placement_instruction : AstType.instruction -> AstPlacement.instruction *)
 (* Paramètre i : l'instruction à analyser *)
@@ -79,7 +87,7 @@ let rec generation_code_instruction i =
     ^ subr "IOut"
   | AstPlacement.AffichageRat e -> 
     generation_code_expression e
-    ^ call "RO" "ROut"
+    ^ call "LB" "ROut"
   | AstPlacement.AffichageBool e -> 
     generation_code_expression e
     ^ subr "BOut"
@@ -118,8 +126,14 @@ and generation_code_bloc (li, taille) =
 (* analyse_placement_fonction : AstType.fonction -> AstPlacementfonction *)
 (* Paramètre fun : la fonction à analyser *)
 (* Tranforme la fonction en une fonction de type AstPlacement.fonction *)
-let generation_code_fonction (AstPlacement.Fonction (info, linfo, bloc)) =
-  ""
+let generation_code_fonction (AstPlacement.Fonction (info, _, bloc)) =
+  let (nom, typlist) = (match info_ast_to_info info with
+      | InfoFun (n,_,tl) -> n, tl
+      | _ -> failwith "Erreur dans generation_code_expression") in
+  let taille = List.fold_right (+) (List.map (fun t -> (getTaille t)) typlist) 0 in
+  label nom
+  ^ generation_code_bloc bloc
+  ^ return 0 taille
 
 (* analyser : AstType.programme -> AstPlacement.programme *)
 (* Paramètre : le programme à analyser *)
