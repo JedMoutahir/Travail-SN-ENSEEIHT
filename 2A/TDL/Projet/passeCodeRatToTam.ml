@@ -5,31 +5,53 @@ open Ast
 open Type
 open Tam
 open Code
+(*
 open Filename
 
-let () = Filename.set_temp_dir_name "/home/jmoutahi/Bureau/2A/TDL/TP02/sourceEtu/tempfortesting"
+ let () = Filename.set_temp_dir_name "/home/jmoutahi/Bureau/2A/TDL/TP02/sourceEtu/tempfortesting" 
+*)
 
 type t1 = Ast.AstPlacement.programme
 type t2 = string
 
-(* analyse_placement_expression : AstType.expression -> AstPlacement.expression *)
+(* generation_code_affectable : AstPlacement.affectable -> string *)
+(* Paramètre e : l'expression à analyser *)
+(* Vérifie la bonne utilisation des affectable et genère le code pour l'affectable *)
+let rec generation_code_affectable a ecriture deref =
+  match a with
+  | AstType.Ident ia -> let info = info_ast_to_info ia in
+  let (depl, base) = (match info with
+    | InfoVar(_, _, dep, base) -> (dep, base)
+    | _ -> failwith "InfoVar attendu") in
+    let typevarinfoast = (match info with
+      | InfoVar(_, t, _, _) ->
+        if (est_compatible t Undefined) then failwith "Type Undefined"
+        else t
+      | _ -> failwith "InfoVar attendu") in
+    let taille = getTaille(typevarinfoast) in
+    if (est_compatible typevarinfoast (Pointeur(Undefined))) then
+      if (ecriture && not deref) then store taille depl base
+      else load taille depl base
+    else if (not ecriture)
+    then load taille depl base
+    else store taille depl base
+  | AstType.Const(ia) -> let v = (match info_ast_to_info ia with
+    | InfoConst(_, v) -> v
+    | _ -> failwith "InfoConst attendu") in
+    loadl_int (v)
+  | AstType.DeRef (da, t) ->
+    let taille = getTaille t in
+    generation_code_affectable da ecriture true
+    ^ (if (ecriture && not deref) then storei taille
+    else loadi taille)
+
+(* generation_code_expression : AstPlacement.expression -> string *)
 (* Paramètre e : l'expression à analyser *)
 (* Génere le code pour l'expression de type AstPlacement.expression *)
 let rec generation_code_expression e =
   match e with
-  | AstType.Ident(info) -> let (dep, base) = 
-  match info_ast_to_info info with
-    | InfoVar(_, _, dep, base) -> (dep, base)
-    | _ -> failwith "Erreur dans generation_code_instruction"
-  in let taille = getTaille (
-    match info_ast_to_info info with
-      | InfoVar(_, t, _, _) ->
-        if (t = Undefined) then failwith "Type Undefined"
-        else t
-      | _ -> failwith "Pas un InfoVar"
-    )
-  in loada dep base
-  ^ loadi taille
+  | AstType.Affectable(a) ->
+    generation_code_affectable a false false
   | AstType.Booleen(b) ->
     (if b then loadl_int 1
     else loadl_int 0)
@@ -58,20 +80,37 @@ let rec generation_code_expression e =
       | _ -> failwith "Erreur dans generation_code_expression") in
     String.concat "" (List.map generation_code_expression le)
     ^ call "LB" nom
-
-(* analyse_placement_instruction : AstType.instruction -> AstPlacement.instruction *)
-(* Paramètre i : l'instruction à analyser *)
-(* Paramètre reg : l'instruction à analyser *)
-(* Paramètre dep : l'instruction à analyser *)
-(* Vérifie la bonne utilisation des types et tranforme l'instruction
-en une instruction de type AstType.instruction *)
-(* Erreur si mauvaise utilisation des types *)
-let rec generation_code_instruction i =
-  match i with
-  | AstPlacement.Affectation (info,e) | AstPlacement.Declaration (info, e) -> let (dep, base) = 
-    match info_ast_to_info info with
+  | AstType.Ternaire (c, e1, e2) ->
+    let lelse = getEtiquette() in
+    let lend = getEtiquette() in
+    generation_code_expression c
+    ^ jumpif 0 lelse
+    ^ generation_code_expression e1
+    ^ jump lend
+    ^ label lelse
+    ^ generation_code_expression e2
+    ^ label lend
+  | AstType.New t ->
+    let taille = getTaille t in
+    loadl_int taille
+    ^ subr "MAlloc"
+  | AstType.Adresse ia ->
+    let (depl, reg) = (match info_ast_to_info ia with
       | InfoVar(_, _, dep, base) -> (dep, base)
-      | _ -> failwith "Erreur dans generation_code_instruction"
+      | _ -> failwith "InfoVar attendu") in
+    loada depl reg
+  | AstType.Null ->
+    loadl_int 0
+
+(* generation_code_instruction : AstPlacement.instruction -> string *)
+(* Paramètre i : l'instruction à analyser *)
+(* Vérifie la bonne utilisation des instructions et genère le code pour l'instruction *)
+let rec generation_code_instruction lloop i =
+  match i with
+  | AstPlacement.Declaration (info, e) -> let (dep, base) = 
+    (match info_ast_to_info info with
+      | InfoVar(_, _, dep, base) -> (dep, base)
+      | _ -> failwith "Erreur dans generation_code_instruction")
     in let taille = getTaille (
       match info_ast_to_info info with
         | InfoVar(_, t, _, _) ->
@@ -82,6 +121,9 @@ let rec generation_code_instruction i =
     in generation_code_expression e
     ^ loada dep base
     ^ storei taille
+  | AstPlacement.Affectation (a,e) ->
+    generation_code_expression e
+    ^ generation_code_affectable a true false
   | AstPlacement.AffichageInt e ->
     generation_code_expression e
     ^ subr "IOut"
@@ -96,51 +138,76 @@ let rec generation_code_instruction i =
     let lend = getEtiquette() in
     generation_code_expression e
     ^ jumpif 0 lelse
-    ^ generation_code_bloc b1
+    ^ generation_code_bloc lloop b1
     ^ jump lend
     ^ label lelse
-    ^ generation_code_bloc b2
+    ^ generation_code_bloc lloop b2
     ^ label lend
   | AstPlacement.TantQue (e,b) -> 
-    let lloop = getEtiquette() in
+    let etlloop = getEtiquette() in
     let lend = getEtiquette() in 
-    label lloop
+    label etlloop
     ^ generation_code_expression e
     ^ jumpif 0 lend
-    ^ generation_code_bloc b
-    ^ jump lloop
+    ^ generation_code_bloc lloop b
+    ^ jump etlloop
     ^ label lend
   | AstPlacement.Retour (e, t_ret, param) -> 
     generation_code_expression e
     ^ return t_ret param
   | AstPlacement.Empty -> ""
+  | AstPlacement.AffichagePointeur e ->
+    loadl_int 0
+    ^ subr "IOut"
+    ^ loadl_char 'x'
+    ^ subr "COut"
+    ^ generation_code_expression e
+    ^ subr "IOut"
+  | AstPlacement.Loop (n, li) ->
+    let lend = getEtiquette() in
+    let lbeg = n ^ lend in
+    label lbeg
+    ^ generation_code_bloc ((n, lend)::lloop) li
+    ^ jump lbeg
+    ^ label lend
+  | AstPlacement.Continue (n) ->
+    let (lbeg, lend) =
+      (if (n = "") then List.hd lloop
+      else List.find (fun x -> (fst x) = n) lloop) in
+    jump (lbeg ^ lend)
+  | AstPlacement.Break (n) ->
+    let (_, lend) =
+      (if (n = "") then List.hd lloop
+      else List.find (fun x -> (fst x) = n) lloop) in
+    jump (lend)
 
-(* analyse_type_bloc : AstTds.bloc -> AstType.bloc *)
+(* generation_code_bloc : AstPlacement.bloc -> string *)
 (* Paramètre li : liste d'instructions à analyser *)
-(* Vérifie la bonne utilisation des types et tranforme le bloc en un bloc de type AstType.bloc *)
-(* Erreur si mauvaise utilisation des types *)
-and generation_code_bloc (li, taille) =
+(* Vérifie la bonne utilisation des blocs et genère le code pour le bloc *)
+and generation_code_bloc lloop (li, taille) =
   push taille
-  ^ String.concat "" (List.map (generation_code_instruction) li)
+  ^ String.concat "" (List.map (generation_code_instruction lloop) li)
   ^ pop 0 taille
-(* analyse_placement_fonction : AstType.fonction -> AstPlacementfonction *)
+
+
+(* generation_code_fonction : AstPlacement.fonction -> string *)
 (* Paramètre fun : la fonction à analyser *)
-(* Tranforme la fonction en une fonction de type AstPlacement.fonction *)
+(* Vérifie la bonne utilisation des fonctions et genère le code pour la fonction *)
 let generation_code_fonction (AstPlacement.Fonction (info, _, bloc)) =
   let (nom, typlist) = (match info_ast_to_info info with
       | InfoFun (n,_,tl) -> n, tl
       | _ -> failwith "Erreur dans generation_code_expression") in
   let taille = List.fold_right (+) (List.map (fun t -> (getTaille t)) typlist) 0 in
   label nom
-  ^ generation_code_bloc bloc
+  ^ generation_code_bloc [] bloc
   ^ return 0 taille
 
-(* analyser : AstType.programme -> AstPlacement.programme *)
+(* analyser : AstPlacement.programme -> string *)
 (* Paramètre : le programme à analyser *)
-(* Tranforme le programme en un programme de type AstPlacement.programme *)
+(* Génere le code pour le programme de type AstPlacement.programme *)
 let analyser (AstPlacement.Programme (fonctions,prog)) =
   getEntete()
   ^ String.concat "" (List.map (generation_code_fonction) fonctions)
   ^ label "main"
-  ^ generation_code_bloc prog 
+  ^ generation_code_bloc [] prog 
   ^ halt

@@ -8,6 +8,23 @@ open Type
 type t1 = Ast.AstTds.programme
 type t2 = Ast.AstType.programme
 
+let rec analyse_type_affectable a =
+  match a with
+  | AstTds.Ident(ia) -> let info = info_ast_to_info ia in
+    let typevarinfoast = (match info with
+    | InfoVar(_, t, _, _) ->
+      if (est_compatible t Undefined) then failwith "Type Undefined"
+      else t
+    | _ -> failwith "InfoVar attendu") in
+      (AstType.Ident(ia), typevarinfoast)
+  | AstTds.Const(ia) ->
+    (AstType.Const(ia), Int)
+  | AstTds.DeRef da ->
+    let (nda, ta) = analyse_type_affectable da in
+    match ta with
+    | Pointeur(t) -> (AstType.DeRef(nda, t), t)
+    | _ -> raise (TypeInattendu(ta, Pointeur(Undefined)))
+
 (* analyse_type_expression : AstTds.expression -> AstType.expression *)
 (* Paramètre e : l'expression à analyser *)
 (* Vérifie la bonne utilisation des types et tranforme l'expression
@@ -71,13 +88,6 @@ let rec analyse_type_expression e =
       end
     end
     in (AstType.Binaire(newop, newe1, newe2), t_ret)
-  | AstTds.Ident(ia) -> let typeia = (
-    match info_ast_to_info ia with
-      | InfoVar(_, t, _, _) ->
-        if (t = Undefined) then failwith "Type Undefined"
-        else t
-      | _ -> failwith "Pas une InfoVar")
-    in (AstType.Ident(ia), typeia)
   | AstTds.AppelFonction(ia, le) ->
     let (tf, ltf) = (
       match info_ast_to_info ia with
@@ -91,7 +101,26 @@ let rec analyse_type_expression e =
     let nlet = List.map (fun x -> snd x) nle in
     if (est_compatible_list nlet ltf) then (AstType.AppelFonction(ia, lte), tf)
     else raise (TypesParametresInattendus(nlet, ltf))
-(*  | _ -> failwith "Erreur dans analyse_type_expression" *)
+  | AstTds.Affectable(a) ->
+    let (na, ta) = analyse_type_affectable a in
+    (AstType.Affectable(na), ta)
+  | AstTds.Ternaire (c, e1, e2) ->
+    let (nc, tc) = analyse_type_expression c in
+    let (ne1, te1) = analyse_type_expression e1 in
+    let (ne2, te2) = analyse_type_expression e2 in
+    if (est_compatible tc Bool) then
+      if (est_compatible te1 te2) then (AstType.Ternaire(nc, ne1, ne2), te1)
+      else raise (TypesRetourInattendus(te1, te2))
+    else raise (TypeInattendu(tc, Bool))
+  | AstTds.New t -> (AstType.New t, Pointeur(t))
+  | AstTds.Adresse ia -> let info = info_ast_to_info ia in
+  let typevarinfoast = (match info with
+  | InfoVar(_, t, _, _) ->
+    if (est_compatible t Undefined) then failwith "Type Undefined"
+    else t
+  | _ -> failwith "InfoVar attendu") in
+    (AstType.Adresse(ia), Pointeur(typevarinfoast))
+  | AstTds.Null -> (AstType.Null, Pointeur(Undefined))
 
 
 (* analyse_type_instruction : AstTds.instruction -> AstType.instruction *)
@@ -116,6 +145,7 @@ let rec analyse_type_instruction i =
       | Bool -> AstType.AffichageBool(ne)
       | Int -> AstType.AffichageInt(ne)
       | Rat -> AstType.AffichageRat(ne)
+      | Pointeur(_) -> AstType.AffichagePointeur(ne)
       | Undefined -> failwith "Erreur dans analyse_type_instruction"
     end
   | AstTds.Conditionnelle (c,tia,eia) ->
@@ -132,19 +162,6 @@ let rec analyse_type_instruction i =
       AstType.TantQue(nc, nb)
     else raise (TypeInattendu(tc, Bool))
   | AstTds.Empty -> AstType.Empty
-  | AstTds.Affectation(n, e) -> 
-    let (ne, te) = analyse_type_expression e in
-  let t =  
-    (match info_ast_to_info n with
-      | InfoVar(_, t, _, _) ->
-        if (est_compatible t Undefined) then 
-          failwith "Type Undefined"
-        else t
-      | _ -> failwith "Pas un InfoVar")
-  in
-    if (est_compatible t te) then 
-      AstType.Affectation(n, ne)
-    else (raise (TypeInattendu(te, t)))
   | AstTds.Retour(e, ia) -> (
     let (ne, te) = analyse_type_expression e in
     let (t_ret, _) = 
@@ -157,7 +174,18 @@ let rec analyse_type_instruction i =
     if (est_compatible te t_ret) then
       AstType.Retour(ne, ia)
     else raise (TypeInattendu(te, t_ret)))
-(*  | _ -> failwith "Erreur dans analyse_type_instruction" *)
+  | AstTds.Affectation (a,e) ->
+    let (na, ta) = analyse_type_affectable a in
+    let (ne, te) = analyse_type_expression e in
+    if (est_compatible ta te) then AstType.Affectation(na, ne)
+    else (raise (TypeInattendu(te, ta)))
+  | AstTds.Loop (n, li) ->
+    let nli = analyse_type_bloc li in
+    AstType.Loop(n, nli)
+  | AstTds.Continue (n) ->
+    AstType.Continue (n)
+  | AstTds.Break (n) ->
+    AstType.Break (n)
 
 
 (* analyse_type_bloc : AstTds.bloc -> AstType.bloc *)
