@@ -29,9 +29,15 @@ public class Irc extends Frame {
 		// if not found, create it, and register it in the name server
 		SharedObject s = Client.lookup("IRC");
 		if (s == null) {
+			System.out.println("creating the sentence object");
 			s = Client.create(new Sentence());
 			Client.register("IRC", s);
 		}
+		s.abonner(new Callback_itf() {
+			public void execute() {
+				System.out.print("called back");
+			}
+		});
 		// create the graphical part
 		new Irc(s);
 	}
@@ -107,6 +113,3 @@ class writeListener implements ActionListener {
 		irc.sentence.unlock();
 	}
 }
-
-
-

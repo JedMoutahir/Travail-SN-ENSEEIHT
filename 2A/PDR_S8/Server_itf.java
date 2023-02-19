@@ -6,7 +6,6 @@ public interface Server_itf extends java.rmi.Remote {
 	public Object lock_write(int id, Client_itf client) throws java.rmi.RemoteException;
 	public Object getClass(int id) throws java.rmi.RemoteException;
 	public void clientValidation(int id) throws java.rmi.RemoteException;
-	public void abonner(Client_itf client, String name) throws java.rmi.RemoteException;
-	public void desabonner(Client_itf client, String name) throws java.rmi.RemoteException;
-	public void notifier(int id, Object obj) throws java.rmi.RemoteException;
+	public void abonner(Client client, int id) throws java.rmi.RemoteException;
+	public void desabonner(Client client, int id) throws java.rmi.RemoteException;
 }

@@ -21,6 +21,7 @@ public class ServerObject implements Remote {
 	private LOCKS verrou;
 	private Client_itf writer;
 	private List<Client_itf> readers;
+	private List<Client_itf> abonnes;
 	private Lock lock;
 
 	public ServerObject(Object o, Integer id) {
@@ -98,7 +99,30 @@ public class ServerObject implements Remote {
 		return this.obj;
 	}
 
+	public void unlock(Client_itf client) {
+		for(Client_itf cl : abonnes) {
+			if(client != cl) {
+				try {
+					client.callBack(this.id);
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
 	public void clientValidation() {
 		this.lock.unlock();
+	}
+
+	public void abonner(Client_itf client) {
+		// TODO Auto-generated method stub
+		abonnes.add(client);
+	}
+
+	public void desabonner(Client_itf client) {
+		// TODO Auto-generated method stub
+		abonnes.remove(client);
 	}
 }

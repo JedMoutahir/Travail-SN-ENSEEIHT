@@ -9,19 +9,17 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Server extends UnicastRemoteObject implements Server_itf {
-	
+
 	private static final long serialVersionUID = 1L;
 	public static final String URL = "//localhost:4444/Server";
 	public static final Integer Port = 4444;
 	private HashMap<Integer, ServerObject> mapServerObjects;
 	private HashMap<String, Integer> mapID;
-	private HashMap<Client_itf, Integer> subscriberRecord;
 
 	protected Server() throws RemoteException {
 		super();
 		mapServerObjects = new HashMap<Integer, ServerObject>();
 		mapID = new HashMap<String, Integer>();
-		subscriberRecord = new HashMap<Client_itf, Integer>();
 	}
 
 	@Override
@@ -80,41 +78,17 @@ public class Server extends UnicastRemoteObject implements Server_itf {
 		mapServerObjects.get(id).clientValidation();
 	}
 
-
 	@Override
-	public void abonner(Client_itf client, String name) {
+	public void abonner(Client client, int id) throws RemoteException {
 		// TODO Auto-generated method stub
-		try {
-			subscriberRecord.put(client, this.lookup(name));
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		ServerObject so = mapServerObjects.get(id);
+		so.abonner(client);
 	}
 
 	@Override
-	public void desabonner(Client_itf client, String name) {
+	public void desabonner(Client client, int id) throws RemoteException {
 		// TODO Auto-generated method stub
-		try {
-			subscriberRecord.remove(client, this.lookup(name));
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	@Override
-	public void notifier(int id, Object obj) {
-		mapServerObjects.put(id, new ServerObject(obj, id));
-		for(Map.Entry<Client_itf, Integer> set : subscriberRecord.entrySet()) {
-			if(set.getValue() == id) {
-				try {
-					set.getKey().callback(id, obj);
-				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
+		ServerObject so = mapServerObjects.get(id);
+		so.desabonner(client);
 	}
 }
