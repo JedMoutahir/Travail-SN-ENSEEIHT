@@ -194,6 +194,17 @@ public class Client extends UnicastRemoteObject implements Client_itf {
 	
 	public void callBack(int id) throws java.rmi.RemoteException {
 		SharedObject so = mapObjects.get(id);
-		so.callback();;
+		so.callback();
+	}
+	
+	public static void notifier(int id) {
+		Server_itf serv = null;
+		try {
+			serv = (Server_itf) Naming.lookup(Server.URL);
+			serv.notifier(id);
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

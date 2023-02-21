@@ -79,16 +79,23 @@ public class Server extends UnicastRemoteObject implements Server_itf {
 	}
 
 	@Override
-	public void abonner(Client client, int id) throws RemoteException {
+	public void abonner(Client_itf client, int id) throws RemoteException {
 		// TODO Auto-generated method stub
+		//System.out.println("abonner dans server");
 		ServerObject so = mapServerObjects.get(id);
 		so.abonner(client);
 	}
 
 	@Override
-	public void desabonner(Client client, int id) throws RemoteException {
+	public void desabonner(Client_itf client, int id) throws RemoteException {
 		// TODO Auto-generated method stub
 		ServerObject so = mapServerObjects.get(id);
 		so.desabonner(client);
+	}
+	
+	public void notifier(int id) {
+		// TODO Auto-generated method stub
+		ServerObject so = mapServerObjects.get(id);
+		so.notifier();
 	}
 }

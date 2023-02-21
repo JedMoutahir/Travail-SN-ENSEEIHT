@@ -34,8 +34,11 @@ public class Irc extends Frame {
 			Client.register("IRC", s);
 		}
 		s.abonner(new Callback_itf() {
+			private String name = Integer.toString((new java.util.Random()).nextInt(50));
+			private int compteur = 0;
 			public void execute() {
-				System.out.print("called back");
+				compteur ++;
+				System.out.println("called back Irc number " + name + " for the " + compteur + " time.");
 			}
 		});
 		// create the graphical part
@@ -112,4 +115,42 @@ class writeListener implements ActionListener {
 		// unlock the object
 		irc.sentence.unlock();
 	}
+}
+
+/*--------------------------*/
+/*		DOESNT WORK			*/
+/*--------------------------*/
+class Callback implements Callback_itf {
+	private SharedObject so;
+	private Irc irc;
+	
+	public Callback(SharedObject so, Irc i) {
+		this.so = so;
+		this.irc = i;
+	}
+	
+	@Override
+	public void execute() {
+		// TODO Auto-generated method stub
+		
+		System.out.println("called back");
+	
+		so.lock_read();
+
+		System.out.println("passed lockread");
+		
+		// invoke the method
+		String s = ((Sentence)(so.obj)).read();
+
+		System.out.println("passed read");
+		
+		// unlock the object
+		so.unlock();
+
+		System.out.println("passed unlock");
+		
+		// display the read value
+		//this.irc.text.append(s+"\n");
+	}
+	
 }

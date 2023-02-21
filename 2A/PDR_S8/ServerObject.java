@@ -31,6 +31,7 @@ public class ServerObject implements Remote {
 		this.writer = null;
 		this.lock = new ReentrantLock(true);
 		this.readers = new ArrayList<Client_itf>();
+		this.abonnes = new ArrayList<Client_itf>();
 	}
 
 	public Object lock_read(Client_itf c) {
@@ -99,15 +100,13 @@ public class ServerObject implements Remote {
 		return this.obj;
 	}
 
-	public void unlock(Client_itf client) {
+	public void notifier() {
 		for(Client_itf cl : abonnes) {
-			if(client != cl) {
-				try {
-					client.callBack(this.id);
-				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			try {
+				cl.callBack(this.id);
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 	}

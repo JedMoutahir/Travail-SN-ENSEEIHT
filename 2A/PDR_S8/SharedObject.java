@@ -78,13 +78,8 @@ public class SharedObject implements Serializable, SharedObject_itf {
 			break;
 		case WLT:
 			this.verrou = LOCKS.WLC;
+			Client.notifier(this.id);
 			this.notify();
-//			try {
-//				this.server.notifier(this.id, this.obj);
-//			} catch (RemoteException e) {
-//				// TODO Auto-generated catch block 
-//				e.printStackTrace(); 
-//			}
 			break;
 		case RLT_WLC:
 			this.verrou = LOCKS.WLC;
@@ -95,8 +90,6 @@ public class SharedObject implements Serializable, SharedObject_itf {
 			break;
 		}
 		//System.out.println("obj in unlock in sharedObject : " + this.obj);
-
-
 	}
 
 	public synchronized Object reduce_lock() {
@@ -188,6 +181,10 @@ public class SharedObject implements Serializable, SharedObject_itf {
 	}
 	
 	public void callback() {
-		if(this.callback != null) this.callback.execute();
+		if(this.callback != null) {
+			this.callback.execute();
+		} else {
+			System.out.println("tried to call a null callback");
+		}
 	}
 }
