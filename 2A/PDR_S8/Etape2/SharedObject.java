@@ -35,6 +35,7 @@ public class SharedObject implements Serializable, SharedObject_itf {
 		switch (this.verrou) {
 		case NL:
 			this.obj = Client.lock_read(this.id);
+			System.out.println("Le client qui n'est pas abonné lit la nouvelle valeure.");
 			this.verrou = LOCKS.RLT;
 			Client.clientValidation(this.id);
 			break;
@@ -178,7 +179,7 @@ public class SharedObject implements Serializable, SharedObject_itf {
 	}
 	
 	public void callback(Object newObject) {
-		System.out.println("Subscriber called back.");
+		System.out.println("L'objet du client a été mis à jour.");
 		this.obj = newObject;
 		this.verrou = LOCKS.RLC;
 	}

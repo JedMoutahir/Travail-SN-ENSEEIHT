@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 public class Server extends UnicastRemoteObject implements Server_itf {
 
 	private static final long serialVersionUID = 1L;
-	public static final String URL = "//localhost:4444/Server";
-	public static final Integer Port = 4444;
+	public static final String URL = "//localhost:5555/Server";
+	public static final Integer Port = 5555;
 	private HashMap<Integer, ServerObject> mapServerObjects;
 	private HashMap<String, Integer> mapID;
 
