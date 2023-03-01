@@ -1,9 +1,10 @@
-import java.rmi.*;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
 import java.util.ServiceConfigurationError;
-import java.lang.reflect.InvocationTargetException;
-import java.net.*;
 
 public class Client extends UnicastRemoteObject implements Client_itf {
 
@@ -192,16 +193,16 @@ public class Client extends UnicastRemoteObject implements Client_itf {
 		}
 	}
 	
-	public void callBack(int id) throws java.rmi.RemoteException {
+	public void callBack(int id, Object newObject) throws java.rmi.RemoteException {
 		SharedObject so = mapObjects.get(id);
-		so.callback();
+		so.callback(newObject);
 	}
 	
-	public static void notifier(int id) {
+	public static void notifier(int id, Object newObject) {
 		Server_itf serv = null;
 		try {
 			serv = (Server_itf) Naming.lookup(Server.URL);
-			serv.notifier(id);
+			serv.notifier(id, newObject);
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

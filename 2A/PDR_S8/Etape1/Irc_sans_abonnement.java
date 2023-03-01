@@ -8,12 +8,11 @@ import java.lang.*;
 import java.rmi.registry.*;
 
 
-public class Irc extends Frame {
+public class Irc_sans_abonnement extends Frame {
 	public TextArea		text;
 	public TextField	data;
 	SharedObject		sentence;
 	static String		myName;
-	public Button		sub_button;
 
 	public static void main(String argv[]) {
 		
@@ -34,15 +33,14 @@ public class Irc extends Frame {
 			s = Client.create(new Sentence());
 			Client.register("IRC", s);
 		}
-
 		// create the graphical part
-		new Irc(s);
+		new Irc_sans_abonnement(s);
 	}
 
-	public Irc(SharedObject s) {
+	public Irc_sans_abonnement(SharedObject s) {
 	
 		setLayout(new FlowLayout());
-		super.setTitle(myName);
+	
 		text=new TextArea(10,60);
 		text.setEditable(false);
 		text.setForeground(Color.red);
@@ -52,14 +50,11 @@ public class Irc extends Frame {
 		add(data);
 	
 		Button write_button = new Button("write");
-		write_button.addActionListener(new writeListener(this));
+		write_button.addActionListener(new writeListener_sans_abonnement(this));
 		add(write_button);
 		Button read_button = new Button("read");
-		read_button.addActionListener(new readListener(this));
+		read_button.addActionListener(new readListener_sans_abonnement(this));
 		add(read_button);
-		sub_button = new Button("subscribe");
-		sub_button.addActionListener(new subscribeListener(this));
-		add(sub_button);
 		
 		setSize(470,300);
 		text.setBackground(Color.black); 
@@ -71,9 +66,9 @@ public class Irc extends Frame {
 
 
 
-class readListener implements ActionListener {
-	Irc irc;
-	public readListener (Irc i) {
+class readListener_sans_abonnement implements ActionListener {
+	Irc_sans_abonnement irc;
+	public readListener_sans_abonnement (Irc_sans_abonnement i) {
 		irc = i;
 	}
 	public void actionPerformed (ActionEvent e) {
@@ -92,9 +87,9 @@ class readListener implements ActionListener {
 	}
 }
 
-class writeListener implements ActionListener {
-	Irc irc;
-	public writeListener (Irc i) {
+class writeListener_sans_abonnement implements ActionListener {
+	Irc_sans_abonnement irc;
+	public writeListener_sans_abonnement (Irc_sans_abonnement i) {
         	irc = i;
 	}
 	public void actionPerformed (ActionEvent e) {
@@ -106,30 +101,10 @@ class writeListener implements ActionListener {
 		irc.sentence.lock_write();
 		
 		// invoke the method
-		((Sentence)(irc.sentence.obj)).write(Irc.myName+" wrote "+s);
+		((Sentence)(irc.sentence.obj)).write(Irc_sans_abonnement.myName+" wrote "+s);
 		irc.data.setText("");
 		
 		// unlock the object
 		irc.sentence.unlock();
-	}
-}
-
-class subscribeListener implements ActionListener {
-	Irc irc;
-	Boolean sub = false;
-
-	public subscribeListener (Irc i) {
-			irc = i;
-	}
-	public void actionPerformed (ActionEvent e) {
-		if (sub) {
-			irc.sentence.desabonner();
-			irc.sub_button.setLabel("subscribe");
-			sub = false;
-		} else {
-			irc.sentence.abonner();
-			irc.sub_button.setLabel("unsubscribe");
-			sub = true;
-		}
 	}
 }

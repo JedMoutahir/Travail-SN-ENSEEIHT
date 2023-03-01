@@ -8,5 +8,5 @@ public interface Server_itf extends java.rmi.Remote {
 	public void clientValidation(int id) throws java.rmi.RemoteException;
 	public void abonner(Client_itf client, int id) throws java.rmi.RemoteException;
 	public void desabonner(Client_itf client, int id) throws java.rmi.RemoteException;
-	public void notifier(int id) throws java.rmi.RemoteException;
+	public void notifier(int id, Object newObject) throws java.rmi.RemoteException;
 }

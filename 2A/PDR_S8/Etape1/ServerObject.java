@@ -100,10 +100,11 @@ public class ServerObject implements Remote {
 		return this.obj;
 	}
 
-	public void notifier() {
+	public void notifier(Object newObject) {
 		for(Client_itf cl : abonnes) {
 			try {
-				cl.callBack(this.id);
+				this.obj = newObject;
+				cl.callBack(this.id, newObject);
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -122,6 +123,12 @@ public class ServerObject implements Remote {
 
 	public void desabonner(Client_itf client) {
 		// TODO Auto-generated method stub
+		try {
+			client.invalidate_reader(this.id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		abonnes.remove(client);
 	}
 }

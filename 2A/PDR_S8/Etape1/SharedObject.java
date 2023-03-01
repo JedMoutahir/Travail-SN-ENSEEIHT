@@ -17,7 +17,6 @@ public class SharedObject implements Serializable, SharedObject_itf {
 	public LOCKS verrou;
 	private boolean serialisationState = false;
 	private Server_itf server;
-	private Callback_itf callback;
 
 	public SharedObject(Object o, Integer id) {
 		this.obj = o;
@@ -36,6 +35,7 @@ public class SharedObject implements Serializable, SharedObject_itf {
 		switch (this.verrou) {
 		case NL:
 			this.obj = Client.lock_read(this.id);
+			System.out.println("Le client qui n'est pas abonné lit la nouvelle valeure.");
 			this.verrou = LOCKS.RLT;
 			Client.clientValidation(this.id);
 			break;
@@ -77,12 +77,12 @@ public class SharedObject implements Serializable, SharedObject_itf {
 			this.notify();
 			break;
 		case WLT:
-			this.verrou = LOCKS.WLC;
-			Client.notifier(this.id);
+			this.verrou = LOCKS.RLC;
+			Client.notifier(this.id, this.obj);
 			this.notify();
 			break;
 		case RLT_WLC:
-			this.verrou = LOCKS.WLC;
+			this.verrou = LOCKS.RLC;
 			this.notify();
 			break;
 		default:
@@ -158,6 +158,7 @@ public class SharedObject implements Serializable, SharedObject_itf {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			this.verrou	= LOCKS.NL;
 			break;
 		default:
 			break;
@@ -167,24 +168,20 @@ public class SharedObject implements Serializable, SharedObject_itf {
 	}
 
 	@Override
-	public void abonner(Callback_itf callback) {
+	public void abonner() {
 		// TODO Auto-generated method stub
-		this.callback = callback;
 		Client.abonner(this.id);
 	}
 
 	@Override
-	public void desabonner(Callback_itf callback) {
+	public void desabonner() {
 		// TODO Auto-generated method stub
-		this.callback = null;
 		Client.desabonner(this.id);
 	}
 	
-	public void callback() {
-		if(this.callback != null) {
-			this.callback.execute();
-		} else {
-			System.out.println("tried to call a null callback");
-		}
+	public void callback(Object newObject) {
+		System.out.println("L'objet du client a été mis à jour.");
+		this.obj = newObject;
+		this.verrou = LOCKS.RLC;
 	}
 }
