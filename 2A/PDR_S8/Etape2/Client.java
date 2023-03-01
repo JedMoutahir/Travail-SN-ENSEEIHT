@@ -1,9 +1,10 @@
-import java.rmi.*;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
 import java.util.ServiceConfigurationError;
-import java.lang.reflect.InvocationTargetException;
-import java.net.*;
 
 public class Client extends UnicastRemoteObject implements Client_itf {
 

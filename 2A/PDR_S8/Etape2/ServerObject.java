@@ -123,6 +123,12 @@ public class ServerObject implements Remote {
 
 	public void desabonner(Client_itf client) {
 		// TODO Auto-generated method stub
+		try {
+			client.invalidate_reader(this.id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		abonnes.remove(client);
 	}
 }

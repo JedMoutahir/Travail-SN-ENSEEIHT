@@ -158,6 +158,7 @@ public class SharedObject implements Serializable, SharedObject_itf {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			this.verrou	= LOCKS.NL;
 			break;
 		default:
 			break;
