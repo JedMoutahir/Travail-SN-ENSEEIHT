@@ -1,0 +1,14 @@
+ Matrice de Test 1, matrice d ordre : 10 possedant nb de nonzeros : 32
+ 10 32
+ tableau de pointeurs de debut de colonne 
+     1     5     8    11    15    17    21    24    26    30    33
+ indices de lignes
+    1    4    6   10    2    4    7    3    5    9
+    1    2    4    7    3    5    1    6    9   10
+    2    4    7    8    9    3    6    8    9    1
+    6   10
+ coefficients reels
+   1.00  12.00  14.00  16.00   2.00  18.00  20.00   3.00  22.00  24.00
+  11.00  17.00   4.00  26.00  21.00   5.00  13.00   6.00  28.00  30.00
+  19.00  25.00   7.00   8.00  32.00  23.00  27.00  31.00   9.00  15.00
+  29.00  10.00

@@ -1,0 +1,9 @@
+ Matrice de Test 2, matrice d ordre : 9 possedant nb de nonzeros : 37
+ 9 37 
+ tableau de pointeurs
+     1     4     9    13    17    21    26    30    34    38
+ indices de lignes
+    1    2    6    7    5    4    2    1    6    9
+    3    8    2    4    5    7    7    4    2    5
+    1    6    3    8    9    2    5    4    7    8
+    3    9    6    3    9    8    6

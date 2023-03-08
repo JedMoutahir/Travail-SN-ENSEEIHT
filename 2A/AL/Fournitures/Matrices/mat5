@@ -1,0 +1,8 @@
+ Matrice de Test 5, matrice d ordre : 9 possedant nb de nonzeros : 27
+ 9 27
+ tableau de pointeurs
+     1     4     7    10   13    16    19    22    25    28
+ indices de lignes
+    1    4    7    2    5    8    3    6    9    4
+    1    7    5    2    8    6    3    9    7    1    
+    4    8    2    5    9    6    3    

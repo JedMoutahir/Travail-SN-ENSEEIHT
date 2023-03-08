@@ -1,0 +1,10 @@
+ Matrice de test, matrice d ordre : 6 possedant nb de nonzeros : 16
+ 6 16 
+ tableau de pointeurs de debut de colonne
+     1     4     7     9    11    14    17
+ indices de lignes
+    1    2    5    1    4    2    3    6    2    4
+    1    5    6    3    5    6    
+ coefficients reels  (optionnels)
+  10.00   2.00   4.00   6.00   2.00  18.00  20.00   3.00   2.00  24.00
+   1.00  17.00   4.00   6.00   1.00  10.00  
