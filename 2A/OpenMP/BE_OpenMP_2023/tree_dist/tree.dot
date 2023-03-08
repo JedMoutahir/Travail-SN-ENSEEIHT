@@ -1,0 +1,206 @@
+graph G {
+node [color=black,
+fillcolor=white,
+shape=circle,
+style=filled
+];
+node0000[label="id:0\lweight:9\ldist:9\l"];
+node0001[label="id:1\lp:0\lweight:4\ldist:13\l"];
+node0000 -- node0001
+node0002[label="id:2\lp:1\lweight:2\ldist:15\l"];
+node0001 -- node0002
+node0003[label="id:3\lp:2\lweight:4\ldist:19\l"];
+node0002 -- node0003
+node0004[label="id:4\lp:2\lweight:2\ldist:17\l"];
+node0002 -- node0004
+node0005[label="id:5\lp:2\lweight:5\ldist:20\l"];
+node0002 -- node0005
+node0006[label="id:6\lp:3\lweight:5\ldist:24\l"];
+node0003 -- node0006
+node0007[label="id:7\lp:4\lweight:5\ldist:22\l"];
+node0004 -- node0007
+node0008[label="id:8\lp:4\lweight:3\ldist:20\l"];
+node0004 -- node0008
+node0009[label="id:9\lp:4\lweight:10\ldist:27\l"];
+node0004 -- node0009
+node0010[label="id:10\lp:5\lweight:8\ldist:28\l"];
+node0005 -- node0010
+node0011[label="id:11\lp:6\lweight:6\ldist:30\l"];
+node0006 -- node0011
+node0012[label="id:12\lp:6\lweight:3\ldist:27\l"];
+node0006 -- node0012
+node0013[label="id:13\lp:6\lweight:2\ldist:26\l"];
+node0006 -- node0013
+node0014[label="id:14\lp:7\lweight:5\ldist:27\l"];
+node0007 -- node0014
+node0015[label="id:15\lp:8\lweight:10\ldist:30\l"];
+node0008 -- node0015
+node0016[label="id:16\lp:9\lweight:9\ldist:36\l"];
+node0009 -- node0016
+node0017[label="id:17\lp:9\lweight:7\ldist:34\l"];
+node0009 -- node0017
+node0018[label="id:18\lp:9\lweight:2\ldist:29\l"];
+node0009 -- node0018
+node0019[label="id:19\lp:10\lweight:4\ldist:32\l"];
+node0010 -- node0019
+node0020[label="id:20\lp:10\lweight:10\ldist:38\l"];
+node0010 -- node0020
+node0021[label="id:21\lp:10\lweight:6\ldist:34\l"];
+node0010 -- node0021
+node0022[label="id:22\lp:11\lweight:6\ldist:36\l"];
+node0011 -- node0022
+node0023[label="id:23\lp:12\lweight:4\ldist:31\l"];
+node0012 -- node0023
+node0024[label="id:24\lp:12\lweight:9\ldist:36\l"];
+node0012 -- node0024
+node0025[label="id:25\lp:13\lweight:9\ldist:35\l"];
+node0013 -- node0025
+node0026[label="id:26\lp:14\lweight:7\ldist:34\l"];
+node0014 -- node0026
+node0027[label="id:27\lp:14\lweight:6\ldist:33\l"];
+node0014 -- node0027
+node0028[label="id:28\lp:14\lweight:3\ldist:30\l"];
+node0014 -- node0028
+node0029[label="id:29\lp:15\lweight:5\ldist:35\l"];
+node0015 -- node0029
+node0030[label="id:30\lp:15\lweight:6\ldist:36\l"];
+node0015 -- node0030
+node0031[label="id:31\lp:16\lweight:5\ldist:41\l"];
+node0016 -- node0031
+node0032[label="id:32\lp:16\lweight:3\ldist:39\l"];
+node0016 -- node0032
+node0033[label="id:33\lp:16\lweight:2\ldist:38\l"];
+node0016 -- node0033
+node0034[label="id:34\lp:17\lweight:8\ldist:42\l"];
+node0017 -- node0034
+node0035[label="id:35\lp:18\lweight:10\ldist:39\l"];
+node0018 -- node0035
+node0036[label="id:36\lp:19\lweight:9\ldist:41\l"];
+node0019 -- node0036
+node0037[label="id:37\lp:20\lweight:3\ldist:41\l"];
+node0020 -- node0037
+node0038[label="id:38\lp:20\lweight:10\ldist:48\l"];
+node0020 -- node0038
+node0039[label="id:39\lp:20\lweight:2\ldist:40\l"];
+node0020 -- node0039
+node0040[label="id:40\lp:21\lweight:1\ldist:35\l"];
+node0021 -- node0040
+node0041[label="id:41\lp:22\lweight:5\ldist:41\l"];
+node0022 -- node0041
+node0042[label="id:42\lp:22\lweight:6\ldist:42\l"];
+node0022 -- node0042
+node0043[label="id:43\lp:23\lweight:10\ldist:41\l"];
+node0023 -- node0043
+node0044[label="id:44\lp:24\lweight:6\ldist:42\l"];
+node0024 -- node0044
+node0045[label="id:45\lp:24\lweight:8\ldist:44\l"];
+node0024 -- node0045
+node0046[label="id:46\lp:25\lweight:2\ldist:37\l"];
+node0025 -- node0046
+node0047[label="id:47\lp:26\lweight:8\ldist:42\l"];
+node0026 -- node0047
+node0048[label="id:48\lp:27\lweight:8\ldist:41\l"];
+node0027 -- node0048
+node0049[label="id:49\lp:27\lweight:5\ldist:38\l"];
+node0027 -- node0049
+node0050[label="id:50\lp:27\lweight:9\ldist:42\l"];
+node0027 -- node0050
+node0051[label="id:51\lp:28\lweight:7\ldist:37\l"];
+node0028 -- node0051
+node0052[label="id:52\lp:29\lweight:2\ldist:37\l"];
+node0029 -- node0052
+node0053[label="id:53\lp:29\lweight:4\ldist:39\l"];
+node0029 -- node0053
+node0054[label="id:54\lp:30\lweight:1\ldist:37\l"];
+node0030 -- node0054
+node0055[label="id:55\lp:30\lweight:1\ldist:37\l"];
+node0030 -- node0055
+node0056[label="id:56\lp:30\lweight:9\ldist:45\l"];
+node0030 -- node0056
+node0057[label="id:57\lp:31\lweight:5\ldist:46\l"];
+node0031 -- node0057
+node0058[label="id:58\lp:32\lweight:1\ldist:40\l"];
+node0032 -- node0058
+node0059[label="id:59\lp:33\lweight:1\ldist:39\l"];
+node0033 -- node0059
+node0060[label="id:60\lp:33\lweight:8\ldist:46\l"];
+node0033 -- node0060
+node0061[label="id:61\lp:34\lweight:6\ldist:48\l"];
+node0034 -- node0061
+node0062[label="id:62\lp:35\lweight:8\ldist:47\l"];
+node0035 -- node0062
+node0063[label="id:63\lp:36\lweight:8\ldist:49\l"];
+node0036 -- node0063
+node0064[label="id:64\lp:36\lweight:6\ldist:47\l"];
+node0036 -- node0064
+node0065[label="id:65\lp:36\lweight:10\ldist:51\l"];
+node0036 -- node0065
+node0066[label="id:66\lp:37\lweight:1\ldist:42\l"];
+node0037 -- node0066
+node0067[label="id:67\lp:37\lweight:7\ldist:48\l"];
+node0037 -- node0067
+node0068[label="id:68\lp:38\lweight:10\ldist:58\l"];
+node0038 -- node0068
+node0069[label="id:69\lp:39\lweight:10\ldist:50\l"];
+node0039 -- node0069
+node0070[label="id:70\lp:40\lweight:8\ldist:43\l"];
+node0040 -- node0070
+node0071[label="id:71\lp:41\lweight:5\ldist:46\l"];
+node0041 -- node0071
+node0072[label="id:72\lp:42\lweight:10\ldist:52\l"];
+node0042 -- node0072
+node0073[label="id:73\lp:43\lweight:4\ldist:45\l"];
+node0043 -- node0073
+node0074[label="id:74\lp:43\lweight:8\ldist:49\l"];
+node0043 -- node0074
+node0075[label="id:75\lp:44\lweight:8\ldist:50\l"];
+node0044 -- node0075
+node0076[label="id:76\lp:44\lweight:5\ldist:47\l"];
+node0044 -- node0076
+node0077[label="id:77\lp:44\lweight:7\ldist:49\l"];
+node0044 -- node0077
+node0078[label="id:78\lp:45\lweight:5\ldist:49\l"];
+node0045 -- node0078
+node0079[label="id:79\lp:45\lweight:4\ldist:48\l"];
+node0045 -- node0079
+node0080[label="id:80\lp:45\lweight:8\ldist:52\l"];
+node0045 -- node0080
+node0081[label="id:81\lp:46\lweight:8\ldist:45\l"];
+node0046 -- node0081
+node0082[label="id:82\lp:46\lweight:8\ldist:45\l"];
+node0046 -- node0082
+node0083[label="id:83\lp:47\lweight:7\ldist:49\l"];
+node0047 -- node0083
+node0084[label="id:84\lp:48\lweight:7\ldist:48\l"];
+node0048 -- node0084
+node0085[label="id:85\lp:48\lweight:5\ldist:46\l"];
+node0048 -- node0085
+node0086[label="id:86\lp:49\lweight:6\ldist:44\l"];
+node0049 -- node0086
+node0087[label="id:87\lp:50\lweight:2\ldist:44\l"];
+node0050 -- node0087
+node0088[label="id:88\lp:50\lweight:9\ldist:51\l"];
+node0050 -- node0088
+node0089[label="id:89\lp:50\lweight:5\ldist:47\l"];
+node0050 -- node0089
+node0090[label="id:90\lp:51\lweight:6\ldist:43\l"];
+node0051 -- node0090
+node0091[label="id:91\lp:52\lweight:3\ldist:40\l"];
+node0052 -- node0091
+node0092[label="id:92\lp:53\lweight:6\ldist:45\l"];
+node0053 -- node0092
+node0093[label="id:93\lp:54\lweight:4\ldist:41\l"];
+node0054 -- node0093
+node0094[label="id:94\lp:54\lweight:3\ldist:40\l"];
+node0054 -- node0094
+node0095[label="id:95\lp:55\lweight:4\ldist:41\l"];
+node0055 -- node0095
+node0096[label="id:96\lp:55\lweight:9\ldist:46\l"];
+node0055 -- node0096
+node0097[label="id:97\lp:56\lweight:5\ldist:50\l"];
+node0056 -- node0097
+node0098[label="id:98\lp:56\lweight:4\ldist:49\l"];
+node0056 -- node0098
+node0099[label="id:99\lp:57\lweight:5\ldist:51\l"];
+node0057 -- node0099
+}
