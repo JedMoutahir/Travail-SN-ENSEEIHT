@@ -1,24 +1,31 @@
-import java.rmi.Remote;
-import java.rmi.RemoteException;
 
 public class SharedObject implements SharedObject_itf {
-
-	@Override
-	public Object read() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+	private int version;
+	private Object content;
+	
+	public SharedObject(Object content, int version) {
+		this.version = version;
+		this.content = content;
 	}
 
 	@Override
-	public int write(Object valeur) throws RemoteException {
+	public Object read() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.content;
 	}
 
 	@Override
-	public int getVersion() throws RemoteException {
+	public int write(Object valeur) {
 		// TODO Auto-generated method stub
-		return 0;
+		this.content = valeur;
+		version++;
+		return version;
+	}
+
+	@Override
+	public int getVersion() {
+		// TODO Auto-generated method stub
+		return this.version;
 	}
 	
 }
