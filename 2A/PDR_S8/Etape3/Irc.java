@@ -21,7 +21,7 @@ public class Irc extends Frame {
 		Client.init();
 		
 		// créer et diffuser un nouvel objet partagé
-		SharedObject s = Client.publish("IRC", new String(""),false);
+		SharedObject s = Client.publish("IRC", new String("empty"),false);
 		
 		// créer l'IHM
 		new Irc(s);
