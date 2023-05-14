@@ -32,7 +32,7 @@ public class Client extends UnicastRemoteObject implements Client_itf {
 	            serverStub = (Server_itf) dns.lookup("Server");
 	            c = new Client();
 	            clients = serverStub.addClient(c);
-	            System.out.println(clients.size());
+	            //System.out.println(clients.size());
 	            monitor = serverStub.getMonitor();
 	        } catch (Exception e) {
 	            System.out.println("Can't initialize client layer, see stacktrace for more information.");

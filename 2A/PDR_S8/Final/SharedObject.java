@@ -1,6 +1,4 @@
 import java.io.*;
-import java.util.concurrent.Semaphore;
-import java.util.Set;
 import java.rmi.RemoteException;
 
 
@@ -38,7 +36,6 @@ public class SharedObject implements Serializable, SharedObject_itf {
             Client.monitor.feuVert(Client.getIdSite(),1); // ** Instrumentation
             
          	// suite de la méthode reportValue... 
-         	System.out.println("reportValue");
          	rcb.reponse(this.version, this.obj);
         } catch (Exception ex) {
             ex.printStackTrace();

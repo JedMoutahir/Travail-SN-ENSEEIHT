@@ -19,7 +19,6 @@ public class ReadCallback extends UnicastRemoteObject implements ReadCallback_it
 	@Override
 	public void reponse(int version, Object obj) throws RemoteException {
 		// TODO Auto-generated method stub
-		System.out.println("reszponese");
 		if(version > this.version) {
 			this.version = version;
 			this.obj = obj;
