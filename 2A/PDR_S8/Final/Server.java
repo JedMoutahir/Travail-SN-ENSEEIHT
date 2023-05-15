@@ -11,7 +11,7 @@ import java.util.concurrent.*;
 public class Server extends UnicastRemoteObject implements Server_itf {
 	public static final String URL = "//localhost:4444/Server";
 	public static final Integer Port = 4444;
-	public static final int CLIENT_MAX = 2;
+	public static final int CLIENT_MAX = 5;
 	private Set<Client_itf> clientList;
 	private HashMap<String, Integer> ids;
 	private HashMap<Integer, ServerObject> objects;
@@ -76,8 +76,8 @@ public class Server extends UnicastRemoteObject implements Server_itf {
 	public int write(int idObjet, Object valeur, Client_itf sender) throws RemoteException {
 		// TODO Auto-generated method stub
 		ServerObject so = this.objects.get(idObjet);
-        // Le serveur gère tous les numéros de version, donc on se fie à lui pour le dernier,
-        // En fait, on écrase le numéro du writer (au cas où le writer n'était pas à jour)
+        // Le serveur gï¿½re tous les numï¿½ros de version, donc on se fie ï¿½ lui pour le dernier,
+        // En fait, on ï¿½crase le numï¿½ro du writer (au cas oï¿½ le writer n'ï¿½tait pas ï¿½ jour)
         int version = so.update();
 
         WriteCallback_itf wcb = (WriteCallback_itf) new WriteCallback();
