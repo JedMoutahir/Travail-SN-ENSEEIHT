@@ -163,6 +163,8 @@ plot(sol, wait = true, cmm = "Solution", value = true, fill = true, dim = 3);
 
 // 2.
 
+/*
+
 mesh Th;
 func f = 1 + x + y;
 
@@ -180,5 +182,30 @@ fespace Vh(Th, P1);
 matrix Mat = PoissonRobin(Vh, Vh);
 Vh rhs, sol;
 rhs[] = PoissonRobin(0, Vh);
+sol[] = Mat^-1 * rhs[];
+plot(sol, wait = true, cmm = "Solution", value = true, fill = true, dim = 3);
+
+*/
+
+// 3.
+
+
+mesh Th;
+func f = 1 + x + y;
+
+varf ConvectionDiffusion(u, v) = int2d(Th)(dx(u)*dx(v) + dy(u)*dy(v)) + ??? + int2d(Th)(f*v) + on(4, u = 0);
+
+int nx = 10, ny = 20;
+real A = 0.0, B = 1.0, C = 1.0, D = 2.0;
+
+mesh Th1 = square(nx, ny, [A + B * x, C + D * y]);
+
+mesh ThL = trunc(Th1, y < 1.5 || (x < 0.5 && y > 1.5), split = 1);
+
+Th = ThL;
+fespace Vh(Th, P1);
+matrix Mat = ConvectionDiffusion(Vh, Vh);
+Vh rhs, sol;
+rhs[] = ConvectionDiffusion(0, Vh);
 sol[] = Mat^-1 * rhs[];
 plot(sol, wait = true, cmm = "Solution", value = true, fill = true, dim = 3);
