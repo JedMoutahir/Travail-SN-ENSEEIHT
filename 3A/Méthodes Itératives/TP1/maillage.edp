@@ -166,8 +166,7 @@ plot(sol, wait = true, cmm = "Solution", value = true, fill = true, dim = 3);
 mesh Th;
 func f = 1 + x + y;
 
-varf PoissonRobin(u, v) = int2d(Th)(dx(u)*dx(v) + dy(u)*dy(v))
-+ int2d(Th)(f*v) + int1d(Th, 2)(10*cos(4*y)) + on(4, u = 0);
+varf PoissonRobin(u, v) = int2d(Th)(dx(u)*dx(v) + dy(u)*dy(v)) + int1d(Th, 2)(10*cos(4*y)*v) + int1d(Th, 2)(-10*u*v) + int2d(Th)(f*v) + on(4, u = 0);
 
 int nx = 10, ny = 20;
 real A = 0.0, B = 1.0, C = 1.0, D = 2.0;
