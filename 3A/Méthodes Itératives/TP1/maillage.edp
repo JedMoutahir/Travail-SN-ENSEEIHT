@@ -1,0 +1,185 @@
+// 1) ------------------------------------------------------------------------
+
+/*
+
+int nx = 10, ny = 20;
+real A = 0.0, B = 1.0, C = 1.0, D = 2.0;
+
+mesh Th = square(nx, ny, [A + B * x, C + D * y]);
+
+plot(Th, wait = true, cmm = "Th");
+
+mesh ThSquare = trunc(Th, y < 2.0, split = 1);
+
+plot(ThSquare, wait = true, cmm = "ThSquare");
+
+mesh ThL = trunc(Th, y < 1.5 || (x < 0.5 && y > 1.5), split = 1);
+
+plot(ThL, wait = true, cmm = "ThL");
+
+mesh ThL1 = trunc(Th, y < 1.5 || (x < 0.5 && y > 1.5), split = 1);
+cout << ThL1.nt << endl;                                                // Donne 200
+mesh ThL2 = trunc(Th, y < 1.5 || (x < 0.5 && y > 1.5), split = 2);
+cout << ThL2.nt << endl;                                                // Donne 800 = 2^2 * 200
+mesh ThL3 = trunc(Th, y < 1.5 || (x < 0.5 && y > 1.5), split = 3);
+cout << ThL3.nt << endl;                                                // Donne 1800 = 3^2 * 200
+mesh ThL4 = trunc(Th, y < 1.5 || (x < 0.5 && y > 1.5), split = 4);
+cout << ThL4.nt << endl;                                                // Donne 3200 = 4^2 * 200
+
+mesh Th1 = trunc(Th, y < 1.5, split = 1);
+mesh Th2 = trunc(Th, x < 0.5 && y > 1.5, split = 1);
+mesh ThLSum = Th1 + Th2;
+
+plot(ThLSum, wait = true, cmm = "ThLSum");
+
+*/
+
+// 2) ------------------------------------------------------------------------
+
+// Example :
+
+/*
+
+int nx = 10, ny = 20;
+real A = 0.0, B = 1.0, C = 1.0, D = 2.0;
+mesh Th = square(nx, ny, [A + B * x, C + D * y]);
+fespace Vh(Th, P1);
+func g = x*x + y*y; // cannot change g afterwards!
+Vh gEF = g;
+plot(gEF, wait = true, cmm = "x*x + y*y", value = true, fill = true,
+dim = 3);
+
+gEF[] = 1.0;
+plot(gEF, wait = true, cmm = "1", value = true, fill = true, dim = 3);
+
+for(int i = 0; i < gEF[].n; ++i) {
+    if(i > 200) {
+        gEF[][i] = 0.0;
+    } else if(i < 100) {
+        gEF[][i] = gEF[].n / 2.0;
+    } else {
+        gEF[][i] = i;
+    }
+}
+
+plot(gEF, wait = true, cmm = "A weird function", value = true, fill = true,
+dim = 3);
+
+cout << gEF[].n << " == " << Vh.ndof << endl;
+
+*/
+
+// Exercice :
+
+/*
+
+int nx = 10, ny = 20;
+real A = 0.0, B = 1.0, C = 1.0, D = 2.0;
+mesh Th = square(nx, ny, [A + B * x, C + D * y]);
+fespace Vh(Th, P0);
+func g = x*x + y*y; // cannot change g afterwards!
+Vh gEF = g;
+plot(gEF, wait = true, cmm = "x*x + y*y", value = true, fill = true,
+dim = 3);
+
+gEF[] = 1.0;
+plot(gEF, wait = true, cmm = "1", value = true, fill = true, dim = 3);
+
+for(int i = 0; i < gEF[].n; ++i) {
+    if(i > 200) {
+        gEF[][i] = 0.0;
+    } else if(i < 100) {
+        gEF[][i] = gEF[].n / 2.0;
+    } else {
+        gEF[][i] = i;
+    }
+}
+
+plot(gEF, wait = true, cmm = "A weird function", value = true, fill = true,
+dim = 3);
+
+cout << gEF[].n << " == " << Vh.ndof << endl;
+
+*/
+
+// 3) ------------------------------------------------------------------------
+
+// Example :
+
+/*
+
+mesh Th;
+func f = 1 + x + y;
+varf Poisson(u, v) = int2d(Th)(dx(u)*dx(v) + dy(u)*dy(v)) + int2d(Th)(f*v);
+
+varf PoissonDirichlet(u, v) = int2d(Th)(dx(u)*dx(v) + dy(u)*dy(v))
++ int2d(Th)(f*v) + on(4, u = 0.0);
+
+int nx = 10, ny = 20;
+real A = 0.0, B = 1.0, C = 1.0, D = 2.0;
+
+mesh Th1 = square(nx, ny, [A + B * x, C + D * y]);
+
+mesh ThL = trunc(Th1, y < 1.5 || (x < 0.5 && y > 1.5), split = 1);
+
+Th = ThL;
+fespace Vh(Th, P1);
+matrix Mat = PoissonDirichlet(Vh, Vh);
+Vh rhs, sol;
+rhs[] = PoissonDirichlet(0, Vh);
+sol[] = Mat^-1 * rhs[];
+plot(sol, wait = true, cmm = "Solution", value = true, fill = true, dim = 3);
+
+*/
+
+// Exercice :
+
+// 1 .
+
+/*
+
+mesh Th;
+func f = 1 + x + y;
+
+varf PoissonDirichlet(u, v) = int2d(Th)(dx(u)*dx(v) + dy(u)*dy(v))
++ int2d(Th)(f*v) + on(4, u = y);
+
+int nx = 10, ny = 20;
+real A = 0.0, B = 1.0, C = 1.0, D = 2.0;
+
+mesh Th1 = square(nx, ny, [A + B * x, C + D * y]);
+
+mesh ThL = trunc(Th1, y < 1.5 || (x < 0.5 && y > 1.5), split = 1);
+
+Th = ThL;
+fespace Vh(Th, P1);
+matrix Mat = PoissonDirichlet(Vh, Vh);
+Vh rhs, sol;
+rhs[] = PoissonDirichlet(0, Vh);
+sol[] = Mat^-1 * rhs[];
+plot(sol, wait = true, cmm = "Solution", value = true, fill = true, dim = 3);
+
+*/
+
+// 2.
+
+mesh Th;
+func f = 1 + x + y;
+
+varf PoissonRobin(u, v) = int2d(Th)(dx(u)*dx(v) + dy(u)*dy(v))
++ int2d(Th)(f*v) + int1d(Th, 2)(10*cos(4*y)) + on(4, u = 0);
+
+int nx = 10, ny = 20;
+real A = 0.0, B = 1.0, C = 1.0, D = 2.0;
+
+mesh Th1 = square(nx, ny, [A + B * x, C + D * y]);
+
+mesh ThL = trunc(Th1, y < 1.5 || (x < 0.5 && y > 1.5), split = 1);
+
+Th = ThL;
+fespace Vh(Th, P1);
+matrix Mat = PoissonRobin(Vh, Vh);
+Vh rhs, sol;
+rhs[] = PoissonRobin(0, Vh);
+sol[] = Mat^-1 * rhs[];
+plot(sol, wait = true, cmm = "Solution", value = true, fill = true, dim = 3);
