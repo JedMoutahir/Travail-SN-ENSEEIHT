@@ -47,7 +47,7 @@ Ih2h = 0.5*I2hh';
 v(1:N-1,1) = 0;
 % Vector to store the error at each iteration.
 % We do 10 iterations.
-nb_iter = 5;
+nb_iter = 100;
 err(1:nb_iter) = 0;
 res(1:nb_iter) = 0;
 res_h_init = inf;
@@ -66,7 +66,7 @@ for i=1:nb_iter
     % Solve the coarse grid error equation
     e_2h = A2h \ res_2h;
     % Interpolate the coarse grid error to the fine grid
-    e_h = Ah \ res_h;
+    e_h = I2hh*e_2h;
     % Update the approximate fine grid solution
     v = v + e_h;
     % Compute the error with respect to the direct
