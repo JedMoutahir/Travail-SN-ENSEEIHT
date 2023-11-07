@@ -19,19 +19,19 @@ real eps = 1.0e-4;
 // définition des deux grilles ThFine et ThCoarse
 int nx = 256, ny = 256;
 
-mesh ThFine = /* TODO 1 */
-mesh ThCoarse = /* TODO 1 */
+mesh ThFine = square(nx, ny);
+mesh ThCoarse = square(nx * coarsening, ny * coarsening);
 
 // type des élements finis 
 func Pk = P1;
 
 // deux espaces d'élements finis sur les 2 grilles
-fespace VhFine(/* TODO 2 */);
-fespace VhCoarse(/* TODO 2 */);
+fespace VhFine(ThFine, Pk);
+fespace VhCoarse(ThCoarse, Pk);
 
 // opérateurs pour passer d'une grille à l'autre
-matrix R = /* TODO 2 */
-matrix P = /* TODO 2 */
+matrix P = interpolate(VhCoarse, VhFine);
+matrix R = 0.5*P';
 
 // définition de f (voir TP1)
 func f = /* TODO 3 */
