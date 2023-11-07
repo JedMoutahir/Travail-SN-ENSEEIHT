@@ -1,0 +1,10 @@
+function I2hh = interpol(N)
+
+    I2hh = zeros(N, N/2);
+
+    for i = 1:N
+        
+    end
+
+    
+end
