@@ -22,6 +22,9 @@ int nx = 256, ny = 256;
 mesh ThFine = square(nx, ny);
 mesh ThCoarse = square(nx * coarsening, ny * coarsening);
 
+plot(ThFine, wait=true, cmm="Thfine");
+plot(ThCoarse, wait=true, cmm="ThCoarse");
+
 // type des élements finis 
 func Pk = P1;
 
@@ -30,22 +33,26 @@ fespace VhFine(ThFine, Pk);
 fespace VhCoarse(ThCoarse, Pk);
 
 // opérateurs pour passer d'une grille à l'autre
-matrix P = interpolate(VhCoarse, VhFine);
+matrix P = interpolate(VhFine, VhCoarse);
 matrix R = 0.5*P';
 
 // définition de f (voir TP1)
-func f = /* TODO 3 */
+func f = 2*y*(1 - y) + 2*x*(1 - x);
+
+VhFine fEF = f;
+
+plot(fEF, wait=true, cmm="fEF", dim=3, fill=true);
 
 // définition des deux formes variationnelles sur les 2 grilles (cf TP1)
-varf PoissonFine(u, v) = /* TODO 3 */
-varf PoissonCoarse(u, v) = /* TODO 3 */
+varf PoissonFine(u, v) = int2d(ThFine)(dx(u)*dx(v) + dy(u)*dy(v)) + int2d(ThFine)(f*v) + on(1, u = 0.0) + on(2, u = 0.0) + on(3, u = 0.0) + on(4, u = 0.0);
+varf PoissonCoarse(u, v) = int2d(ThCoarse)(dx(u)*dx(v) + dy(u)*dy(v)) + int2d(ThCoarse)(f*v) + on(1, u = 0.0) + on(2, u = 0.0) + on(3, u = 0.0) + on(4, u = 0.0);
 
 // matrices du problème sur les deux grilles
 // on positionne le solveur qui sera utilisé par FreeFEM si on applique ^{-1}
 // grille fine => solveur itératif (même si on ne fera jamais cette opération)
 // grille grossière => solveur direct
-matrix AF = PoissonFine(VhFine, VhFine, solver = /* TODO 3 */, tgv = tgv);
-matrix AC = PoissonCoarse(VhCoarse, VhCoarse, solver = /* TODO 3 */, tgv = tgv);
+matrix AF = PoissonFine(VhFine, VhFine, solver = GMRES, tgv = tgv);
+matrix AC = PoissonCoarse(VhCoarse, VhCoarse, solver = sparsesolver, tgv = tgv);
 
 // définition de l'opérateur LplusU (L+U) pour le lisseur de Jacobi
 VhFine temp;
@@ -55,9 +62,9 @@ matrix D = temp[];
 set(D, solver = GMRES);
 
 // vecteurs : solution, second membre, résidu sur la grille fine
-VhFine x, b, rF;
-b[] = /* TODO 3 */
-x[] = 0.0;
+VhFine xF, b, rF;
+b[] = PoissonFine(0, VhFine);
+xF[] = 0.0;
 rF[] = 1.0;
 
 // vecteurs : résidu et correction sur la grille grossière
@@ -66,52 +73,65 @@ VhCoarse rC, e;
 // fonction de calcul du résidu sur la grille fine
 func real[int] residual(real[int]& x, real[int]& b) {
     VhFine tmp;
-    /* TODO 3 */
+    tmp[] = AF*x;
+    tmp[] *= -1.0;
+    tmp[] += b;
     return tmp[];
 }
 
 // fonction de lissage (sur la grille fine)
 func real[int] smoother(real[int]& x, real[int]& b) {
-    VhFine tmp, y;
-    /* TODO 3 */
+    VhFine tmp1, tmp2, y;
+    y[] = x;
+
     for(int j = 0; j < smooth; ++j) {
-        /* TODO 3 */
+        tmp1[] = residual(y[], b);
+        tmp2[] = D^-1*tmp1[];
+        tmp2[] *= omega;
+        y[] += tmp2[];
     }
     return y[];
 }
+
 
 // boucle de point fixe
 for(int i = 0; i < it && rF[].l2 / b[].l2 >= eps; ++i) {
 
     // quelques itérations du lisseur (Jacobi) sur la grille fine
-    x[] = /* TODO 3 */
+    xF[] = smoother(xF[], b[]);
 
     // calcul du résidu sur grille fine
-    rF[] = /*TODO 3 */
+    rF[] = residual(xF[], b[]);
 
     // restriction du résidu sur la grille grossière
     rC[] = R * rF[];
 
     // résolution sur grille grossière pour calculer la correction
-    e[] = /* TODO 3 */
+    e[] = AC^-1*rC[];
 
     // ajout de l'interpolation de la correction sur la grille fine à la
     // solution sur la grille fine
-    x[] += /* TODO 3 */
+    xF[] += P*e[];
 
     // quelques itérations du lisseur (Jacobi) sur la grille fine
-    x[] = /* TODO 3 */
+    xF[] = smoother(xF[], b[]);
 
     // calcul du résidu sur grille fine (critère d'arrêt)
-    rF[] = residual(x[], b[]);
+    rF[] = residual(xF[], b[]);
 
     // affichage sur le terminal des résultats de l'itération courante
     cout << "Two-grid V-cycle: " << (i + 1) << " " << rF[].l2 << " " << b[].l2 << " " << (rF[].l2 / b[].l2) <<  " < " << eps << endl;
     // affichage de la solution de l'itération courante
-    plot(x, wait = true, cmm = "Solution at iteration #" + i, value = true, fill = true, dim = 3);
+    plot(xF, wait = false, cmm = "Solution at iteration #" + i, value = true, fill = true, dim = 3);
 }
 
 // affichage de la solution de l'itération finale
-plot(rF, wait = true, cmm = "Final residual", value = true, fill = true, dim = 3);
+plot(xF, wait = true, cmm = "Final Solution", value = true, fill = true, dim = 3);
 plot(rF, wait = true, cmm = "FP: Final residual", value = true, fill = true, dim = 3);
 // converge en 393 itérations eps = 10-4, coarsening = 0.5, smooth = 5
+
+VhFine sol;
+
+sol[] = AF^-1*b[];
+
+plot(sol, wait = true, cmm = "Actual Solution", value = true, fill = true, dim = 3);
