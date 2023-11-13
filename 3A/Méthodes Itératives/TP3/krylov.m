@@ -35,13 +35,13 @@ while (relres > tol && j <= maxit) % critère d'arrêt
     w = A * V(:, j);
     
     % orthogonalisation (Modified Gram-Schmidt)
-        for i = 1:j
-            H(i, j) = V(:, i)' * w;
-            w = w - H(i, j) * V(:, i);
-        end
+    for i = 1:j
+        H(i, j) = V(:, i)' * w;
+        w = w - H(i, j) * V(:, i);
+    end
     
     % calcul de H(j+1, j) et normalisation de V(:, j+1)
-    H(j + 1, j) = norm(w);
+    H(j + 1, j) = norm(w, 2);
     V(:, j + 1) = w / H(j + 1, j);
 
     % suivant la méthode
@@ -49,32 +49,32 @@ while (relres > tol && j <= maxit) % critère d'arrêt
         % FOM
         % résolution du système linéaire H.y = beta.e1
         % construction de beta.e1 (taille j)
-        e1 = zeros(j, 1);
-        e1(1) = 1;
+        be1 = zeros(j, 1);
+        be1(1) = beta;
         % résolution de H.y = beta.e1 avec '\'
-        y = H(1:j, 1:j) \ (beta * e1);
+        y = H(1:j, 1:j) \ be1;
 
     else
         % GMRES
         % résolution du problème aux moindres carrés argmin ||beta.e1 - H_barre.y||
         % construction de beta.e1 (taille j+1)
-        e1 = zeros(j + 1, 1);
-        e1(1) = 1;
+        be1 = zeros(j + 1, 1);
+        be1(1) = beta;
         % résolution de argmin ||beta.e1 - H_barre.y|| avec '\'
-        y = H(1:j + 1, 1:j) \ (beta * e1);
+        y = H \ be1;
     end
     
     % calcul de l'itérée courant x 
-    x = x + V(:, 1:j) * y;
+    x = x0 + V(:, 1:j) * y;
     % calcul dde la norme du résidu et rangement dans resvec
     r = b - A * x;
-    beta = norm(r);
+    beta = norm(r, 2);
     resvec(j + 1) = beta;
     
     % calcul de la norme relative du résidu (backward error) relres
     relres = beta / normb;
 
-    j= j+1;
+    j = j+1;
 end
 
 % le nombre d'itération est j - 1 (imcrément de j en fin de boucle)
