@@ -52,3 +52,5 @@ lines(x, dnorm(x, mu, sqrt(s2)), lwd=10)
 # delta2 = 2 ==> f ~= 35%
 # delta2 = 64 ==> f ~= 7%
 # delta2 = 1/32 ==> f ~= 87%
+
+# On vise en general 20% < f < 40%
