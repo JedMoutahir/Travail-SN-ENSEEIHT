@@ -1,0 +1,173 @@
+
+// définition de quelques paramètres
+
+  // niveau de verbosité des solveurs
+verbosity = 0;
+  // Très Grande Valeur pour gérer les conditions de Diriclet (cf TP1)
+real tgv = -1.0;
+  // rapport entre les mailles des 2 grilles
+real coarsening = 0.5;
+  // omega
+real omega = 2.0/3;
+  // nombre d'itérations du lisseur
+int smooth = 5;
+  // nombre total d'itérations
+int it = 1000;
+  // seuil de convergence
+real eps = 1.0e-4;
+
+// définition des deux grilles ThFine et ThCoarse
+int nx = 32, ny = 32;
+
+mesh ThFine = square(nx, ny);
+mesh ThCoarse = square(nx*coarsening, ny*coarsening);
+
+plot(ThFine, wait = true, cmm = "ThFine");
+plot(ThCoarse, wait = true, cmm = "ThCoarse");
+
+// type des élements finis 
+func Pk = P1;
+
+// deux espaces d'élements finis sur les 2 grilles
+fespace VhFine(ThFine, Pk);
+fespace VhCoarse(ThCoarse, Pk);
+
+// opérateurs pour passer d'une grille à l'autre
+matrix P = interpolate(VhFine, VhCoarse);
+matrix R = 0.5*P';
+
+// définition de f (voir TP1)
+func f = 2*y*(1 - y) + 2*x*(1 - x);
+
+VhFine fEF = f;
+plot(fEF, wait = true, cmm = "2*y*(1 - y) + 2*x*(1 - x)", 
+    value = true, fill = true, dim = 3);
+
+// définition des deux formes variationnelles sur les 2 grilles (cf TP1)
+varf PoissonFine(u, v) = int2d(ThFine)(dx(u)*dx(v) + dy(u)*dy(v)) +
+                              int2d(ThFine)(f*v) + on(1, 2, 3, 4, u = 0.0);
+
+varf PoissonCoarse(u, v) = int2d(ThCoarse)(dx(u)*dx(v) + dy(u)*dy(v)) +
+                              int2d(ThCoarse)(f*v) + on(1, u = 0.0) + 
+                              on(2, u = 0.0) + on(3, u = 0.0) + on(4, u = 0.0);
+
+// matrices du problème sur les deux grilles
+// on positionne le solveur qui sera utilisé par FreeFEM si on applique ^{-1}
+// grille fine => solveur itératif (même si on ne fera jamais cette opération)
+// grille grossière => solveur direct
+matrix AF = PoissonFine(VhFine, VhFine, solver = GMRES, tgv = tgv);
+matrix AC = PoissonCoarse(VhCoarse, VhCoarse, solver = sparsesolver, tgv = tgv);
+
+
+// définition de la diagonale de A pour le lisseur de Jacobi
+VhFine temp;
+temp[] = AF.diag;
+matrix D = temp[];
+// on aura à appliquer D^{-1}
+set(D, solver = LU);
+
+// vecteurs : solution, second membre, résidu et correction sur la grille fine
+VhFine xF, b, rF, eF;
+b[] = PoissonFine(0, VhFine);
+xF[] = 0.0;
+rF[] = 1.0;
+
+// vecteurs : résidu et correction sur la grille grossière
+VhCoarse rC, eC;
+
+// fonction de calcul du résidu sur la grille fine
+func real[int] residual(real[int]& x, real[int]& b) {
+    VhFine tmp;
+    tmp[] = AF*x;
+    tmp[] *= -1.0;
+    tmp[] += b;
+
+    return tmp[];
+}
+
+// fonction de lissage (sur la grille fine)
+func real[int] smoother(real[int]& x, real[int]& b) {
+    VhFine tmp1, tmp2, y;
+    y[] = x;
+
+    for(int j = 0; j < smooth; ++j) {
+        tmp1[] = residual(y[], b);
+        tmp2[] = D^-1*tmp1[];
+        tmp2[] *= omega;
+        y[] += tmp2[];
+
+    }
+    return y[];
+}
+
+// boucle de point fixe
+for(int i = 0; i < it && rF[].l2 / b[].l2 >= eps; ++i) {
+
+    // quelques itérations du lisseur (Jacobi) sur la grille fine
+    xF[] = smoother(xF[], b[]);
+
+    // calcul du résidu sur grille fine
+    rF[] = residual(xF[], b[]);
+
+    // restriction du résidu sur la grille grossière
+    rC[] = R * rF[];
+
+    // résolution sur grille grossière pour calculer la correction
+     eC[] = AC^-1*rC[];
+
+    // interpolation de la correction sur la grille fine
+    eF[] = P*eC[];
+
+    // ajout de l'interpolation de la correction sur la grille fine à la
+    // solution sur la grille fine
+     xF[] += eF[];
+
+    // quelques itérations du lisseur (Jacobi) sur la grille fine
+    xF[] = smoother(xF[], b[]);
+
+    // calcul du résidu sur grille fine (critère d'arrêt)
+    rF[] = residual(xF[], b[]);
+
+    // affichage sur le terminal des résultats de l'itération courante
+    cout << "Two-grid V-cycle: " << (i + 1) << " " << rF[].l2 << " " << b[].l2 << " " << (rF[].l2 / b[].l2) <<  " < " << eps << endl;
+    // affichage de la solution de l'itération courante
+    plot(xF, wait = false, cmm = "Solution at iteration #" + i, value = true, fill = true, dim = 3);
+}
+
+// affichage de la solution de l'itération finale
+plot(xF, wait = true, cmm = "Final solution", value = true, fill = true, dim = 3);
+plot(rF, wait = true, cmm = "Final residual", value = true, fill = true, dim = 3);
+
+// Partie à développer : utilisation du préconditionneur 2 grilles avec GMRES
+
+// op == application de A (sur quelle grille ?)
+func real[int] op(real[int]& x) {
+    VhFine y;
+    /* TODO */
+    return y[];
+}
+
+// préconditionneur == intérieur de la boucle de point fixe en adaptant 
+// (v en entrée joue le rôle de b, résultat x -> z)
+func real[int] preconditioner(real[int]& v) {
+    VhFine z;
+    /* TODO */
+    return z[];
+}
+
+// appel à PCG
+xF[] = 0.0;
+LinearCG(op, xF[], b[], precon = preconditioner, verbosity = 40, nbiter = it, eps = eps);
+plot(xF, wait = true, cmm = "PCG: Final solution", value = true, fill = true, dim = 3);
+rF[] = residual(xF[], b[]);
+plot(rF, wait = true, cmm = "PCG: Final residual", value = true, fill = true, dim = 3);
+
+
+// appel à GMRES
+/*
+xF[] = 0.0;
+LinearGMRES(op, xF[], b[], precon = preconditioner, verbosity = 40, nbiter = it, dimKrylov = it, eps = eps);
+plot(xF, wait = true, cmm = "GMRES: Final solution", value = true, fill = true, dim = 3);
+rF[] = residual(xF[], b[]);
+plot(rF, wait = true, cmm = "GMRES: Final residual", value = true, fill = true, dim = 3);
+*/

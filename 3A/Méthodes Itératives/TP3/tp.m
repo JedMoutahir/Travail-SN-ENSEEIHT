@@ -1,8 +1,8 @@
 close all;
 clear all;
 
-load mat1;
-%load pde225_5e-1;
+%load mat1;
+load pde225_5e-1;
 %load hydcar20.mat;
 
 n = size(A,1);
@@ -20,18 +20,15 @@ fprintf('FOM\n');
 [x, flag, relres, iter, resvec] = krylov(A, b, x0, eps, kmax, 0);
 fprintf('Nb iterations : %4d \n' , iter);
 semilogy(resvec, 'c');
-if(flag == 0)
+if(flag == 1)
   fprintf('pas de convergence\n');
 end
-
-pause
 
 fprintf('GMRES\n');
 [x, flag, relres, iter, resvec] = krylov(A, b, x0, eps, kmax, 1);
 fprintf('Nb iterations : %4d \n' , iter);
 hold on
 semilogy(resvec, 'r');
-if(flag == 0)
+if(flag == 1)
   fprintf('pas de convergence\n');
 end
-
